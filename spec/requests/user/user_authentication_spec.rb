@@ -37,5 +37,12 @@ describe "UserAuthentication" do
       click_on 'Sign in'      
       current_path.should == new_user_session_path                        
     end
+    
+    it "User is logging out" do
+      login_as(user, :scope => :user)
+      visit '/'
+      click_on 'Logout'
+      page.should have_content 'Signed out successfully.'
+    end
   
 end
