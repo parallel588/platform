@@ -11,7 +11,6 @@ gem 'devise'
 gem 'devise-async'
 gem 'sidekiq'
 
-gem 'activeadmin'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
@@ -35,6 +34,18 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+group :development do
+  gem 'rack-mini-profiler'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'guard-rspec'
+  gem 'capybara'
+  gem "factory_girl_rails"
+  gem 'rb-fsevent'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
