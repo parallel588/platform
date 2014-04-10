@@ -10,6 +10,8 @@ gem 'rails', '4.0.4'
 gem 'devise'
 gem 'devise-async'
 gem 'sidekiq'
+gem 'simple_form'
+gem 'country_select'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -36,15 +38,21 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :development do
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler'
 end
 
+
+# TEST SUITE - http://railscasts.com/episodes/275-how-i-test?view=asciicast
+# Faster Tests witih SPork: http://railscasts.com/episodes/285-spork?view=asciicast
+gem 'rspec-rails'
 group :test do
-  gem 'rspec'
   gem 'guard-rspec'
   gem 'capybara'
   gem "factory_girl_rails"
   gem 'rb-fsevent'
+  gem 'spork', :github => 'sporkrb/spork'
+  gem 'spork-rails', :github => 'sporkrb/spork-rails'
+  gem "guard-spork"
 end
 
 group :doc do

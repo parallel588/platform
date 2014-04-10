@@ -3,8 +3,25 @@ Basekto::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
+  root 'home#index', as: 'home'
+  
+  
+  
+  devise_for :users, 
+    path: "/", 
+    path_names: { 
+      sign_in: 'login', 
+      sign_out: 'logout', 
+      password: 'password', 
+      confirmation: 'verification', 
+      unlock: 'unblock', 
+      registration: 'signup', 
+      sign_up: '/'
+    }
+  
+  get 'welcome' => "home#welcome", as: "welcome_new_user"
+  
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
