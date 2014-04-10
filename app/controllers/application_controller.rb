@@ -17,15 +17,11 @@ class ApplicationController < ActionController::Base
     if user.sign_in_count == 1
       return welcome_new_user_path
     else
-      super
+      return welcome_back_existing_user_path
     end      
   end
   
-  def after_sign_up_path_for(user)
-    return welcome_new_user_path
-  end
-  
-  
+    
   
   def after_sign_out_path_for(user)
     super

@@ -12,6 +12,8 @@ FactoryGirl.define do
     address_zip '15127'
     occupation 'Self Employed'
     
+    password '12345678'
+    password_confirmation '12345678'
   end
   
 end

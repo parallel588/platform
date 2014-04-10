@@ -6,7 +6,7 @@ Basekto::Application.routes.draw do
   root 'home#index', as: 'home'
   
   
-  
+  # USER AUTHENTICATION - REGISTRATION
   devise_for :users, 
     path: "/", 
     path_names: { 
@@ -17,9 +17,13 @@ Basekto::Application.routes.draw do
       unlock: 'unblock', 
       registration: 'signup', 
       sign_up: '/'
-    }
-  
+    }  
   get 'welcome' => "home#welcome", as: "welcome_new_user"
+  get 'welcome-back' => "home#index", as: "welcome_back_existing_user"
+  
+  
+  
+  
   
   
   # Example of regular route:

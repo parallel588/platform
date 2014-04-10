@@ -53,6 +53,7 @@ group :test do
   gem 'spork', :github => 'sporkrb/spork'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem "guard-spork"
+  gem "launchy"
 end
 
 group :doc do
