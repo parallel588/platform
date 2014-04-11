@@ -13,6 +13,8 @@ CarrierWave.configure do |config|
   }
   config.fog_directory  = ENV['BUCKET_NAME']                     # required
   config.fog_public     = true                                   # optional, defaults to true    
+  config.asset_host     = "http://heroku.basketo.development.s3.amazonaws.com"
+  # config.asset_host     = ENV['CLOUDFRONT_FULL_URL'] 
   config.fog_attributes = { 'Cache-Control'=>'max-age=315576000', 'Expires' => 1.week.from_now.httpdate }
   end
 end
