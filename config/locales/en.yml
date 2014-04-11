@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+  
+  
+  
+  user:
+    preferences_successfully_saved: "Your preferences are successfully saved."
+    preferences_not_saved: "Preferences not saved."
