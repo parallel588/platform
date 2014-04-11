@@ -9,6 +9,7 @@ gem 'rails', '4.0.4'
 # basketo basics
 gem 'devise'
 gem 'devise-async'
+gem "cancan"
 gem 'protected_attributes'
 gem 'sidekiq'
 gem 'simple_form'
@@ -17,6 +18,7 @@ gem 'carrierwave'
 gem 'unf'
 gem 'fog'
 gem 'mini_magick'
+
 
 
 # Use postgresql as the database for Active Record

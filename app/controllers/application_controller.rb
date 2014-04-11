@@ -32,4 +32,12 @@ class ApplicationController < ActionController::Base
   # ################## End of Overriding DEVISE ################## #
   
   
+  
+  # ################## START of CAN CAN - Authentication ################## #
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+  # ################## END of CAN CAN - Authentication ################## #
+  
+  
 end
