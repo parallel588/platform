@@ -9,9 +9,15 @@ gem 'rails', '4.0.4'
 # basketo basics
 gem 'devise'
 gem 'devise-async'
+gem 'protected_attributes'
 gem 'sidekiq'
 gem 'simple_form'
 gem 'country_select'
+gem 'carrierwave'
+gem 'unf'
+gem 'fog'
+gem 'mini_magick'
+
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -40,6 +46,7 @@ gem 'jbuilder', '~> 1.2'
 group :development do
   # gem 'rack-mini-profiler'
 end
+gem 'dotenv-rails', :groups => [:development, :test]
 
 
 # TEST SUITE - http://railscasts.com/episodes/275-how-i-test?view=asciicast

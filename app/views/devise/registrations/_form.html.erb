@@ -1,4 +1,4 @@
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f| %>
 
   <%= f.input :email, autofocus: true,  as: :email %>
   
@@ -15,7 +15,12 @@
   <%= f.input :address_country %>
   
   <%= f.input :address_zip %>
-   
+  
+  <%= image_tag(resource.logo_url) if resource.logo? %>
+  <%= f.input :logo, :as => :file %>
+  <%= f.input :logo_cache, :as => :hidden %>
+
+
   <%= f.input :password %>
 
   <%= f.input :password_confirmation %>
