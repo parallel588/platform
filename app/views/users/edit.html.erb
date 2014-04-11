@@ -22,7 +22,12 @@
   <%= f.input :logo, :as => :file %>
   <%= f.input :logo_cache, :as => :hidden %>
 
+  
+  <%= f.input :user_type, :as => :select, :collection => [:buyer, :seller] %>
 
+  <%= f.input :buyer_type, :as => :select, :collection => [:free, :premium], include_blank: false if current_user.is_buyer?  %>
+  
+  
   <%= f.input :password %>
 
   <%= f.input :password_confirmation %>

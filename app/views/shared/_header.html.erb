@@ -2,6 +2,8 @@
 <% if current_user %>
   <%= "Welcome #{current_user.name} (#{current_user.email})"  %> 
   |
+  <strong><%= "#{current_user.user_type}"%></strong>
+  |
   <%= image_tag current_user.logo.url, :height => 50 if current_user && !current_user.logo.blank?%>
   |
   <%= link_to "Preferences", user_prefernces_path %>
