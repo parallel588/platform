@@ -18,3 +18,8 @@
 
 /config/database.yml
 /config/*.yml
+
+.env
+
+# Ignore local temp files - carrierwave
+/public/uploads/tmp/*
