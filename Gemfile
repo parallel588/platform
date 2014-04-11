@@ -18,6 +18,7 @@ gem 'carrierwave'
 gem 'unf'
 gem 'fog'
 gem 'mini_magick'
+gem 'kaminari'
 
 
 

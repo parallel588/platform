@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   scope :premium, -> { where(seller_type: :premium) }
   scope :free,    -> { where(seller_type: :free) }
   
+  paginates_per 2
+  
   
 
   

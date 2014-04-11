@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     # end
     redirect_to all_users_path unless ["all", "buyers", "sellers"].include?(params[:filter])
     
-    @users = User.send(params[:filter])  
+    @users = User.send(params[:filter]).page params[:page] 
   end
   
   

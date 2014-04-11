@@ -27,3 +27,12 @@ en:
   user:
     preferences_successfully_saved: "Your preferences are successfully saved."
     preferences_not_saved: "Preferences not saved."
+
+
+  views:
+    pagination:
+         first: "&laquo; First"
+         last: "Last &raquo;"
+         previous: "&lsaquo; Prev"
+         next: "Next &rsaquo;"
+         truncate: "&hellip;"
