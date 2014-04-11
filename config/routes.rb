@@ -21,6 +21,8 @@ Basekto::Application.routes.draw do
   get 'welcome' => "home#welcome", as: "welcome_new_user"
   get 'welcome-back' => "home#index", as: "welcome_back_existing_user"
   
+  get 'preferences' => "users#edit", as: "user_prefernces"
+  put 'preferences' => "users#update", as: "update_user_preferences"
   
   
   
