@@ -6,74 +6,47 @@ Basekto::Application.routes.draw do
   root 'home#index', as: 'home'
   
   
-  # USER AUTHENTICATION - REGISTRATION
-  devise_for :users, 
-    path: "/", 
-    path_names: { 
-      sign_in: 'login', 
-      sign_out: 'logout', 
-      password: 'password', 
-      confirmation: 'verification', 
-      unlock: 'unblock', 
-      registration: 'signup', 
-      sign_up: '/'
-    }  
-  get 'welcome' => "home#welcome", as: "welcome_new_user"
-  get 'welcome-back' => "home#index", as: "welcome_back_existing_user"
   
-  get 'preferences' => "users#edit", as: "user_prefernces"
-  put 'preferences' => "users#update", as: "update_user_preferences"
+  scope "(:locale)", :locale => /en|el|de/ do
+    
+    # USER AUTHENTICATION - REGISTRATION
+    devise_for :users, 
+      path: "/", 
+      path_names: { 
+        sign_in: 'login', 
+        sign_out: 'logout', 
+        password: 'password', 
+        confirmation: 'verification', 
+        unlock: 'unblock', 
+        registration: 'signup', 
+        sign_up: '/'
+      }  
+    
+    get 'welcome' => "home#welcome", as: "welcome_back_existing_user_user"
+    get 'welcome-back' => "home#index", as: "welcome_back_existing_user"
+    # END of USER AUTHENTICATION - REGISTRATION
+    
+    
+    
+    get 'preferences' => "users#edit", as: "user_prefernces"
+    put 'preferences' => "users#update", as: "update_user_preferences"
+
+    
+    
+    
+    resources :users do
+        collection do
+          get :all, :controller => "users", :action => "index", :filter => "all"
+          get :buyers, :controller => "users", :action => "index", :filter => "buyers"
+          get :sellers, :controller => "users", :action => "index", :filter => "sellers"
+        end
+    end
+    
+  end # End of :locale scoping
   
+ 
   
+    
   
-  
-  
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+ 
 end

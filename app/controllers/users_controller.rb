@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   
   
   def update
-    # Rekect the password values when the password is not on change
+    # Reject the password values when the password is not on change
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
         params[:user].delete(:password)
         params[:user].delete(:password_confirmation)
@@ -25,5 +25,21 @@ class UsersController < ApplicationController
       redirect_to user_prefernces_path
     end
   end
+  
+  
+  def index
+    # resources :users do
+    #   collection do
+    #     get :all, :controller => "users", :action => "index", :filter => "all"
+    #     get :buyers, :controller => "users", :action => "index", :filter => "buyers"
+    #     get :sellers, :controller => "users", :action => "index", :filter => "sellers"
+    #   end
+    # end
+    redirect_to all_users_path unless ["all", "buyers", "sellers"].include?(params[:filter])
+    
+    @users = User.send(params[:filter])  
+  end
+  
+  
   
 end

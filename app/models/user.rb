@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
    
   scope :buyers, -> { where(user_type: :buyer) }
   scope :sellers, -> { where(user_type: :seller) }
-  
+
   scope :premium, -> { where(seller_type: :premium) }
   scope :free,    -> { where(seller_type: :free) }
   
@@ -30,8 +30,10 @@ class User < ActiveRecord::Base
   
   
   
-  
-  
+  def name_and_email
+    return "#{name} (#{email})"
+  end
+    
   def is_buyer?
     return user_type == "buyer"
   end       

@@ -1,0 +1,8 @@
+<h2><%= params[:filter].to_s.titleize %></h2>
+
+
+<ul>
+<% @users.each do |u| %>
+  <li><%= u.name_and_email %></li>
+<% end %>
+</ul>
