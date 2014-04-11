@@ -14,9 +14,11 @@
 </div>
   
 <div style="border: 1px solid red;">
-  <%= flash[:alert] %>
-  <%= flash[:notice] %>
-  
+  <div id="flash_messages">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, :class => "flash #{key}") %>
+    <% end %>
+  </div>
 </div>
 
 
