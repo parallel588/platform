@@ -1,4 +1,10 @@
 <%= link_to "Back Home", "/" %> | 
-<%= "Welcome #{current_user.name} (#{current_user.email}) | " if current_user %> 
-<%= image_tag current_user.logo.url, :height => 50 if current_user && !current_user.logo.blank?%>
-<%= link_to "Logout", destroy_user_session_path, :method => :delete if current_user %>
+<% if current_user %>
+  <%= "Welcome #{current_user.name} (#{current_user.email})"  %> 
+  |
+  <%= image_tag current_user.logo.url, :height => 50 if current_user && !current_user.logo.blank?%>
+  |
+  <%= link_to "Preferences", user_prefernces_path %>
+  |
+  <%= link_to "Logout", destroy_user_session_path, :method => :delete if current_user %>
+<% end %>

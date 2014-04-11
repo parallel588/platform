@@ -6,7 +6,7 @@ describe "UserPreferences" do
   
     
   describe "Test the user preferences form actions" do
-    it "Redirects the user to the login page when he is not logged in " do
+    it "Redirects the user to the login page when he is not logged in and tries to see the prefernces page" do
       visit "/preferences"
       current_path.should == new_user_session_path                          
     end
