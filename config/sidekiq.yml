@@ -1,0 +1,8 @@
+---
+:verbose: true
+:concurrency: 60
+:retry: false
+:queues:
+  - [high, 200]
+  - [default, 1]
+  - [devise_subscriptions_queue, 20]	
