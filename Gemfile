@@ -23,8 +23,13 @@ gem 'kaminari'
 
 
 
+
 # Use postgresql as the database for Active Record
 gem 'pg'
+
+# Use unicorn in production server - heroku
+gem 'unicorn'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
