@@ -3,6 +3,7 @@ CarrierWave.configure do |config|
   if ENV['RAILS_ENV'] =~ /test/
     config.storage = :file
   else
+  config.storage = :fog
   
   config.fog_credentials = {
     :path_style             => true,

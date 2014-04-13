@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update_attributes(params[:user])
     
-    if @user.save!
+    if @user.save
       flash[:notice] = t('user.preferences_successfully_saved')
       redirect_to "/"
     else
