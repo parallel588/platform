@@ -6,14 +6,10 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @product.type %>
+  <strong>Category:</strong>
+  <%= @product.product_category.try(:name) rescue "- None -" %>
 </p>
 
-<p>
-  <strong>Subtype:</strong>
-  <%= @product.subtype %>
-</p>
 
 <p>
   <strong>Country:</strong>

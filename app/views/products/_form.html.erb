@@ -1,4 +1,4 @@
-<%= form_for(@product) do |f| %>
+<%= simple_form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -12,61 +12,51 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.input :name %>
   </div>
   <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.input :product_category_id, collection: ProductCategory.roots, as: :grouped_select, group_method: :children  %>
   </div>
   <div class="field">
-    <%= f.label :subtype %><br>
-    <%= f.text_field :subtype %>
+    <%= f.input :country %>
   </div>
   <div class="field">
-    <%= f.label :country %><br>
-    <%= f.text_field :country %>
+    <%= f.input :volume %>
   </div>
   <div class="field">
-    <%= f.label :volume %><br>
-    <%= f.text_field :volume %>
+    <%= f.input :size %>
   </div>
   <div class="field">
-    <%= f.label :size %><br>
-    <%= f.text_field :size %>
+    <%= f.input :quality %>
   </div>
   <div class="field">
-    <%= f.label :quality %><br>
-    <%= f.text_field :quality %>
+    <%= f.input :bidding %>
   </div>
   <div class="field">
-    <%= f.label :bidding %><br>
-    <%= f.text_field :bidding %>
+    <%= f.input :ending_at, start_year: Date.today.year,
+                                  end_year: Date.today.year + 10,
+                                  order: [:day, :month, :year] %>
   </div>
   <div class="field">
-    <%= f.label :ending_at %><br>
-    <%= f.datetime_select :ending_at %>
+     <%= f.input :starting_at, start_year: Date.today.year,
+                                     end_year: Date.today.year + 10,
+                                     order: [:day, :month, :year] %>
+   </div>
+  <div class="field">
+     <%= f.input :delivery_at, start_year: Date.today.year,
+                                    end_year: Date.today.year + 10,
+                                    order: [:day, :month, :year] %>
   </div>
   <div class="field">
-    <%= f.label :delivery_at %><br>
-    <%= f.datetime_select :delivery_at %>
+    <%= f.input :shipping_information, :as => :text %>
   </div>
   <div class="field">
-    <%= f.label :shipping_information %><br>
-    <%= f.text_area :shipping_information %>
+    <%= f.input :packaging_information %>
   </div>
   <div class="field">
-    <%= f.label :packaging_information %><br>
-    <%= f.text_area :packaging_information %>
+    <%= f.input :pallets %>
   </div>
-  <div class="field">
-    <%= f.label :pallets %><br>
-    <%= f.text_field :pallets %>
-  </div>
-  <div class="field">
-    <%= f.label :starting_at %><br>
-    <%= f.datetime_select :starting_at %>
-  </div>
+ 
   <div class="actions">
     <%= f.submit %>
   </div>

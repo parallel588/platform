@@ -11,15 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413131921) do
+ActiveRecord::Schema.define(version: 20140413234216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "product_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ancestry"
+  end
+
+  add_index "product_categories", ["ancestry"], name: "index_product_categories_on_ancestry", using: :btree
+  add_index "product_categories", ["name"], name: "index_product_categories_on_name", using: :btree
+
   create_table "products", force: true do |t|
     t.string   "name"
-    t.string   "type"
-    t.string   "subtype"
     t.string   "country"
     t.string   "volume"
     t.string   "size"
@@ -34,14 +42,14 @@ ActiveRecord::Schema.define(version: 20140413131921) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "product_category_id"
   end
 
   add_index "products", ["country"], name: "index_products_on_country", using: :btree
   add_index "products", ["delivery_at"], name: "index_products_on_delivery_at", using: :btree
   add_index "products", ["ending_at"], name: "index_products_on_ending_at", using: :btree
   add_index "products", ["name"], name: "index_products_on_name", using: :btree
-  add_index "products", ["subtype"], name: "index_products_on_subtype", using: :btree
-  add_index "products", ["type"], name: "index_products_on_type", using: :btree
+  add_index "products", ["product_category_id"], name: "index_products_on_product_category_id", using: :btree
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
