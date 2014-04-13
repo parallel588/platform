@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @product.type %>
+</p>
+
+<p>
+  <strong>Subtype:</strong>
+  <%= @product.subtype %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @product.country %>
+</p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @product.volume %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @product.size %>
+</p>
+
+<p>
+  <strong>Quality:</strong>
+  <%= @product.quality %>
+</p>
+
+<p>
+  <strong>Bidding:</strong>
+  <%= @product.bidding %>
+</p>
+
+<p>
+  <strong>Ending at:</strong>
+  <%= @product.ending_at %>
+</p>
+
+<p>
+  <strong>Delivery at:</strong>
+  <%= @product.delivery_at %>
+</p>
+
+<p>
+  <strong>Shipping information:</strong>
+  <%= @product.shipping_information %>
+</p>
+
+<p>
+  <strong>Packaging information:</strong>
+  <%= @product.packaging_information %>
+</p>
+
+<p>
+  <strong>Pallets:</strong>
+  <%= @product.pallets %>
+</p>
+
+<p>
+  <strong>Starting at:</strong>
+  <%= @product.starting_at %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
