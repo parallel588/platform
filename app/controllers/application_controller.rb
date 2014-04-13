@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+  before_filter :set_locale
   
   
   
@@ -39,5 +39,15 @@ class ApplicationController < ActionController::Base
   end
   # ################## END of CAN CAN - Authentication ################## #
   
+  
+  def set_locale
+    params[:locale] ||= :en
+    I18n.locale = params[:locale].to_sym
+    
+  end
+  
+  def default_url_options(options={})
+    {locale: I18n.locale}
+  end 
   
 end

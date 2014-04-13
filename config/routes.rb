@@ -1,7 +1,6 @@
 require 'sidekiq/web'
 
 Basekto::Application.routes.draw do
-  resources :products
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -36,9 +35,10 @@ Basekto::Application.routes.draw do
     put 'preferences' => "users#update", as: "update_user_preferences"
 
     
-    
-    
+    resources :products, :except => [:index]
+        
     resources :users do
+        resources :products, :only => [:index]        
         collection do
           get :all, :controller => "users", :action => "index", :filter => "all"
           get :buyers, :controller => "users", :action => "index", :filter => "buyers"

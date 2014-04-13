@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   
   paginates_per 2
   
+  has_many :products
   
-
   
   
   
