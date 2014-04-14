@@ -29,38 +29,28 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user_id = current_user.id
-    respond_to do |format|
       if @product.save
-        format.html { redirect_to product_url(:id => @product.id), notice: 'Product was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @product }
+        redirect_to product_url(:id => @product.id), notice: 'Product was successfully created.'
       else
-        format.html { render action: 'new' }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        render action: 'new'
       end
-    end
   end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @product, notice: 'Product was successfully updated.'
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        render action: 'edit' 
       end
-    end
   end
 
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to user_products_url(current_user) }
-      format.json { head :no_content }
+      redirect_to user_products_url(current_user)
     end
   end
 

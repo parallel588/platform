@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/github/Basketo/platform.png)](https://codeclimate.com/github/Basketo/platform)
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the

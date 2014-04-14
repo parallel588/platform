@@ -56,6 +56,8 @@ group :development do
   # gem 'rack-mini-profiler'
 end
 gem 'dotenv-rails', :groups => [:development, :test]
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 
 
 # TEST SUITE - http://railscasts.com/episodes/275-how-i-test?view=asciicast

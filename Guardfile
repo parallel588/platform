@@ -11,7 +11,7 @@ guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' }, :test_unit => false do
 end
 
 
-guard 'rspec', :cmd => 'bundle exec rspec --drb' do
+guard 'rspec', :cmd => 'CODECLIMATE_REPO_TOKEN=6d1e26593fdb2eba5297328ed8df53a3e8901e9471535e2b39dba9373ca32364 bundle exec rspec --drb' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
