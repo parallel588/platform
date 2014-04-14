@@ -1,4 +1,9 @@
 language: ruby
+cache:
+  bundler: true  
+  directories:
+  - vendor/bundle
+install: bundle install --without development --deployment
 addons:
   postgresql: "9.3"
 services:
