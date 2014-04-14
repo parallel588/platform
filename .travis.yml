@@ -1,6 +1,8 @@
 language: ruby
 addons:
   postgresql: "9.3"
+services:
+  - redis-server  
 rvm:
   - 2.0.0
 env:
