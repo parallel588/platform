@@ -1,0 +1,14 @@
+language: ruby
+addons:
+  postgresql: "9.3"
+rvm:
+  - 2.0.0
+env:
+  - CODECLIMATE_REPO_TOKEN=6d1e26593fdb2eba5297328ed8df53a3e8901e9471535e2b39dba9373ca32364
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rspec
+before_script:
+  - psql -c 'create database basketo_travis_test;' -U postgres
+  - cp config/database.travis.yml config/database.yml
+  - psql -c 'create database basketo_test' -U postgres
