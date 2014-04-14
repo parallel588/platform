@@ -1,5 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/Basketo/platform.png)](https://codeclimate.com/github/Basketo/platform)
-
+[![Code Climate](https://codeclimate.com/github/Basketo/platform/coverage.png)](https://codeclimate.com/github/Basketo/platform)
+[![Build Status](https://travis-ci.org/Basketo/platform.svg?branch=master)](https://travis-ci.org/Basketo/platform)
 
 == README
 
