@@ -11,7 +11,8 @@ describe "Products" do
       product.user = user
       visit user_products_path(:user_id => user.id)
       
-      save_and_open_page
+      page.should have_content("#{product.name}")
+      page.should have_content("#{product.product_category.name}")
     end
   end
 end
