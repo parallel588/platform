@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = User.find(params[:user_id]).products.all
+    @products = User.find(params[:user_id]).products
   end
 
   # GET /products/1
