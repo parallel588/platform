@@ -66,7 +66,7 @@ gem 'rspec-rails'
 group :test do
   gem 'guard-rspec'
   gem 'capybara'
-  gem "factory_girl_rails"
+  gem 'factory_girl_rails', :require => false
   gem 'rb-fsevent'
   gem 'spork', :github => 'sporkrb/spork'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
