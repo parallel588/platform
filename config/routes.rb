@@ -39,7 +39,7 @@ Basekto::Application.routes.draw do
 
     
     resources :products, :except => [:index] do
-      resources :auctions      
+      # resources :auctions      
     end
         
     resources :users do
