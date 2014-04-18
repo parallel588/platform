@@ -18,7 +18,10 @@ Spork.prefork do
   require 'rspec/autorun'
   require 'capybara/rspec'
   require 'capybara/rails'
+  require 'factory_girl_rails'  
   require "codeclimate-test-reporter"
+  
+  
   CodeClimate::TestReporter.start
   
   
