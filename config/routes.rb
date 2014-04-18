@@ -6,11 +6,13 @@ Basekto::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index', as: 'home'
+  root 'home#index', as: 'home_without_locale'
   
   
   
   scope "(:locale)", :locale => /en|el|de/ do
+    root 'home#index', as: 'home'
+    
     
     # USER AUTHENTICATION - REGISTRATION
     devise_for :users, 

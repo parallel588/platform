@@ -1,4 +1,4 @@
-<%= link_to "Back Home", "/" %> | 
+<%= link_to "Back Home", home_url %> | 
 <% if current_user %>
   <%= "Welcome #{current_user.name} (#{current_user.email})"  %> 
   |
@@ -12,3 +12,12 @@
   |
   <%= link_to "Logout", destroy_user_session_path, :method => :delete if current_user %>
 <% end %>
+
+<div style="float:right; overflow:none; border: 3px solid #ccc; padding: 5px;">
+  Switch Languages:
+  <%= link_to "EN", url_for(params.merge(:locale => "en")) %>
+  |
+  <%= link_to "EL", url_for(params.merge(:locale => "el")) %>
+  |
+  <%= link_to "DE", url_for(params.merge(:locale => "de")) %>  
+</div>
