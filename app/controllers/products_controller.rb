@@ -39,8 +39,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    respond_to do |format|
-      if @product.save
+      if @product.update_attributes(product_params)
         redirect_to @product, notice: 'Product was successfully updated.'
       else
         render action: 'edit' 
@@ -50,7 +49,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
+    if @product.destroy
       redirect_to user_products_url(current_user)
     end
   end
@@ -65,10 +64,13 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :type, :subtype, :country, :volume, :size, :quality, :bidding, :ending_at, :delivery_at, :shipping_information, :packaging_information, :pallets, :starting_at, :user_id, :product_category_id)
+      params.require(:product).permit(:name, :type, :subtype, :country, :volume, :size, :quality, :bidding, :ending_at, :delivery_at, :shipping_information, :packaging_information, :pallets, :starting_at, :user_id, :product_category_id, auctions_attributes: [:id, :starting_at, :ending_at, :_destroy])
     end
     
     def authenticate_product_ownership!
       @product.user_id == current_user.id
     end
+    
+    
+    
 end

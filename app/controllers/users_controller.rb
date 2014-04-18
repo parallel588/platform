@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+
   
   
   def edit
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
     end
     
     @user = current_user
-    @user.update_attributes(params[:user])
+    @user.update_attributes(user_params)
     
     if @user.save
       flash[:notice] = t('user.preferences_successfully_saved')
@@ -40,6 +41,13 @@ class UsersController < ApplicationController
     @users = User.send(params[:filter]).page params[:page] 
   end
   
+  
+  
+  private 
+  
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :logo, :logo_cache, :name, :occupation, :vat, :address_street, :address_country, :address_city, :address_zip, :phone_number, :fax_number, :link, :user_type, :buyer_type)
+  end
   
   
 end

@@ -10,10 +10,10 @@ gem 'rails', '4.0.4'
 gem 'devise'
 gem 'devise-async'
 gem "cancan"
-gem 'protected_attributes'
 gem 'sidekiq'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'simple_form'
+gem "nested_form"
 gem 'country_select'
 gem 'carrierwave'
 gem 'unf'
