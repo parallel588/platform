@@ -1,4 +1,4 @@
-<%= simple_form_for(@product) do |f| %>
+<%= simple_nested_form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -56,7 +56,19 @@
   <div class="field">
     <%= f.input :pallets %>
   </div>
- 
+  
+  
+  <%= f.fields_for :auctions do |auctions_form| %>
+    <p>Add an Auction</p>
+    <%= auctions_form.input :starting_at %>
+    <%= auctions_form.input :ending_at %>
+    
+    <%= auctions_form.link_to_remove "Remove this auction" %>
+  <% end %>
+  
+  <p><%= f.link_to_add "Add an Auction", :auctions %></p>
+  
+  
   <div class="actions">
     <%= f.submit %>
   </div>
