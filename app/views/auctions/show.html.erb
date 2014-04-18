@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Starting at:</strong>
+  <%= @auction.starting_at %>
+</p>
+
+<p>
+  <strong>Ending at:</strong>
+  <%= @auction.ending_at %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @auction.status %>
+</p>
+
+<p>
+  <strong>Top bidding:</strong>
+  <%= @auction.top_bidding %>
+</p>
+
+<p>
+  <strong>References:</strong>
+  <%= @auction.references %>
+</p>
+
+<%= link_to 'Edit', edit_auction_path(@auction) %> |
+<%= link_to 'Back', auctions_path %>

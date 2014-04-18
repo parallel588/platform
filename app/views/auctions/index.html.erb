@@ -1,0 +1,35 @@
+<h1>Listing auctions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Starting at</th>
+      <th>Ending at</th>
+      <th>Status</th>
+      <th>Top bidding</th>
+      <th>References</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auctions.each do |auction| %>
+      <tr>
+        <td><%= auction.starting_at %></td>
+        <td><%= auction.ending_at %></td>
+        <td><%= auction.status %></td>
+        <td><%= auction.top_bidding %></td>
+        <td><%= auction.references %></td>
+        <td><%= link_to 'Show', auction %></td>
+        <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
+        <td><%= link_to 'Destroy', auction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auction', new_auction_path %>

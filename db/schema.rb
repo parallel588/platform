@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413234216) do
+ActiveRecord::Schema.define(version: 20140418101358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auctions", force: true do |t|
+    t.datetime "starting_at"
+    t.datetime "ending_at"
+    t.string   "status"
+    t.float    "top_bidding"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "auctions", ["ending_at"], name: "index_auctions_on_ending_at", using: :btree
+  add_index "auctions", ["starting_at"], name: "index_auctions_on_starting_at", using: :btree
+  add_index "auctions", ["status"], name: "index_auctions_on_status", using: :btree
 
   create_table "product_categories", force: true do |t|
     t.string   "name"
