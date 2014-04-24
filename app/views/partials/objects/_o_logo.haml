@@ -1,0 +1,8 @@
+- modifier ||= ""
+
+.o-logo{ class: modifier }
+  = link_to "/" do
+    %h1.o-logo__image
+      = image_tag "/assets/images/logo__image.png", alt: "Basketo", class: "o-logo__image__icon"
+      = image_tag "/assets/images/logo__basketo.png", alt: "Basketo", class: "o-logo__image__name"
+  %h2.o-logo__tagline="The Fruit & Vegetables B2B Marketplace, Reinvented."
