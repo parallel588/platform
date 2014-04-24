@@ -3,7 +3,6 @@
 <head>
   <title>Basketo</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -32,6 +31,8 @@
 <div>
 <%= yield %>
 </div>
+
+<script src="/assets/libs/require.js" main="assets/javascripts/application.config.js"></script>
 
 </body>
 </html>
