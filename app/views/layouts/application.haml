@@ -1,0 +1,33 @@
+!!! 5
+/[if lt IE 8] <html class="no-js lt-ie10 lt-ie9 lt-ie8 ie" lang="en">
+/[if IE 8] <html class="no-js lt-ie10 lt-ie9 ie8 ie" lang="en">
+/[if IE 9] <html class="no-js lt-ie10 ie" lang="en">
+:plain
+  <!--[if gt IE 9]><!-->
+%html{class: "no-js modern-browser", :'xmlns:og' => "http://opengraphprotocol.org/schema/", :'xmlns:fb' => "http://www.facebook.com/2008/fbml"}
+  :plain
+    <!--<![endif]-->
+  %head
+    = render "/partials/meta"
+    %link{:href => "/assets/images/favicon.ico", :rel => "shortcut icon"}
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "/assets/libs/modernizr"
+    = csrf_meta_tags
+  %body{ class: "#{yield(:body_class)}" }
+
+    %div= render "shared/header"
+
+    %div{ style: "border: 1px solid red; width: 500px;" }
+      #flash_messages
+        - flash.each do |key, value|
+          = content_tag(:div, value, :class => "flash #{key}")
+
+    %ul
+      %li= link_to "All users",  all_users_path
+      %li= link_to "Buyers"   ,  buyers_users_path
+      %li= link_to "Sellers"  ,  sellers_users_path
+    
+    %div
+      = yield
+
+    %script{ src: "/assets/libs/require.js", main: "/assets/application.config.js" }

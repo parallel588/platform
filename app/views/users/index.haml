@@ -1,0 +1,10 @@
+%h2= params[:filter].to_s.titleize
+
+%ul
+  - @users.each do |u| 
+    %li
+      = u.name_and_email 
+      - if u.user_type == "seller" 
+        = link_to "See the products of #{u.name}.", user_products_path(u) 
+  
+= paginate @users 

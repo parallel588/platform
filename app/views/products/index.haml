@@ -1,0 +1,60 @@
+%h1
+  Listing products
+
+%table
+  %thead
+    %tr
+      %th
+        Name      
+      %th
+        Category
+      %th
+        Country
+      %th
+        Volume
+      %th
+        Size
+      %th
+        Quality
+      %th
+        Bidding
+      %th
+        Ending at
+      %th
+        Delivery at
+      %th
+        Shipping information
+      %th
+        Packaging information
+      %th
+        Pallets
+      %th
+        Starting at
+      %th
+        Auction
+      %th{ colspan: 3 }
+
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.name
+        %td= product.product_category.try(:name) 
+        %td= product.country         
+        %td= product.volume 
+        %td= product.size 
+        %td= product.quality 
+        %td= product.bidding 
+        %td= product.ending_at 
+        %td= product.delivery_at 
+        %td= product.shipping_information 
+        %td= product.packaging_information 
+        %td= product.pallets 
+        %td= product.starting_at 
+        %td= debug product.auctions.first 
+        %td= link_to 'Show', product_path(product) 
+        %td= link_to 'Edit', edit_product_path(product) 
+        %td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } 
+
+%br
+
+= link_to 'New Product', new_product_path 
