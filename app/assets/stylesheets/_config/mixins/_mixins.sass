@@ -1,0 +1,49 @@
+@function em($px, $base: 16)
+  @return ($px / $base) + em
+
+@function rem($px, $base: 16)
+  @return ($px / $base) + rem
+
+=font-size($font-size, $rem: false) 
+  @if $rem == true
+    font-size: rem($font-size)
+    .no-cssremunit &
+      font-size: $font-size + px
+  @else
+    font-size: em($font-size)
+
+=vw-font-size($vw-font-size)
+  @for $i from 1 through 16
+    $screen-size: 160 * $i
+    +respond-min($screen-size)
+      font-size: em(($screen-size * $vw-font-size)/100)
+  +respond-min(0) //to overcome specificity of fallback sizes inside the media queries
+    font-size: #{$vw-font-size}vw
+
+=triangle($width: 20px, $height: 20px, $direction: up, $color: primary)
+  width: 0 
+  height: 0
+  // Right
+  @if $direction == right
+    border-top: $height/2 solid transparent
+    border-bottom: $height/2 solid transparent
+    border-left: $width solid transparent
+    +fs-color($color, border-left-color)
+  // Left
+  @if $direction == left
+    border-top: $height/2 solid transparent
+    border-bottom: $height/2 solid transparent
+    border-right: $width solid transparent
+    +fs-color($color, border-right-color)
+  // Up
+  @if $direction == up
+    border-left: $width/2 solid transparent
+    border-right: $width/2 solid transparent
+    border-bottom: $height solid transparent
+    +fs-color($color, border-bottom-color)
+  // Down
+  @if $direction == down
+    border-left: $width/2 solid transparent
+    border-right: $width/2 solid transparent
+    border-top: $height solid transparent
+    +fs-color($color, border-top-color)

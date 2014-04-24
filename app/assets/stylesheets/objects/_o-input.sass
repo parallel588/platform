@@ -1,0 +1,23 @@
+// Baseline object for all input fields
+//
+// .o-input             - Default variation
+//
+// Styleguide Input.
+.o-input
+  +box-sizing(border-box)
+  box-shadow: none
+  border: 1px solid transparent
+  color: $color__black
+  font-family: $fonts
+  font-size: em($font-size__base)
+  height: em($input__height__mobile, $font-size__base)
+  outline: none
+  padding: 0 em(15, $font-size__base)
+  +transition(border-color $animation--duration)
+  width: 100%
+  &:hover,
+  &:focus
+    border-color: $color__grey--lite
+  +respond-min($bp__tablet--portrait__width)
+    height: em($input__height, $font-size__base)
+    max-width: em(400)

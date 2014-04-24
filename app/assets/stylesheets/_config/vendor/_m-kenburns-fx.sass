@@ -1,0 +1,59 @@
+// A stack of images that fade in/out and animate as in a ken burns FX.
+//
+// .m-kenburns-fx - Default Variation
+//
+// Styleguide Ken Burns FX Images.
+$animation__unit: 12s
+.m-kenburns-fx
+  background: $color__black
+  height: 100%
+  left: 0
+  overflow: hidden
+  position: absolute
+  top: 0
+  width: 100%
+
+.m-kenburns-fx__image
+  +background-size(cover)
+  height: 100%
+  overflow: hidden
+  position: absolute
+  width: 100%
+  .is-animated &.is-rotating
+    opacity: 0
+    +animation(fade $animation__unit*2 ease 1,move-up $animation__unit*2 ease 1)
+  .is-animated &.is-static
+    +animation(move-down $animation__unit*2 ease 1)
+
+
+//Serialize the appearance of the frames
+@for $i from 0 through 4
+  .m-kenburns-fx__image:nth-child(#{$i+1})
+    z-index: 10 + $i
+    .is-animated &
+      +animation-delay($animation__unit * $i)
+
+
+//Animation keyframes
++keyframes(fade)
+  0% 
+    opacity: 0
+  15%
+    opacity: 1
+  85%
+    opacity: 1
+  100%
+    opacity: 0
+
++keyframes(move-down)
+  0% 
+    +transform(translate3d(0,0,0) scale(1.1))
+  100%
+    +transform(translate3d(0,em(4),0) scale(1.00))
+
++keyframes(move-up)
+  0% 
+    +transform(translate3d(0,em(4),0) scale(1.00))
+  100%
+    +transform(translate3d(0,0,0) scale(1.1))
+    

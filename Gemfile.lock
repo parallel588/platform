@@ -44,6 +44,9 @@ GEM
       activerecord (>= 3.0.0)
     arel (4.0.2)
     bcrypt (3.1.7)
+    bourbon (3.2.1)
+      sass (~> 3.2)
+      thor
     builder (3.1.4)
     cancan (1.6.10)
     capybara (2.2.1)
@@ -290,6 +293,7 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry
+  bourbon
   cancan
   capybara
   carrierwave

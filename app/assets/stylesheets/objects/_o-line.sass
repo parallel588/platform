@@ -1,0 +1,21 @@
+// A single line representing blind text.
+//
+// .o-line       - Default variation
+// .o-line--bold - Bold text
+//
+// Styleguide Logo.
+.o-line
+  background-color: $color__brown
+  color: $color__brown
+  display: inline-block
+  height: em(5)
+  line-height: em(100)
+  overflow: hidden
+  vertical-align: middle
+  +transition(max-width $animation--duration $animation--show-in/2)
+  max-width: 0
+  .is-shown &
+    max-width: em(70)
+
+.o-line--bold
+  height: em(8)

@@ -1,0 +1,22 @@
+// Highlighted text. Yellow bg, black text. We have a parent block element for layout issues. The highlighting, for each line happens in the inline-block children elements.
+//
+// .o-highlighted - Default variation. Yellow bg, black text.
+//
+// Styleguide Highlighted Text.
+$highlighted_padding: 5
+.o-highlighted
+  padding-left: em($highlighted_padding)
+  padding-right: em($highlighted_padding)
+  margin-bottom: 10px
+  +respond-min($bp__tablet--portrait__width)
+    font-size: em($font-size__big)
+  
+.o-highlighted__line
+  background: $color__yellow
+  box-shadow: em($highlighted_padding) 0 0 $color__yellow, em(-$highlighted_padding) 0 0 $color__yellow
+  color: $color__black
+  display: inline
+  line-height: 1.4em
+  padding-bottom: em(3)
+  padding-top: em(3)
+  

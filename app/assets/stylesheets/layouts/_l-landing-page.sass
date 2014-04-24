@@ -1,0 +1,54 @@
+%l-landing-page__left-padded
+  padding: em(20)
+  +respond-min($bp__tablet--portrait__width)
+    padding-left: 40%
+
+.l-landing-page
+  @extend .clearfix
+  +box-sizing(border-box)
+  min-height: 100%
+
+.l-landing-page__intro-content
+  bottom: 0
+  left: 0
+  position: absolute
+  right: 0
+  top: 0
+  z-index: 200
+  .l-landing-page__logo,
+  .l-landing-page__description,
+  .l-landing-page__signup,
+    opacity: 1
+    +transition(all .5s)
+    +transform(translate3d(0,0,0))
+  &.is-hidden
+    .l-landing-page__logo
+      opacity: 0
+      +transform(translate3d(0,-150px,0))
+    .l-landing-page__description
+      opacity: 0
+      +transform(translate3d(0,-100px,0))
+    .l-landing-page__signup
+      opacity: 0
+      +transform(translate3d(0,-50px,0))
+
+.l-landing-page__logo
+  @extend %l-landing-page__left-padded
+  background: rgba($color__white, .6)
+  margin: em(10) 0
+  +respond-min($bp__tablet--portrait__width)
+    margin: em(30) 0
+
+.l-landing-page__description
+  @extend %l-landing-page__left-padded
+  max-width: 50em
+
+.l-landing-page__signup
+  @extend %l-landing-page__left-padded
+
+.l-landing-page__button
+  margin: em(20) 0
+
+.l-landing-page__team
+  margin: em(40) 0
+  text-align: center

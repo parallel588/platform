@@ -1,0 +1,113 @@
+.m-showcase
+  display: none
+  +respond-min($bp__tablet--portrait__width)
+    display: block
+    width: 40vw
+
+.m-showcase__slide
+  text-align: center
+
+.m-showcase__item
+  +box-sizing(border-box)
+  border: em(1) solid rgba($color__brown, .5)
+  border-radius: em(4)
+  color: $color__brown
+  display: inline-block
+  margin: em(10)
+  padding: em(15)
+  vertical-align: middle
+  width: em(200)
+  &.m-showcase__item--detailed
+    width: em(400)
+  &.m-showcase__item--offer
+    border-width: 0
+    height: 0
+    margin-left: em(110)
+    margin-top: 0
+    overflow: hidden
+    padding: 0 em(10)
+    text-align: left
+    +transition(all $animation--duration*2)
+    width: em(300)
+    &.is-shown
+      height: em(60)
+      border-width: em(1)
+
+.m-showcase__title
+  font-size: em($font-size__mega)
+  .m-showcase__item--offer &
+    font-size: em($font-size__big)
+
+.m-showcase__image
+  font-size: em(90)
+  padding: em(5, 90)
+  .m-showcase__item--detailed &
+    float: left
+    margin-top: em(15, 90)
+  &.m-showcase__image--profile
+    background-color: $color__brown
+    border-radius: em(4)
+    color: #DDA
+  .m-showcase__item--offer &
+    font-size: em(40)
+
+.m-showcase__arrow
+  background-color: $color__green
+  border-radius: em(2, $font-size__small)
+  color: $color__white
+  cursor: pointer
+  display: inline-block
+  font-size: #{$font-size__small}px
+  height: em(30, $font-size__small)
+  line-height: em(30, $font-size__small)
+  margin: em(10, $font-size__small) em(-5, $font-size__small)
+  vertical-align: top
+  width: em(30, $font-size__small)
+  &:hover
+    background-color: lighten($color__green, 10%)
+
+.m-showcase__table
+  width: 100%
+  .m-showcase__item--detailed &
+    width: auto
+  th, td
+    padding-bottom: em(5, $font-size__tiny)
+    width: 50%
+  th
+    font-weight: bold
+    padding-right: em(2, $font-size__tiny)
+    text-align: right
+    .m-showcase__item--detailed &
+      text-align: left
+  td
+    padding-left: em(2, $font-size__tiny)
+    text-align: left
+
+.m-showcase__info
+  font-size: em($font-size__tiny)
+  padding: em(10, $font-size__tiny)
+  .m-showcase__item--detailed &
+    font-size: em($font-size__base)
+    float: left
+    text-align: left
+    width: em(230)
+  .m-showcase__item--offer &
+    float: none
+    display: inline-block
+    width: em(100)
+
+.m-showcase__button
+  @extend .clearfix
+  .m-showcase__item--detailed &
+    font-size: em($font-size__big)
+    margin-top: em(10, $font-size__big)
+  .m-showcase__item--offer &
+    display: inline-block
+
+.m-showcase__success
+  margin: 0 em(30)
+
+.m-showcase__success__title
+.m-showcase__success__subtitle
+.m-showcase__success__text
+  margin-top: em(20)
