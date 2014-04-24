@@ -32,7 +32,12 @@ Basekto::Application.routes.draw do
     get 'welcome-back' => "home#index", as: "welcome_back_existing_user"
     # END of USER AUTHENTICATION - REGISTRATION
     
-    
+    # STYLEGUIDE
+    get "/styleguide", to: redirect("/styleguide/globals")
+    get "styleguide/globals", to: "styleguide#globals", as: :styleguide_globals
+    get "styleguide/objects", to: "styleguide#objects", as: :styleguide_objects
+    get "styleguide/modules", to: "styleguide#modules", as: :styleguide_modules
+    get "styleguide/layouts", to: "styleguide#layouts", as: :styleguide_layouts
     
     get 'preferences' => "users#edit", as: "user_prefernces"
     put 'preferences' => "users#update", as: "update_user_preferences"

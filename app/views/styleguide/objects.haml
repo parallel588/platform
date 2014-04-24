@@ -1,0 +1,16 @@
+.l-block
+  %h1= "Styleguide"
+
+- @styleguide.sections.each_pair do |id, section|
+  .l-block
+    %h2= id
+    %p= section.description
+    %h4= "Variations:"
+    - section.modifiers.each do |modifier|
+      - filename = sanitize_kss_filename(section.filename)
+      .l-styleguide__modifier
+        .l-styleguide__modifier__block
+          = render partial: "partials/objects/#{filename}.haml", modifier: modifier.class_name
+        .l-styleguide__modifier__block
+          %h4= modifier.name
+          %p= modifier.description

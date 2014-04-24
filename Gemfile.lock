@@ -136,6 +136,13 @@ GEM
       childprocess (>= 0.2.3)
       guard (>= 1.1)
       spork (>= 0.8.4)
+    haml (4.0.5)
+      tilt
+    haml-rails (0.5.3)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 3.1, < 5.0)
+      railties (>= 4.0.1)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -149,6 +156,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
+    kss (0.5.0)
     launchy (2.4.2)
       addressable (~> 2.3)
     listen (2.7.1)
@@ -307,9 +315,11 @@ DEPENDENCIES
   fog
   guard-rspec
   guard-spork
+  haml-rails (~> 0.4)
   jbuilder (~> 1.2)
   jquery-rails
   kaminari
+  kss
   launchy
   mini_magick
   nested_form

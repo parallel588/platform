@@ -30,6 +30,9 @@ gem 'pg'
 # Use unicorn in production server - heroku
 gem 'unicorn'
 
+# Dude, haml.
+gem 'haml-rails', '~> 0.4'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 
@@ -39,7 +42,11 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+# Not Compass, bourbon, just in case we use libsass in the future
 gem 'bourbon'
+
+# Styleguides baby!
+gem 'kss'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
