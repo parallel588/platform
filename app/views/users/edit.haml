@@ -1,36 +1,37 @@
-<h3>Edit your personal profile</h3>
+%h3
+  Edit your personal profile
 
-<%= simple_form_for(@user, as: :user, :method => :put, url: update_user_preferences_path, :html => {:multipart => true}) do |f| %>
+= simple_form_for(@user, as: :user, :method => :put, url: update_user_preferences_path, :html => {:multipart => true}) do |f| 
 
-  <%= f.input :email, autofocus: true,  as: :email %>
+  = f.input :email, autofocus: true,  as: :email 
   
-  <%= f.input :name %>
+  = f.input :name 
 
-  <%= f.input :vat %>
+  = f.input :vat 
 
-  <%= f.input :occupation %>
+  = f.input :occupation 
   
-  <%= f.input :address_street %>
+  = f.input :address_street 
 
-  <%= f.input :address_city %>
+  = f.input :address_city 
 
-  <%= f.input :address_country %>
+  = f.input :address_country 
   
-  <%= f.input :address_zip %>
+  = f.input :address_zip 
   
-  <%= image_tag(@user.logo_url, :height => 100) if @user.logo? %>
-  <%= f.input :logo, :as => :file %>
-  <%= f.input :logo_cache, :as => :hidden %>
+  = image_tag(@user.logo_url, :height => 100) if @user.logo? 
+  = f.input :logo, :as => :file 
+  = f.input :logo_cache, :as => :hidden 
 
   
-  <%= f.input :user_type, :as => :select, :collection => [:buyer, :seller] %>
+  = f.input :user_type, :as => :select, :collection => [:buyer, :seller] 
 
-  <%= f.input :buyer_type, :as => :select, :collection => [:free, :premium], include_blank: false if current_user.is_buyer?  %>
+  = f.input :buyer_type, :as => :select, :collection => [:free, :premium], include_blank: false if current_user.is_buyer?  
   
   
-  <%= f.input :password %>
+  = f.input :password 
 
-  <%= f.input :password_confirmation %>
+  = f.input :password_confirmation 
   
-  <div><%= f.submit "Update preferences" %></div>
-<% end %>
+  %div
+    = f.submit "Update preferences"

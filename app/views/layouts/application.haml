@@ -15,19 +15,15 @@
     = csrf_meta_tags
   %body{ class: "#{yield(:body_class)}" }
 
-    %div= render "shared/header"
+    - if flash.present?
+      %div{ style: "background: #C00; color: white; padding: 5px; text-align: center" }
+        #flash_messages
+          - flash.each do |key, value|
+            = content_tag(:div, value, :class => "flash #{key}")
 
-    %div{ style: "border: 1px solid red; width: 500px;" }
-      #flash_messages
-        - flash.each do |key, value|
-          = content_tag(:div, value, :class => "flash #{key}")
-
-    %ul
-      %li= link_to "All users",  all_users_path
-      %li= link_to "Buyers"   ,  buyers_users_path
-      %li= link_to "Sellers"  ,  sellers_users_path
+    = render "shared/header"
     
-    %div
+    .l-block
       = yield
 
     %script{ src: "/assets/libs/require.js", main: "/assets/application.config.js" }
