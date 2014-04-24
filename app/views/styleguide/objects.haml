@@ -10,7 +10,7 @@
       - filename = sanitize_kss_filename(section.filename)
       .l-styleguide__modifier
         .l-styleguide__modifier__block
-          = render partial: "partials/objects/#{filename}.haml", modifier: modifier.class_name
+          = render partial: "partials/objects/#{filename}.haml", locals: { modifier: modifier.class_name }
         .l-styleguide__modifier__block
           %h4= modifier.name
           %p= modifier.description

@@ -1,7 +1,9 @@
 module ApplicationHelper
 
   def sanitize_kss_filename(filename)
-    return filename.split("_")[1].split(".")[0].gsub!(/-/, '_')
+    sanitized_filename = filename.split(".")[0].gsub!(/-/, '_') || filename.split(".")[0]
+    sanitized_filename.slice!(0)
+    return sanitized_filename
   end
   
 end
