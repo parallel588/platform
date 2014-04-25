@@ -22,3 +22,4 @@
 
 # Ignore local temp files - carrierwave
 /public/uploads/tmp/*
+/public/assets/*
