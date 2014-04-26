@@ -20,7 +20,9 @@ class User < ActiveRecord::Base
   
   paginates_per 2
   
-  has_many :products
+  has_many :products # as a seller
+  has_many :biddings # as a buyer
+
   
   
   

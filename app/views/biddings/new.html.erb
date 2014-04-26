@@ -1,0 +1,11 @@
+<p>Place your bidding for the product <%= @auction.product.name %></p>
+
+
+<p>This Auction expires at: <%= @auction.ending_at %></p>
+
+<p>You should make a bidding of more than <%= @auction.top_bidding %></p>
+
+<%= simple_form_for(Bidding.new(auction: @auction), url: auction_biddings_path(@auction)) do |f| %>	
+	<%= f.input :value, label: "My Bid" %>		
+	<%= f.submit "Submit my bidding" %>
+<% end %>

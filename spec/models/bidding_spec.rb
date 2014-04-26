@@ -1,4 +1,5 @@
 require 'spec_helper'
 
-describe Auction do
+describe Bidding do
+	
 end

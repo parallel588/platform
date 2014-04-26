@@ -6,8 +6,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = User.find(params[:user_id]).products
+    if params.include?(:user_id)
+      @products = User.find(params[:user_id]).products 
+      render "users/products/index"     
+    else
+      @auctions = Auction.active.load
+      render "index"
+    end
   end
+  
 
   # GET /products/1
   # GET /products/1.json

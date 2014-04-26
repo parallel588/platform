@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418101358) do
+ActiveRecord::Schema.define(version: 20140426151200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,22 @@ ActiveRecord::Schema.define(version: 20140418101358) do
   add_index "auctions", ["ending_at"], name: "index_auctions_on_ending_at", using: :btree
   add_index "auctions", ["starting_at"], name: "index_auctions_on_starting_at", using: :btree
   add_index "auctions", ["status"], name: "index_auctions_on_status", using: :btree
+
+  create_table "biddings", force: true do |t|
+    t.float    "value"
+    t.integer  "user_id"
+    t.integer  "auction_id"
+    t.integer  "product_id"
+    t.boolean  "is_winner"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status",     default: "active"
+  end
+
+  add_index "biddings", ["auction_id"], name: "index_biddings_on_auction_id", using: :btree
+  add_index "biddings", ["product_id"], name: "index_biddings_on_product_id", using: :btree
+  add_index "biddings", ["status"], name: "index_biddings_on_status", using: :btree
+  add_index "biddings", ["user_id"], name: "index_biddings_on_user_id", using: :btree
 
   create_table "product_categories", force: true do |t|
     t.string   "name"

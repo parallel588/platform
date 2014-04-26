@@ -43,9 +43,19 @@ Basekto::Application.routes.draw do
     put 'preferences' => "users#update", as: "update_user_preferences"
 
     
-    resources :products, :except => [:index] do
-      # resources :auctions      
+    resources :products do
     end
+    
+    resources :auctions do
+      member do
+        get 'bidding_submitted'
+        get 'bidding_removed'
+      end
+      resources :biddings do
+      end
+      
+    end    
+        
         
     resources :users do
         resources :products, :only => [:index]        
