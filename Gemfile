@@ -82,6 +82,9 @@ group :test do
   gem "launchy"
 end
 
+group :development, :test do
+  gem "jasminerice", :git => 'https://github.com/bradphelan/jasminerice.git'
+end
 
 
 gem 'rails_12factor', group: :production # needed for heroku: https://devcenter.heroku.com/articles/getting-started-with-rails4
