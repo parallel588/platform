@@ -1,0 +1,11 @@
+{
+  "name": "Basketo",
+  "version": "1",
+  "dependencies": {
+    "jquery": "1.10",
+    "underscore": "",
+    "backbone": "",
+    "backbone.wreqr": "",
+    "modernizr": ""
+  }
+}
