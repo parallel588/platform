@@ -6,7 +6,8 @@ require([
   "scrollTo",
   "waypoints",
   "modules/owlCarousel",
-  "modules/productTemplate"
+  "modules/productTemplate",
+  "rails_dependencies"
 ], function(app, $, FormModule, Backbone, ScrollTo, waypoints, OwlCarousel, ProductTemplate) {
 
 

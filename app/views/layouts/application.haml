@@ -26,4 +26,4 @@
     .l-block
       = yield
 
-    %script{ src: "/assets/libs/require.js", main: "/assets/application.config.js" }
+    %script{ src: "/assets/libs/require.js", :"data-main" => "/assets/application.config.js" }

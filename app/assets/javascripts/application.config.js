@@ -1,5 +1,5 @@
 requirejs.config({
-  baseUrl: "assets/javascripts/",
+  baseUrl: "/assets/",
   deps: ["application"],
   paths: {
     "app": "modules/app",
