@@ -7,6 +7,7 @@ gem 'rails', '4.0.4'
 
 
 # basketo basics
+gem 'aasm'
 gem 'devise'
 gem 'devise-async'
 gem "cancan"

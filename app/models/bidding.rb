@@ -1,4 +1,6 @@
 class Bidding < ActiveRecord::Base
+  include AASM
+  
   belongs_to :user
   belongs_to :auction
   belongs_to :product
@@ -20,7 +22,14 @@ class Bidding < ActiveRecord::Base
   after_save :enqueue_bidders_notifications
 
   default_scope { where(status: "active") }
-
+  
+  aasm :skip_validation_on_save => true, :column => 'status' do
+    state :active, :initial => true
+    state :winner
+    state :withdrawn
+    
+  end
+  
 
 
   

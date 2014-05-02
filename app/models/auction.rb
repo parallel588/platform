@@ -1,4 +1,6 @@
 class Auction < ActiveRecord::Base
+  include AASM
+  
   belongs_to :product
   has_many :biddings
   
@@ -6,6 +8,14 @@ class Auction < ActiveRecord::Base
   
   validates :starting_at, presence: true 
   scope :active, -> { where("ending_at > ? AND status <> ?", Time.now, "finished") }
+  
+  aasm :skip_validation_on_save => true, :column => 'status' do
+    state :active, :initial => true
+    state :finished
+    state :bought
+    state :archived
+    
+  end
   
   
   
