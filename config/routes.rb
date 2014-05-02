@@ -21,7 +21,7 @@ Basekto::Application.routes.draw do
       path_names: { 
         sign_in: 'login', 
         sign_out: 'logout', 
-        password: 'password', 
+        password: 'reset_password', 
         confirmation: 'verification', 
         unlock: 'unblock', 
         registration: 'signup', 
