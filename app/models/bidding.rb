@@ -16,6 +16,7 @@ class Bidding < ActiveRecord::Base
   
   
   after_save :update_auctions_top_bidding
+  after_save :finish_auction_if_bought
   after_save :enqueue_bidders_notifications
 
   default_scope { where(status: "active") }
@@ -43,6 +44,15 @@ class Bidding < ActiveRecord::Base
       auction.update_attributes!(top_bidding: self.value)
     end
   end
+  
+  def finish_auction_if_bought
+    if !self.value.blank? && self.value.to_f == self.auction.buy_out_bid.to_f
+      self.auction.update_attribute(:status, "finished")
+      # TODO      # Add other consequences of an auction finsihed by a buy out!      
+    end
+  end
+
+
 
   def enqueue_bidders_notifications
     # TODO 

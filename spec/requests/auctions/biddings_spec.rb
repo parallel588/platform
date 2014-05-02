@@ -41,6 +41,19 @@ describe "Biddings" do
     end
     
     
+    it "allows the buyer to BUY a product - win an auction by bidding the buy_out_bid" do
+      buyable_product_with_auction = FactoryGirl.create(:product_with_auction, :starting_bid => 10, :buy_out_bid => 100.0)      
+      login_as(user, :scope => :user)            
+      visit new_auction_bidding_path(buyable_product_with_auction)  
+      page.should have_button("Buy Now")
+      click_on "Buy Now"
+
+      current_path.should == buyer_dashboard_path
+      page.should have_content("the_product_is_yours")
+      buyable_product_with_auction.reload
+      buyable_product_with_auction.status.should == "finished"      
+    end
+    
     it "prompts if the bidding is not sufficiently bigger than the existing bidding in the auction" do 
       
     end

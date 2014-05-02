@@ -49,6 +49,7 @@ Basekto::Application.routes.draw do
       member do
         get 'bidding_submitted'
         get 'bidding_removed'
+        post 'buy_now'
       end
       resources :biddings do
       end      

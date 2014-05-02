@@ -9,3 +9,10 @@
 	<%= f.input :value, label: "My Bid" %>		
 	<%= f.submit "Submit my bidding" %>
 <% end %>
+
+
+<% if !@auction.buy_out_bid.blank? %>
+  <%= simple_form_for(Bidding.new(auction: @auction), url:  buy_now_auction_path(:id => @auction.id)) do |f| %>	
+	  <%= f.submit "Buy Now with #{@auction.buy_out_bid}" %>
+  <% end %>
+<% end %>

@@ -29,6 +29,6 @@
     %td=bidding.auction.product.name
     %td=bidding.auction.starting_bid
     %td=bidding.auction.top_bidding
-    %td=bidding.auction.active_bidding_of_user(current_user).value
+    %td=bidding.auction.get_active_bidding_of_user(current_user).value
     %td=link_to "Bid More", "#"
-    %td=link_to "Withdraw this bidding", auction_bidding_path(:auction_id => bidding.auction.id, :id => bidding.auction.active_bidding_of_user(current_user).id), method: :delete
+    %td=link_to "Withdraw this bidding", auction_bidding_path(:auction_id => bidding.auction.id, :id => bidding.auction.get_active_bidding_of_user(current_user).id), method: :delete
