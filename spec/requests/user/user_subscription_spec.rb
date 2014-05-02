@@ -19,9 +19,9 @@ describe "UserSubscription" do
       select(user.address_country, :from => 'Address country')      
       fill_in 'Password', :with => '12345678'
       fill_in 'Password confirmation', :with => '12345678'      
-      click_on 'Sign up'
-      
-      current_path.should == welcome_new_user_path            
+      click_on 'Sign up'      
+      # current_path.should == welcome_new_user_path            
+      current_path.should == home_path
     end
   end
   

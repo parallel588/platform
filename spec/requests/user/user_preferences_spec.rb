@@ -48,7 +48,8 @@ describe "UserPreferences" do
       fill_in 'Email', :with => user.email
       fill_in 'Password', :with => "MyNewPassword"
       click_on "Sign in"
-      current_path.should == welcome_back_existing_user_path
+      # current_path.should == welcome_back_existing_user_path
+      current_path.should == home_path
       page.should have_content(user.email)
     end
     

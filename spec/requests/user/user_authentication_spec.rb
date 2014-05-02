@@ -8,7 +8,8 @@ describe "UserAuthentication" do
       fill_in 'Email', :with => user.email
       fill_in 'Password', :with => user.password
       click_on 'Sign in'
-      current_path.should == welcome_back_existing_user_path                  
+      # current_path.should == welcome_back_existing_user_path                  
+      current_path.should == home_path                        
     end    
   
   
@@ -43,6 +44,10 @@ describe "UserAuthentication" do
       visit '/'
       click_on 'Logout'
       page.should have_content 'Signed out successfully.'
+    end
+
+    it "User is redirected to login page when trying to visit a page with required authentication" do
+      
     end
   
 end

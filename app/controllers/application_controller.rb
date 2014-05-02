@@ -4,9 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_locale
-  
-  
-  
+  after_filter :store_location # Note that if you happen to have before_filter :authenticate_user! in your ApplicationController you will need to use before_filter 
+
   
   
   
@@ -14,12 +13,31 @@ class ApplicationController < ActionController::Base
   
   
   # ################## START of Overriding DEVISE ################## #
+  def store_location
+    # store last url - this is neede for post-login redirect to whatever the user last visited.
+    
+    if !(request.fullpath =~ Regexp.union("/login", "/logout", "signup", "reset_password")) && !request.xhr?
+      session[:previous_url] = request.fullpath 
+    else      
+      session[:previous_url] = nil
+    end
+  end
+  
+
+
   def after_sign_in_path_for(user)
-    if user.sign_in_count == 1
-      return welcome_new_user_path
-    else
-      return welcome_back_existing_user_path
-    end      
+    # TODO - define the policy of redirections after signing in and how we track the converted members from the
+
+    # CASE #1 -  If the policy is that we want a specific URL to identify the NEW SIGNUPS and the RETURNING VISITORS 
+    # We can do the following
+    # if user.sign_in_count == 1
+    #   return welcome_new_user_path
+    # else
+    #   return welcome_back_existing_user_path
+    # end      
+    
+    # If the policy is that we want the user to be redirected back to the url that he requested before being asked to login/signup
+    session[:previous_url] || home_path
   end
   
   def after_sign_out_path_for(user)
