@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140426151200) do
+ActiveRecord::Schema.define(version: 20140502132840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 20140426151200) do
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "starting_bid"
+    t.float    "bid_increment"
+    t.float    "buy_out_bid"
   end
 
   add_index "auctions", ["ending_at"], name: "index_auctions_on_ending_at", using: :btree

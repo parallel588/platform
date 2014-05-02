@@ -9,8 +9,12 @@ class Bidding < ActiveRecord::Base
   validate :product, presence: true  
   validate :value, presence: true  
 
-  validate :value, with: :validates_bidding_is_greater_than_current_top_bidding
-
+  validates_each :value do |record, attr, value|
+    record.errors.add(attr, 'must be greater than the starting bid') if !value.blank? && !record.auction.starting_bid.blank? && value < record.auction.starting_bid
+  end
+  
+  
+  
   after_save :update_auctions_top_bidding
   after_save :enqueue_bidders_notifications
 
@@ -25,9 +29,8 @@ class Bidding < ActiveRecord::Base
     self.auction.refresh_top_bidding!
     # TODO update the auction top_bidding.
     # Notify auction bidders for the change.
-
   end
-
+  
 
   private
   def validates_bidding_is_greater_than_current_top_bidding
@@ -36,7 +39,9 @@ class Bidding < ActiveRecord::Base
   
 
   def update_auctions_top_bidding
-    auction.update_attributes!(top_bidding: self.value) unless (!auction.top_bidding.blank? && self.value < auction.top_bidding)
+    if !self.value.blank?  && self.value.to_f > self.auction.top_bidding.to_f
+      auction.update_attributes!(top_bidding: self.value)
+    end
   end
 
   def enqueue_bidders_notifications

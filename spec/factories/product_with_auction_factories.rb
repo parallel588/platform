@@ -7,6 +7,7 @@ FactoryGirl.define do
     ending_at    	Time.now + 3.days
     status       	"active"
     product_id   	product.id    
+    starting_bid   10.0
   end
   
   

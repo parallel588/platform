@@ -1,0 +1,34 @@
+%h1
+  t('dashboard.buyer.my_buyer_dashboard')
+
+
+
+%h2
+  t('dashboard.buyer.auctions_table)
+  
+%table
+  %thead
+    %tr
+      %th
+        t('dashboard.buyer.auctions.product_name)      
+      %th
+        t('dashboard.buyer.auctions.starting_bid)      
+      %th
+        t('dashboard.buyer.auctions.top_bid)      
+      %th
+        t('dashboard.buyer.auctions.your_bid)      
+      %th
+        t('dashboard.buyer.auctions.bid_more)      
+      %th
+        t('dashboard.buyer.auctions.bid_withdraw)      
+        
+        
+
+- @my_biddings.each do |bidding|
+  %tr
+    %td=bidding.auction.product.name
+    %td=bidding.auction.starting_bid
+    %td=bidding.auction.top_bidding
+    %td=bidding.auction.active_bidding_of_user(current_user).value
+    %td=link_to "Bid More", "#"
+    %td=link_to "Withdraw this bidding", auction_bidding_path(:auction_id => bidding.auction.id, :id => bidding.auction.active_bidding_of_user(current_user).id), method: :delete

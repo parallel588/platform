@@ -25,26 +25,26 @@ describe "Biddings" do
       visit new_auction_bidding_path(product_with_auction)  
       fill_in "My Bid", :with => 10.0 
       click_on "Submit my bidding"
-      current_path.should == bidding_submitted_auction_path(product_with_auction)
+      current_path.should == buyer_dashboard_path
       product_with_auction.top_bidding = 10.0
     end
 
     
 
+    it "prompts if the bidding is not sufficiently bigger than the starting bidding of this auction" do 
+      expensive_product_with_auction = FactoryGirl.create(:product_with_auction, :starting_bid => 10)      
+      login_as(user, :scope => :user)            
+      visit new_auction_bidding_path(expensive_product_with_auction)  
+      fill_in "My Bid", :with => 5
+      click_on "Submit my bidding"
+      current_path.should == new_auction_bidding_path(expensive_product_with_auction)  
+    end
+    
+    
     it "prompts if the bidding is not sufficiently bigger than the existing bidding in the auction" do 
-            
-    end
-    
-    
-    it "saves the suggested bidding to the product/auction" do
       
     end
-    
-    
-    it "stores at the 'Bidding History' the last bidding with timestampe etc" do 
-      
-    end
-    
+        
     
     it "notifies the product owner for the new bidding" do
             
@@ -65,9 +65,11 @@ describe "Biddings" do
       visit new_auction_bidding_path(product_with_auction)  
       fill_in "My Bid", :with => 10.0 
       click_on "Submit my bidding"
-  
-      click_on "Withdraw this bidding"
-      current_path.should == bidding_removed_auction_path(id: product_with_auction.id)      
+      
+      visit buyer_dashboard_path
+      click_on "Withdraw this bidding", match: :first
+      current_path.should == buyer_dashboard_path
+      page.should have_content("removed")
     end
 
   end

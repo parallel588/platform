@@ -11,11 +11,12 @@ class BiddingsController < ApplicationController
 
   def create
     @auction = Auction.where("id = ?", params[:auction_id]).includes(:product).first
-  	if Bidding.create!( {value: params[:value], user: current_user,  auction: @auction,  product: @auction.product} )
+  	bidding =  Bidding.new( {value: params[:bidding][:value], user: current_user,  auction: @auction,  product: @auction.product} )
+  	if bidding.save
   		flash[:notice] = t('biddings.your_bidding_is_successfully_submitted')
-  		redirect_to bidding_submitted_auction_path(@auction)
-  	else
-  		render "new"
+  		redirect_to buyer_dashboard_url
+  	else  	  
+  		redirect_to new_auction_bidding_path(@auction)            
   	end
   end
 
@@ -24,7 +25,7 @@ class BiddingsController < ApplicationController
     @bidding = Bidding.where("id = ?", params[:id]).first
     @bidding.withdraw!
     flash[:notice] = t('biddings.your_bidding_is_succesffully_removed')
-    redirect_to bidding_removed_auction_path(id: @bidding.auction.id)
+		redirect_to buyer_dashboard_url
   end
 
 

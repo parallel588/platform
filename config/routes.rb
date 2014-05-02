@@ -9,6 +9,13 @@ Basekto::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index', as: 'home_without_locale'
   
+  # STYLEGUIDE
+  get "/styleguide", to: redirect("/styleguide/globals")
+  get "styleguide/globals", to: "styleguide#globals", as: :styleguide_globals
+  get "styleguide/objects", to: "styleguide#objects", as: :styleguide_objects
+  get "styleguide/modules", to: "styleguide#modules", as: :styleguide_modules
+  get "styleguide/layouts", to: "styleguide#layouts", as: :styleguide_layouts
+  
   
   
   scope "(:locale)", :locale => /en|el|de/ do
@@ -31,19 +38,11 @@ Basekto::Application.routes.draw do
     get 'welcome' => "home#welcome", as: "welcome_new_user"
     get 'welcome-back' => "home#index", as: "welcome_back_existing_user"
     # END of USER AUTHENTICATION - REGISTRATION
-    
-    # STYLEGUIDE
-    get "/styleguide", to: redirect("/styleguide/globals")
-    get "styleguide/globals", to: "styleguide#globals", as: :styleguide_globals
-    get "styleguide/objects", to: "styleguide#objects", as: :styleguide_objects
-    get "styleguide/modules", to: "styleguide#modules", as: :styleguide_modules
-    get "styleguide/layouts", to: "styleguide#layouts", as: :styleguide_layouts
-    
-    get 'preferences' => "users#edit", as: "user_prefernces"
-    put 'preferences' => "users#update", as: "update_user_preferences"
+        
 
     
     resources :products do
+      
     end
     
     resources :auctions do
@@ -52,12 +51,18 @@ Basekto::Application.routes.draw do
         get 'bidding_removed'
       end
       resources :biddings do
-      end
-      
+      end      
     end    
         
+    # DASHBOARS
+    scope :dashboard do
+      get '/buyer' => "dashboards#buyer", :as => "buyer_dashboard"
+      get '/seller' => "dashboards#seller", :as => "seller_dashboard"
+    end
+    
         
-    resources :users do
+    # USERS / PREFERENCES
+    resources :users, :only => [:index, :update, :edit] do
         resources :products, :only => [:index]        
         collection do
           get :all, :controller => "users", :action => "index", :filter => "all"
@@ -65,13 +70,13 @@ Basekto::Application.routes.draw do
           get :sellers, :controller => "users", :action => "index", :filter => "sellers"
         end
     end
+    get 'preferences' => "users#edit", as: "user_prefernces"
+    put 'preferences' => "users#update", as: "update_user_preferences"
+    
+    
+    
     
   end # End of :locale scoping
   
- 
-  
-    
-  
-  mount Sidekiq::Web => '/sidekiq'
- 
+  mount Sidekiq::Web => '/sidekiq' 
 end
