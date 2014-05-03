@@ -24,7 +24,6 @@
 
   %tbody
     - @my_products.each do |product|
-      - next if product.active_auction.blank?
       %tr
         %td= product.name
         %td= product.product_category.try(:name) 

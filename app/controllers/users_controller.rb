@@ -29,6 +29,12 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])    
+    if @user.user_type == "seller"
+      render "seller"
+    else
+      render "show"
+    end
+    
   end
   
   
