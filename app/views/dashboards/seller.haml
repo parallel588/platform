@@ -1,0 +1,43 @@
+%h1
+  Listing products of user #{current_user.email}
+
+%table
+  %thead
+    %tr
+      %th
+        Name      
+      %th
+        Category
+      %th
+        Country
+      %th
+        Volume
+      %th
+        Size
+      %th
+        Quality
+      %th
+        Bidding    
+      %th
+        Auction
+      %th{ colspan: 4 }
+
+  %tbody
+    - @my_products.each do |product|
+      - next if product.active_auction.blank?
+      %tr
+        %td= product.name
+        %td= product.product_category.try(:name) 
+        %td= product.country         
+        %td= product.volume 
+        %td= product.size 
+        %td= product.quality 
+        %td= product.bidding 
+        %td= product.active_auction.try(:starting_at)
+        %td= link_to 'Show', product_path(product) 
+        %td= link_to 'Edit', edit_product_path(product) 
+        %td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } 
+        %td= link_to 'Manage Auction', auction_path(:id => product.active_auction.try(:id)) unless product.active_auction.blank?
+%br
+
+= link_to 'New Product', new_product_path 

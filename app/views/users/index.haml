@@ -5,6 +5,6 @@
     %li
       = u.name_and_email 
       - if u.user_type == "seller" 
-        = link_to "See the products of #{u.name}.", user_products_path(u) 
+        = link_to "See the products of #{u.name}.", user_path(u) 
   
 = paginate @users 

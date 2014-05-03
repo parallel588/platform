@@ -63,8 +63,7 @@ Basekto::Application.routes.draw do
     
         
     # USERS / PREFERENCES
-    resources :users, :only => [:index, :update, :edit] do
-        resources :products, :only => [:index]        
+    resources :users, :only => [:index, :show] do
         collection do
           get :all, :controller => "users", :action => "index", :filter => "all"
           get :buyers, :controller => "users", :action => "index", :filter => "buyers"

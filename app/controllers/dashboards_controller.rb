@@ -8,7 +8,7 @@ class DashboardsController < ApplicationController
   
   
   def seller
-    
+    @my_products = current_user.products
   end
   
 end

@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     if @product.destroy
-      redirect_to user_products_url(current_user)
+      redirect_to seller_dashboard_url
     end
   end
 

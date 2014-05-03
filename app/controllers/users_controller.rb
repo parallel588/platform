@@ -13,10 +13,9 @@ class UsersController < ApplicationController
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
         params[:user].delete(:password)
         params[:user].delete(:password_confirmation)
-    end
-    
+    end  
     @user = current_user
-    @user.update_attributes(user_params)
+    @user.update_attributes(user_params)    
     
     if @user.save
       flash[:notice] = t('user.preferences_successfully_saved')
@@ -25,6 +24,11 @@ class UsersController < ApplicationController
       flash[:alert] = t('user.preferences_not_saved')
       redirect_to user_prefernces_path
     end
+  end
+  
+  
+  def show
+    @user = User.find(params[:id])    
   end
   
   

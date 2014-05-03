@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe "Products" do
-  describe "GET /user/:user_id/products" do    
+describe "SellerDashboard" do
+  describe "GET /dashboard/seller" do    
     let(:user) {  FactoryGirl.create(:user) }
     let(:product) { FactoryGirl.create(:product, {user: user}) }
     
@@ -9,7 +9,7 @@ describe "Products" do
       login_as(user, :scope => :user)            
       
       product.user = user
-      visit user_products_path(:user_id => user.id)
+      visit seller_dashboard_url
       
       page.should have_content("#{product.name}")
       page.should have_content("#{product.product_category.name}")
