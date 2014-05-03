@@ -7,12 +7,12 @@
 %table
   %thead
     %tr
-      %th=#{t('dashboard.buyer.auctions.product_name)}
-      %th=#{t('dashboard.buyer.auctions.starting_bid)}     
-      %th=#{t('dashboard.buyer.auctions.top_bid)}      
-      %th=#{t('dashboard.buyer.auctions.your_bid)}      
-      %th=#{t('dashboard.buyer.auctions.bid_more)}      
-      %th=#{t('dashboard.buyer.auctions.bid_withdraw)}      
+      %th= t('dashboard.buyer.auctions.product_name')
+      %th= t('dashboard.buyer.auctions.starting_bid')
+      %th= t('dashboard.buyer.auctions.top_bid')
+      %th= t('dashboard.buyer.auctions.your_bid')
+      %th= t('dashboard.buyer.auctions.bid_more')   
+      %th= t('dashboard.buyer.auctions.bid_withdraw')
   %tbody        
     - @auctions.each do |auction|
       %tr
