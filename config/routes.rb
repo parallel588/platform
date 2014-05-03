@@ -52,6 +52,7 @@ Basekto::Application.routes.draw do
         post 'buy_now'
       end
       resources :biddings do
+        get 'mark_as_winner'
       end      
     end    
         

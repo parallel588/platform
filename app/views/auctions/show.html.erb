@@ -1,0 +1,29 @@
+<h1>Product: <%= @auction.product.name %></h1>
+<h3>Auction Status: <%= @auction.status%></h3>
+
+
+<table width="1000" >  
+  <tr>
+    <th>User</th>
+    <th>Date</th>
+    <th>Value</th>
+    <th>Action</th>
+  </tr>
+
+<h2>Auction's Bidding History</h2>
+<% @biddings.each do |bidding| %>
+    <% next if bidding.value.blank? %>
+    <tr>
+      <td><%= bidding.user.email %></td>
+      <td><%= bidding.created_at %></td>
+      <td><%= bidding.value %><%= " (Winner) " if bidding.is_winner? %></td>
+      <td><%= link_to "Mark As Winner", auction_bidding_mark_as_winner_path(:auction_id => bidding.auction.id, :bidding_id => bidding.id) unless bidding.is_winner? %></td>      
+    </tr>  
+<% end %>
+</table>
+<%= link_to "Make a Bid", new_auction_bidding_path(@auction) %>  
+
+
+<br><br><br><br>
+
+<h2>Auction Details: <%= debug @auction %><h2>

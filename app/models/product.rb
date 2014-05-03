@@ -17,4 +17,8 @@ class Product < ActiveRecord::Base
     # Todo - Add the Cache fetch / push / invalidate part
     self.products.auctions.not_expired.last
   end
+  
+  def active_auction
+    return self.auctions.order("created_at DESC").first
+  end
 end

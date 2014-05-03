@@ -3,7 +3,8 @@ class DashboardsController < ApplicationController
 
   
   def buyer
-    @my_biddings = current_user.biddings.limit(10).order("created_at DESC")
+    @my_auction_ids = current_user.biddings.select("auction_id").uniq.collect(&:auction_id)    
+    @auctions = Auction.find(@my_auction_ids)
   end
   
   

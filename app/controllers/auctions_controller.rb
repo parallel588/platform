@@ -1,5 +1,6 @@
 class AuctionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_auction_ownership, :only => [:show]
 
 
   def buy_now
@@ -12,5 +13,16 @@ class AuctionsController < ApplicationController
 		  redirect_to new_auction_bidding_path(@auction)            
 	  end
   end
-
+    
+  
+  def show
+    @auction = Auction.where("id = ?", params[:id]).includes(:product).first
+    @biddings = @auction.biddings
+  end
+    
+  
+  def ensure_auction_ownership  
+    # TODO
+    # Raise excepction and authentication error if the current_user is not the owner of this auction
+  end
 end

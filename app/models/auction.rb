@@ -15,8 +15,14 @@ class Auction < ActiveRecord::Base
     state :bought
     state :archived
     
-  end
-  
+    
+    event :finish do
+      after do
+        
+      end
+      transitions :from => :active, :to => :finish      
+    end    
+  end  
   
   
   def active_auctions_cached

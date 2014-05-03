@@ -28,5 +28,18 @@ class BiddingsController < ApplicationController
 		redirect_to buyer_dashboard_url
   end
 
-
+  
+  
+  def mark_as_winner
+    @auction = Auction.where("id = ?", params[:auction_id]).first
+    @bidding = Bidding.where("id = ?", params[:bidding_id]).first
+    
+    @auction.status = "finished"  
+    @bidding.is_winner = true
+    if @auction.save  && @bidding.save
+      redirect_to seller_dashboard_url
+    else
+      
+    end
+  end
 end
