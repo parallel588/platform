@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
   
   # ################## START of Overriding DEVISE ################## #
   def store_location
-    # store last url - this is neede for post-login redirect to whatever the user last visited.
-    
     if !(request.fullpath =~ Regexp.union("/login", "/logout", "signup", "reset_password")) && !request.xhr?
       session[:previous_url] = request.fullpath 
     else      
@@ -23,7 +21,6 @@ class ApplicationController < ActionController::Base
     end
   end
   
-
 
   def after_sign_in_path_for(user)
     # TODO - define the policy of redirections after signing in and how we track the converted members from the
@@ -40,9 +37,11 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || home_path
   end
   
+  
   def after_sign_out_path_for(user)
     super
   end
+  
   
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:logo, :logo_cache, :name, :occupation, :vat, :address_street, :address_country, :address_city, :address_zip, :phone_number, :fax_number, :link]
