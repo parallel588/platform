@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :auctions,foreign_key: :seller_id # as a seller
   has_many :biddings # as a buyer
 
+  after_create :build_seller_object
   
   
   
@@ -34,9 +35,13 @@ class User < ActiveRecord::Base
   
   
   
+  def build_seller_object
+    # Call this only when a Seller user is created and not in every case of new user!
+    # It depends on the UI / How the form will look or if we will have separate forms for the 2 user types.
+    Seller.create({:user_id => self.id})  
+  end
   
-  
-  
+
   def name_and_email
     return "#{name} (#{email})"
   end

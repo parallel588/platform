@@ -35,3 +35,5 @@
   
   %div
     = f.submit "Update preferences"
+
+%div=link_to "Update the Seller's Profile", edit_seller_url(Seller.find_or_create_by_user_id(current_user.id).id.to_i)

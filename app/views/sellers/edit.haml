@@ -1,0 +1,10 @@
+%h1= "Update the seller #{@seller.id} - related with user #{@seller.user.id} - #{@seller.user.email}"
+
+
+
+= simple_form_for(@seller, as: :seller, :method => :put, url: seller_path, :html => {:multipart => true}) do |f|
+ 
+  = f.input :description 
+  
+  %div
+    = f.submit "Update seller"
