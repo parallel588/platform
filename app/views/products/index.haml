@@ -9,20 +9,17 @@
       %th
         Category
       %th
-        Country
+        Country    
       %th
-        Volume
+        Min Bidding
       %th
-        Size
-      %th
-        Quality
-      %th
-        Bidding
-      %th
+        Buy-out Bidding
+      %th  
         Auction Ending at
+      %th  
+        Current Winning Bidding  
       %th
         Auction
-      %th{ colspan: 3 }
 
   %tbody
     - @auctions.each do |auction|
@@ -30,12 +27,11 @@
         %td= auction.product.name
         %td= auction.product.product_category.try(:name) 
         %td= auction.product.country         
-        %td= auction.product.volume 
-        %td= auction.product.size 
-        %td= auction.product.quality 
-        %td= auction.product.bidding 
+        %td= auction.starting_bid 
+        %td= auction.buy_out_bid 
         %td= auction.ending_at
-        %td= link_to 'Place your bidding', new_auction_bidding_path(auction) 
+        %td= "#{auction.get_winning_bidding_obj.try(:amount)} by <b>#{auction.get_winning_bidding_obj.user.email}</b>".html_safe if !auction.get_winning_bidding_obj.blank?
+        %td= link_to "Place your bidding (> #{auction.get_current_winning_bidding_value})", new_auction_bidding_path(auction) 
 
 %br
 

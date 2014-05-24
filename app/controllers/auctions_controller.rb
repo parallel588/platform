@@ -5,7 +5,7 @@ class AuctionsController < ApplicationController
 
   def buy_now
     @auction = Auction.where("id = ?", params[:id]).includes(:product).first
-	  bidding =  Bidding.new( {value: @auction.buy_out_bid, user: current_user,  auction: @auction,  product: @auction.product} )
+	  bidding =  Bidding.new( {amount: @auction.buy_out_bid, user: current_user,  auction: @auction,  product: @auction.product} )
 	  if bidding.save
 		  flash[:notice] = t('biddings.the_product_is_yours')
 		  redirect_to buyer_dashboard_url

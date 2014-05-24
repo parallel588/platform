@@ -26,7 +26,7 @@ describe "Biddings" do
       fill_in "My Bid", :with => 10.0 
       click_on "Submit my bidding"
       current_path.should == buyer_dashboard_path
-      product_with_auction.top_bidding = 10.0
+      product_with_auction.get_current_winning_bidding_value = 10.0
     end
 
     

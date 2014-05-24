@@ -9,61 +9,62 @@ class Bidding < ActiveRecord::Base
   validate :user, presence: true  
   validate :auction, presence: true  
   validate :product, presence: true  
-  validate :value, presence: true  
+  validate :amount, presence: true  
 
-  validates_each :value do |record, attr, value|
+  validates_each :amount do |record, attr, value|
     record.errors.add(attr, 'must be greater than the starting bid') if !value.blank? && !record.auction.starting_bid.blank? && value < record.auction.starting_bid
   end
   
   
-  
-  after_save :update_auctions_top_bidding
+  after_save :update_auction_winning_bidding
   after_save :finish_auction_if_bought
-  after_save :enqueue_bidders_notifications
+  after_save :enqueue_new_bidding_notifications
 
   default_scope { where(status: "active") }
   
   aasm :skip_validation_on_save => true, :column => 'status' do
     state :active, :initial => true
     state :winner
-    state :withdrawn
+    state :withdraw
+
+    event :make_withdrawn do
+      transitions :from => [:active, :winner, :withdraw], :to => :withdraw
+    end
     
+    event :make_winner do
+      after do
+        self.auction.awarded!
+      end
+      before do 
+        self.auction.remove_winning_biddings!          
+      end      
+      transitions :from => [:active, :winner], :to => :winner
+    end
   end
+    
   
 
-
   
-  
-  def withdraw!
-    self.update_attributes(:status => "withdraw")    
-    self.auction.refresh_top_bidding!
-    # TODO update the auction top_bidding.
-    # Notify auction bidders for the change.
-  end
-  
-
   private
+
   def validates_bidding_is_greater_than_current_top_bidding
-  	return self.value > self.auction.top_bidding	
+  	return self.amount > self.auction.get_current_winning_bidding_value	
   end
   
 
-  def update_auctions_top_bidding
-    if !self.value.blank?  && self.value.to_f > self.auction.top_bidding.to_f
-      auction.update_attributes!(top_bidding: self.value)
-    end
+  def update_auction_winning_bidding
+    self.auction.refresh_top_bidding!
   end
   
+
   def finish_auction_if_bought
-    if !self.value.blank? && self.value.to_f == self.auction.buy_out_bid.to_f
-      self.auction.update_attribute(:status, "finished")
-      # TODO      # Add other consequences of an auction finsihed by a buy out!      
+    if !self.amount.blank? && self.amount.to_f == self.auction.buy_out_bid.to_f
+      self.auction.bought!
     end
   end
 
 
-
-  def enqueue_bidders_notifications
+  def enqueue_new_bidding_notifications
     # TODO 
     # add the tasks for notifications
   end

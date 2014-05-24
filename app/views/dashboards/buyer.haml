@@ -1,8 +1,4 @@
-%h1=#{t('dashboard.buyer.my_buyer_dashboard')}
-
-
-
-%h2=#{t('dashboard.buyer.auctions_table)}
+%h1=t('dashboard.buyer.auctions_table')
   
 %table
   %thead
@@ -18,7 +14,24 @@
       %tr
         %td=auction.product.name
         %td=auction.starting_bid
-        %td=auction.top_bidding
-        %td=auction.get_active_bidding_of_user(current_user).value
+        %td=auction.get_current_winning_bidding_value
+        %td=auction.get_active_bidding_of_user(current_user).amount
         %td=link_to "Bid More", auction_path(auction)
         %td=link_to "Withdraw this bidding", auction_bidding_path(:auction_id => auction.id, :id =>   auction.get_active_bidding_of_user(current_user).id), method: :delete
+
+
+%h1=t('dashboard.buyer.bought_items_and_auction_wins')
+
+%table
+  %thead
+    %tr
+      %th=t('dashboard.buyer.auctions.product_name')
+      %th=t('dashboard.buyer.auctions.your_bid')      
+      %th=t('dashboard.buyer.auctions.date_of_win')
+      %th=t('dashboard.buyer.auctions.review_auction')      
+  %tbody        
+    - @winning_auctions.each do |auction|
+      %tr
+        %td=auction.product.name
+        %td=auction.get_active_bidding_of_user(current_user).amount
+        

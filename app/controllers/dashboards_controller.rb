@@ -5,6 +5,7 @@ class DashboardsController < ApplicationController
   def buyer
     @my_auction_ids = current_user.biddings.select("auction_id").uniq.collect(&:auction_id)    
     @auctions = Auction.find(@my_auction_ids)
+    @winning_auctions = Auction.find(@my_auction_ids)
   end
   
   

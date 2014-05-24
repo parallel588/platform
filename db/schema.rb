@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502132840) do
+ActiveRecord::Schema.define(version: 20140524155958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,25 +20,29 @@ ActiveRecord::Schema.define(version: 20140502132840) do
     t.datetime "starting_at"
     t.datetime "ending_at"
     t.string   "status"
-    t.float    "top_bidding"
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "starting_bid"
     t.float    "bid_increment"
     t.float    "buy_out_bid"
+    t.integer  "winning_buyer_id"
+    t.integer  "winning_bidding_id"
+    t.integer  "seller_id"
   end
 
   add_index "auctions", ["ending_at"], name: "index_auctions_on_ending_at", using: :btree
+  add_index "auctions", ["seller_id"], name: "index_auctions_on_seller_id", using: :btree
   add_index "auctions", ["starting_at"], name: "index_auctions_on_starting_at", using: :btree
   add_index "auctions", ["status"], name: "index_auctions_on_status", using: :btree
+  add_index "auctions", ["winning_bidding_id"], name: "index_auctions_on_winning_bidding_id", using: :btree
+  add_index "auctions", ["winning_buyer_id"], name: "index_auctions_on_winning_buyer_id", using: :btree
 
   create_table "biddings", force: true do |t|
-    t.float    "value"
+    t.float    "amount"
     t.integer  "user_id"
     t.integer  "auction_id"
     t.integer  "product_id"
-    t.boolean  "is_winner"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status",     default: "active"

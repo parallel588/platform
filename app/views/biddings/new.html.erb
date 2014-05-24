@@ -3,10 +3,10 @@
 
 <p>This Auction expires at: <%= @auction.ending_at %></p>
 
-<p>You should make a bidding of more than <%= @auction.top_bidding %></p>
+<p>You should make a bidding of more than <%= @auction.get_current_winning_bidding_value %></p>
 
 <%= simple_form_for(Bidding.new(auction: @auction), url: auction_biddings_path(@auction)) do |f| %>	
-	<%= f.input :value, label: "My Bid" %>		
+	<%= f.input :amount, label: "My Bid" %>		
 	<%= f.submit "Submit my bidding" %>
 <% end %>
 

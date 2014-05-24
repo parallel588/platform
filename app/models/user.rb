@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   paginates_per 2
   
   has_many :products # as a seller
+  has_many :auctions,foreign_key: :seller_id # as a seller
   has_many :biddings # as a buyer
 
   

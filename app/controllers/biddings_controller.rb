@@ -11,7 +11,7 @@ class BiddingsController < ApplicationController
 
   def create
     @auction = Auction.where("id = ?", params[:auction_id]).includes(:product).first
-  	bidding =  Bidding.new( {value: params[:bidding][:value], user: current_user,  auction: @auction,  product: @auction.product} )
+  	bidding =  Bidding.new( {amount: params[:bidding][:amount], user: current_user,  auction: @auction,  product: @auction.product} )
   	if bidding.save
   		flash[:notice] = t('biddings.your_bidding_is_successfully_submitted')
   		redirect_to buyer_dashboard_url
@@ -22,8 +22,9 @@ class BiddingsController < ApplicationController
 
 
   def destroy
-    @bidding = Bidding.where("id = ?", params[:id]).first
-    @bidding.withdraw!
+    bidding = Bidding.where("id = ?", params[:id]).first
+    bidding.make_withdrawn!
+    bidding.auction.refresh_top_bidding!
     flash[:notice] = t('biddings.your_bidding_is_succesffully_removed')
 		redirect_to buyer_dashboard_url
   end
@@ -32,14 +33,8 @@ class BiddingsController < ApplicationController
   
   def mark_as_winner
     @auction = Auction.where("id = ?", params[:auction_id]).first
-    @bidding = Bidding.where("id = ?", params[:bidding_id]).first
-    
-    @auction.status = "finished"  
-    @bidding.is_winner = true
-    if @auction.save  && @bidding.save
-      redirect_to seller_dashboard_url
-    else
-      
-    end
+    @bidding = Bidding.where("id = ?", params[:bidding_id]).first    
+    @bidding.make_winner!
+    redirect_to seller_dashboard_url
   end
 end

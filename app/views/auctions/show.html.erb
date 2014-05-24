@@ -6,18 +6,18 @@
   <tr>
     <th>User</th>
     <th>Date</th>
-    <th>Value</th>
+    <th>Amount</th>
     <th>Action</th>
   </tr>
 
 <h2>Auction's Bidding History</h2>
 <% @biddings.each do |bidding| %>
-    <% next if bidding.value.blank? %>
+    <% next if bidding.amount.blank? %>
     <tr>
       <td><%= bidding.user.email %></td>
       <td><%= bidding.created_at %></td>
-      <td><%= bidding.value %><%= " (Winner) " if bidding.is_winner? %></td>
-      <td><%= link_to "Mark As Winner", auction_bidding_mark_as_winner_path(:auction_id => bidding.auction.id, :bidding_id => bidding.id) unless bidding.is_winner? %></td>      
+      <td><%= bidding.amount %><%= " (Winner) " if bidding.winner? %></td>
+      <td><%= link_to "Mark As Winner", auction_bidding_mark_as_winner_path(:auction_id => bidding.auction.id, :bidding_id => bidding.id) unless bidding.winner? %></td>      
     </tr>  
 <% end %>
 </table>
