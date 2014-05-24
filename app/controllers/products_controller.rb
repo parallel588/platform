@@ -71,7 +71,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :type, :subtype, :country, :volume, :size, :quality, :bidding, :ending_at, :delivery_at, :shipping_information, :packaging_information, :pallets, :starting_at, :user_id, :product_category_id, auctions_attributes: [:id, :starting_at, :ending_at, :_destroy, :starting_bid, :bid_increment])
+      params.require(:product).permit(:name, :type, :subtype, :country, :volume, :size, :quality, :bidding, :ending_at, :delivery_at, :shipping_information, :packaging_information, :pallets, :starting_at, :user_id, :product_category_id, auctions_attributes: [:id, :starting_at, :ending_at, :_destroy, :starting_bid, :bid_increment, :buy_out_bid])
     end
     
     def authenticate_product_ownership!
