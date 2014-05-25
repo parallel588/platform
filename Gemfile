@@ -10,6 +10,8 @@ gem 'rails', '4.0.4'
 gem 'aasm'
 gem 'devise'
 gem 'devise-async'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
 gem "cancan"
 gem 'sidekiq'
 gem 'sinatra', '>= 1.3.0', :require => nil

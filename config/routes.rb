@@ -16,24 +16,25 @@ Basekto::Application.routes.draw do
   get "styleguide/modules", to: "styleguide#modules", as: :styleguide_modules
   get "styleguide/layouts", to: "styleguide#layouts", as: :styleguide_layouts
   
-  
+  # USER AUTHENTICATION - REGISTRATION
+  devise_for :users, 
+    path: "/", 
+    path_names: { 
+      sign_in: 'login', 
+      sign_out: 'logout', 
+      password: 'reset_password', 
+      confirmation: 'verification', 
+      unlock: 'unblock', 
+      registration: 'signup', 
+      sign_up: '/'
+    },
+    :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+    
   
   scope "(:locale)", :locale => /en|el|de/ do
     root 'home#index', as: 'home'
     
     
-    # USER AUTHENTICATION - REGISTRATION
-    devise_for :users, 
-      path: "/", 
-      path_names: { 
-        sign_in: 'login', 
-        sign_out: 'logout', 
-        password: 'reset_password', 
-        confirmation: 'verification', 
-        unlock: 'unblock', 
-        registration: 'signup', 
-        sign_up: '/'
-      }  
     
     get 'welcome' => "home#welcome", as: "welcome_new_user"
     get 'welcome-back' => "home#index", as: "welcome_back_existing_user"
