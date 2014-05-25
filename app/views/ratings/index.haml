@@ -1,0 +1,35 @@
+%h1="Ratings for the user: ##{@reviewed_user.id} with email: #{@reviewed_user.email}"
+%h1="Current Average Rating Starts: #{@reviewed_user.rating_average}"
+
+%table
+  %thead
+    %tr
+      %th
+        Rating Name      
+      %th
+        Review Email
+      %th
+        Rating Stars    
+      %th{:width => "200px"}
+        Rating text
+      
+
+  %tbody
+    - @ratings.each do |rating|
+      %tr
+        %td= rating.reviewer.name
+        %td= rating.reviewer.email
+        %td= rating.stars
+        %td= rating.review
+
+
+%h1="Add a new rating"
+= "Can #{current_user.email} MAKE A RATING for user #{@reviewed_user.email} ? The answer is: #{current_user.can_rate_the_user?(@reviewed_user)}"
+= simple_form_for(@new_rating, :url => user_ratings_path, :method => :post) do |f| 
+  .field
+    = f.input :stars
+  .field
+    = f.input :review
+  .actions
+    = f.submit
+

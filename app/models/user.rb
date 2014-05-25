@@ -41,6 +41,13 @@ class User < ActiveRecord::Base
     Seller.create({:user_id => self.id})  
   end
   
+  def can_rate_the_user?(relative_user)
+    # The rating system allows a user to rate another user only if they have some
+    # succesfful exchange with eachother.
+    # TODO  : Define the actions that define a successful relationship. 
+    # Case 1: A buyer user (self) has at least on WINNER bidding at an Auction of the relative_user  
+    return relative_user.auctions.where("winning_buyer_id = ?", self.id).where("status = ? OR status = ?", "finished", "bought").count > 0
+  end
 
   def name_and_email
     return "#{name} (#{email})"

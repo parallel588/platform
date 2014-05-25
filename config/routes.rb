@@ -70,6 +70,7 @@ Basekto::Application.routes.draw do
           get :buyers, :controller => "users", :action => "index", :filter => "buyers"
           get :sellers, :controller => "users", :action => "index", :filter => "sellers"
         end
+        resources :ratings
     end
     # So that the user of type = seller to have forms for updating his profile
     resources :sellers, :only => [:edit, :update]

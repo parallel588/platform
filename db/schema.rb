@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140524171009) do
+ActiveRecord::Schema.define(version: 20140525204727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,19 @@ ActiveRecord::Schema.define(version: 20140524171009) do
   add_index "products", ["product_category_id"], name: "index_products_on_product_category_id", using: :btree
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
+  create_table "ratings", force: true do |t|
+    t.integer  "from_user_id"
+    t.integer  "to_user_id"
+    t.float    "stars"
+    t.text     "review"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["from_user_id"], name: "index_ratings_on_from_user_id", using: :btree
+  add_index "ratings", ["stars"], name: "index_ratings_on_stars", using: :btree
+  add_index "ratings", ["to_user_id"], name: "index_ratings_on_to_user_id", using: :btree
+
   create_table "sellers", force: true do |t|
     t.integer  "user_id"
     t.text     "description"
@@ -131,11 +144,13 @@ ActiveRecord::Schema.define(version: 20140524171009) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "buyer_type",             default: "free"
+    t.float    "rating_average"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["name"], name: "index_users_on_name", using: :btree
+  add_index "users", ["rating_average"], name: "index_users_on_rating_average", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   add_index "users", ["user_type"], name: "index_users_on_user_type", using: :btree
