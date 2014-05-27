@@ -1,0 +1,27 @@
+.l-grid
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+[class*='l-grid__col-']
+  float: left
+  min-height: em(1)
+  padding-right: em($grid__gutter)
+  &:last-of-type
+    padding-right: 0
+
+.l-grid__col-2-3
+  width: 66%
+
+.l-grid__col-1-3
+  width: 33%
+
+.l-grid--padded
+  padding: em($grid__gutter) 0 em($grid__gutter) em($grid__gutter)
+  [class*='col-']:last-of-type
+    padding-right: em($grid__gutter)
+
+.l-grid--fixed
+  margin: 0 auto
+  max-width: em(960)

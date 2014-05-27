@@ -1,0 +1,13 @@
+.m-user-area
+  .m-user-area__member-row
+    .l-grid.l-grid--fixed
+      .l-grid__col-2-3
+      .l-grid__col-1-3
+        - if current_user 
+          = "Good morning #{current_user.name}".html_safe
+          = "(#{link_to "Preferences", user_prefernces_path} | #{link_to "Logout", destroy_user_session_path, :method => :delete if current_user})".html_safe
+          = image_tag current_user.logo.url, :height => 40 if current_user && !current_user.logo.blank?
+          / = link_to "Seller Dashboard", seller_dashboard_url
+          / = link_to "Buyer Dashboard", buyer_dashboard_url
+        - else
+          = link_to "Login", new_user_session_path 

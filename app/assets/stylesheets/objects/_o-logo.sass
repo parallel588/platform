@@ -8,7 +8,7 @@
 .o-logo__image
   @extend .clearfix
   display: block
-  max-width: em(300)
+  max-width: em(200)
   width: 70%
   +respond-min($bp__tablet--portrait__width)
     width: 100%
@@ -16,19 +16,18 @@
 .o-logo__image__icon
   float: left
   position: relative
-  +transition(all 500ms cubic-bezier(0.190, 1.000, 0.220, 1.000))
+  +transition(box-shadow 200ms $animation--easing)
   top: 0
   width: 26.9814502529511%
   .o-logo__image:hover &
     box-shadow: 0 em(5) em(8) $color__grey--dark
-    +transform(scale(1.005, 1.005))
-    top: em(-1)
 
 .o-logo__image__name
   float: left
   width: 73.0185497470489%
 
 .o-logo__tagline
+  display: none
   margin-top: em(10)
   +respond-min($bp__tablet--portrait__width)
     font-size: em($font-size__big)
