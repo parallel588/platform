@@ -1,12 +1,12 @@
 = render "partials/modules/m_user_area"
 
-.l-header
-  .l-grid.l-grid--fixed
-    .l-grid__col-1-3
+.l-block
+  .l-grid
+    .l-grid__item.one-third>
       = render "partials/objects/o_logo"
-    .l-grid__col-1-3
+    .l-grid__item.one-third>
       %input.o-input{ type: "text", placeholder: "Search" }
-    .l-grid__col-1-3
+    .l-grid__item.one-third>
       .o-links
         = link_to "All users",  all_users_path
         %span.o-links__separator= "\\"

@@ -1,0 +1,25 @@
+.m-product
+  .l-grid
+    .l-grid__item.one-half>
+      = link_to "#", class: "m-product__image" do
+        = image_tag "/assets/dummy/product.jpg", width: "100%"
+    .l-grid__item.one-half>
+      = link_to "#" do
+        .o-headline= "Oranges Merlin from Greece"
+        .m-product__supplier= "Karantinos Best Quality Fruits S.A."
+  %ul.m-icon-list
+    %li.m-icon-list__item
+      .m-icon-list__icon.o-icon.o-icon--map-marker
+      .m-icon-list__data= @product.country 
+    %li.m-icon-list__item
+      .m-icon-list__icon.o-icon.o-icon--map-marker
+      .m-icon-list__data= @product.volume
+    %li.m-icon-list__item
+      .m-icon-list__icon.o-icon.o-icon--map-marker
+      .m-icon-list__data= @product.product_category.try(:name) rescue "- None -" 
+    %li.m-icon-list__item
+      .m-icon-list__icon.o-icon.o-icon--map-marker
+      .m-icon-list__data= @product.size
+    %li.m-icon-list__item
+      .m-icon-list__icon.o-icon.o-icon--map-marker
+      .m-icon-list__data= @product.quality

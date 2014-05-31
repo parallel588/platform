@@ -1,27 +1,30 @@
+// Grid wrapper class for the csswizardry grid. All the rest of the classes needed for the grid system remain as they come from the csswizardry grid. (one-third, palm-two-thirds, pull-one-fourth etc...)
+//
+// .l-grid            - Default grid. 20px gutter.
+// .l-grid--no-gutter - No gutter in between.
+// .l-grid--right     - Align to right.
+// .l-grid--center    - Align to center.
+// .l-grid--middle    - Vertically align columns to middle.
+// .l-grid--bottom    - Vertically align columns to bottom.
+//
+// Styleguide Grid.
 .l-grid
-  &:after
-    content: ""
-    display: table
-    clear: both
+  @extend .grid
 
-[class*='l-grid__col-']
-  float: left
-  min-height: em(1)
-  padding-right: em($grid__gutter)
-  &:last-of-type
-    padding-right: 0
+.l-grid--no-gutter
+  @extend .grid--full
 
-.l-grid__col-2-3
-  width: 66%
+.l-grid--right
+  @extend .grid--right
 
-.l-grid__col-1-3
-  width: 33%
+.l-grid--center
+  @extend .grid--center
 
-.l-grid--padded
-  padding: em($grid__gutter) 0 em($grid__gutter) em($grid__gutter)
-  [class*='col-']:last-of-type
-    padding-right: em($grid__gutter)
+.l-grid--middle
+  @extend .grid--middle
 
-.l-grid--fixed
-  margin: 0 auto
-  max-width: em(960)
+.l-grid--bottom
+  @extend .grid--bottom
+
+.l-grid__item
+  @extend .grid__item

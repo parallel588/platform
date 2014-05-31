@@ -1,52 +1,20 @@
-// Basic layout component. It wraps every element and provides spacing and width to its content. Centering happens with equal horizontal padding so that we don't use a container element and keep properties in the element (like background color).
+// Basic container unit. Header, main area etc.
 //
-// .l-block             - Default variation: 70% width, 50px vertical padding.
-// .l-block--fullscreen - Full height block
-// .l-block--no-padding - No padding
-// .l-block--taller     - Sligthly taller than the usual full height block.
+// .l-block             - Default variation
+// .l-block--full-width - Full width variation
+// .l-block--skinny     - No background color, no padding
 //
 // Styleguide Block Element.
 .l-block
-  +box-sizing(border-box)
-  @extend .clearfix
-  padding: em(30) em(10)
-  position: relative
-  +respond-min($bp__tablet--portrait__width)
-    padding: em(50) 15%
+  background-color: $color__white
+  margin: 0 auto em(20)
+  padding: em(20) em(10)
+  max-width: em(960)
 
-.l-block--fullscreen
-  display: table
-  height: em(500) //a random height so that mobile doesn't show short until JS kicks in
-  html.no-touch &
-    height: 100vh
-  padding: 0 em(10)
-  width: 100%
-  overflow: hidden
+.l-block--full-width
+  max-width: 100%
 
-.l-block--no-padding
+.l-block--skinny
+  background-color: transparent
+  margin-bottom: 0
   padding: 0
-
-.l-block--taller
-  padding: 15% 0
-
-.l-block--fullscreen__row
-  display: table-row
-
-.l-block--fullscreen__cell
-  display: table-cell
-  height: 100%
-  vertical-align: middle
-
-.l-block--fullscreen__cell--align-top
-  vertical-align: top
-
-.l-block--fullscreen__cell--flag
-  display: block
-  height: auto
-  +respond-min($bp__tablet--portrait__width)
-    display: table-cell
-    height: 100%
-    width: 40%
-    .l-block--fullscreen__cell--flag + &
-      width: 60%
-      padding-right: em(80)

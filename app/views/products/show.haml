@@ -1,82 +1,122 @@
 #notice= notice
-
-%p
-  %strong
-    Name:
-  = @product.name
-
-%p
-  %strong
-    Category:
-  = @product.product_category.try(:name) rescue "- None -" 
+- if false
+  = link_to 'Edit', edit_product_path(@product)  |
+  = link_to 'Back', seller_dashboard_path
 
 
+.l-grid
+  .l-grid__item.two-thirds>
+    %h1.o-headline{ title: "PRODUCT" }= @product.name
+    .l-grid
+      .l-grid__item.one-half>
+        .m-image-gallery
+          .m-image-gallery__main
+            = image_tag("/assets/dummy/product.jpg")
+          .m-image-gallery__thumbnails
+            = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
+            = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
+            = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
+            = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
+            = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
+      .l-grid__item.one-half
+        %ul.m-icon-list
+          %li.m-icon-list__item
+            .m-icon-list__icon.o-icon.o-icon--map-marker
+            .m-icon-list__data= @product.country 
+          %li.m-icon-list__item
+            .m-icon-list__icon.o-icon.o-icon--map-marker
+            .m-icon-list__data= @product.volume
+          %li.m-icon-list__item
+            .m-icon-list__icon.o-icon.o-icon--map-marker
+            .m-icon-list__data= @product.product_category.try(:name) rescue "- None -" 
+          %li.m-icon-list__item
+            .m-icon-list__icon.o-icon.o-icon--map-marker
+            .m-icon-list__data= @product.size
+          %li.m-icon-list__item
+            .m-icon-list__icon.o-icon.o-icon--map-marker
+            .m-icon-list__data= @product.quality
+        .h3= "Data provided by the producer"
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    
+    %h2.o-headline{ title: "SUPPLIER" }= "Karantinos Best Quality Fruits S.A."
+    %ul.m-icon-list.l-grid
+      %li.m-icon-list__item.l-grid__item.one-half>
+        .m-icon-list__icon.o-icon.o-icon--map-marker
+        .m-icon-list__data= "Athens, Greece"
+      %li.m-icon-list__item.l-grid__item.one-half>
+        .m-icon-list__icon.o-icon.o-icon--star
+        .m-icon-list__data= "5 stars"
+      %li.m-icon-list__item.l-grid__item.one-whole>
+        .m-icon-list__icon.o-icon.o-icon--map-marker
+        .m-icon-list__data
+          = "Comments from others"
+          = link_to "Show", "#", class: "o-arrow"
+      %li.m-icon-list__item.l-grid__item.one-whole>
+        .m-icon-list__icon.o-icon.o-icon--map-marker
+        .m-icon-list__data
+          = "Other products"
+          = link_to "Show", "#", class: "o-arrow"
+        .m-expandable.l-grid
+          .l-grid__item.one-half>
+            = render "partials/modules/m_product"
+          .l-grid__item.one-half>
+            = render "partials/modules/m_product"
 
-%p
-  %strong
-    Country:
-  = @product.country 
+    %h2.o-headline= "Customers also viewed"
+    .l-grid
+      .l-grid__item.one-half>
+        = render "partials/modules/m_product"
+      .l-grid__item.one-half>
+        = render "partials/modules/m_product"
+
+  .l-grid__item.one-third
+    .m-action-area
+      .m-action-area__section.m-action-area__section--bordered
+        .m-action-area__label= "Bid ends in"
+        .m-action-area__text= "0h:15m:20s"
+      .m-action-area__section
+        .m-action-area__label= "Last of 10 bids"
+        .m-action-area__text= "0,14€/kgr"
+      .m-action-area__section
+        %input.o-input
+        %button.o-button= "bid now"
+    .m-action-area
+      .m-action-area__section
+        %button.o-button= "buy now"
+
+    .o-advertisement.o-advertisement--300-600
+      = image_tag("/assets/dummy/300x250.jpg")
 
 
-%p
-  %strong
-    Volume:
-  = @product.volume 
-
-
-%p
-  %strong
-    Size:
-  = @product.size 
-
-
-%p
-  %strong
-    Quality:
-  = @product.quality 
-
-
-%p
-  %strong
-    Bidding:
-  = @product.bidding 
-
-
-%p
-  %strong
-    Ending at:
-  = @product.ending_at 
-
-
-%p
-  %strong
-    Delivery at:
-  = @product.delivery_at 
-
-
-%p
-  %strong
-    Shipping information:
-  = @product.shipping_information 
-
-
-%p
-  %strong
-    Packaging information:
-  = @product.packaging_information 
-
-
-%p
-  %strong
-    Pallets:
-  = @product.pallets 
-
-
-%p
-  %strong
-    Starting at:
-  = @product.starting_at 
-
-
-= link_to 'Edit', edit_product_path(@product)  |
-= link_to 'Back', seller_dashboard_path
+/     Bidding:
+/   = @product.bidding 
+/ %p
+/   %strong
+/     Ending at:
+/   = @product.ending_at 
+/ %p
+/   %strong
+/     Delivery at:
+/   = @product.delivery_at 
+/ %p
+/   %strong
+/     Shipping information:
+/   = @product.shipping_information 
+/ %p
+/   %strong
+/     Packaging information:
+/   = @product.packaging_information 
+/ %p
+/   %strong
+/     Pallets:
+/   = @product.pallets 
+/ %p
+/   %strong
+/     Starting at:
+/   = @product.starting_at 
