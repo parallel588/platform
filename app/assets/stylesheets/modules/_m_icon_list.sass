@@ -1,0 +1,25 @@
+// List of information with prepended icon.
+//
+// .m-icon-list - Default Variation
+//
+// Styleguide Icon List.
+.m-icon-list
+
+.m-icon-list__item
+  min-height: em(30)
+  line-height: em(30)
+  position: relative
+
+.m-icon-list__icon
+  border-bottom: 1px solid $color__brown--lite
+  left: 0
+  position: absolute
+  text-align: center
+  top: 0
+  width: em(35)
+  .m-icon-list__item.l-grid__item > &
+    left: em(20) //counter balance l-grid__item's left padding
+
+.m-icon-list__data
+  border-bottom: 1px solid $color__brown--lite
+  margin-left: em(45)

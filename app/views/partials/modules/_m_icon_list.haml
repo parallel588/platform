@@ -1,0 +1,10 @@
+- modifier ||= ""
+
+%ul.m-icon-list{ class: "#{modifier}" }
+  - if @in_styleguide
+    %li.m-icon-list__item.l-grid__item.one-half>
+      .m-icon-list__icon.o-icon.o-icon--map-marker
+      .m-icon-list__data= "Athens, Greece"
+    %li.m-icon-list__item.l-grid__item.one-half>
+      .m-icon-list__icon.o-icon.o-icon--star
+      .m-icon-list__data= "5 stars"
