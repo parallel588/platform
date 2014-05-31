@@ -10,16 +10,13 @@
   %ul.m-icon-list
     %li.m-icon-list__item
       .m-icon-list__icon.o-icon.o-icon--map-marker
-      .m-icon-list__data= @product.country 
+      .m-icon-list__data= "Athens, Greece"
     %li.m-icon-list__item
       .m-icon-list__icon.o-icon.o-icon--map-marker
-      .m-icon-list__data= @product.volume
+      .m-icon-list__data= "0,15€/kilo"
     %li.m-icon-list__item
       .m-icon-list__icon.o-icon.o-icon--map-marker
-      .m-icon-list__data= @product.product_category.try(:name) rescue "- None -" 
+      .m-icon-list__data= "boomsgewas"
     %li.m-icon-list__item
       .m-icon-list__icon.o-icon.o-icon--map-marker
-      .m-icon-list__data= @product.size
-    %li.m-icon-list__item
-      .m-icon-list__icon.o-icon.o-icon--map-marker
-      .m-icon-list__data= @product.quality
+      .m-icon-list__data= "2 tons"

@@ -45,24 +45,25 @@
           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     
     %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= "Karantinos Best Quality Fruits S.A."
-    %ul.m-icon-list.l-grid
-      %li.m-icon-list__item.l-grid__item.one-half>
+    .m-icon-list.l-grid
+      .m-icon-list__item.l-grid__item.one-half>
         .m-icon-list__icon.o-icon.o-icon--map-marker
         .m-icon-list__data= "Athens, Greece"
-      %li.m-icon-list__item.l-grid__item.one-half>
+      .m-icon-list__item.l-grid__item.one-half>
         .m-icon-list__icon.o-icon.o-icon--star
         .m-icon-list__data= "5 stars"
-      %li.m-icon-list__item.l-grid__item.one-whole>
+      .m-icon-list__item.l-grid__item.one-whole>
         .m-icon-list__icon.o-icon.o-icon--map-marker
         .m-icon-list__data
           = "Comments from others"
           = link_to "Show", "#", class: "o-arrow"
-      %li.m-icon-list__item.l-grid__item.one-whole>
+      .m-icon-list__item.l-grid__item.one-whole>
         .m-icon-list__icon.o-icon.o-icon--map-marker
         .m-icon-list__data
           = "Other products"
           = link_to "Show", "#", class: "o-arrow"
-        .m-expandable.l-grid
+      .l-grid__item.one-whole>
+        .l-grid.m-expandable
           .l-grid__item.one-half>
             = render "partials/modules/m_product"
           .l-grid__item.one-half>
