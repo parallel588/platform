@@ -6,7 +6,7 @@
 
 .l-grid
   .l-grid__item.two-thirds>
-    %h1.o-headline{ title: "PRODUCT" }= @product.name
+    %h1.o-headline.o-headline--with-title{ title: "PRODUCT" }= @product.name
     .l-grid
       .l-grid__item.one-half>
         .m-image-gallery
@@ -44,7 +44,7 @@
           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     
-    %h2.o-headline{ title: "SUPPLIER" }= "Karantinos Best Quality Fruits S.A."
+    %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= "Karantinos Best Quality Fruits S.A."
     %ul.m-icon-list.l-grid
       %li.m-icon-list__item.l-grid__item.one-half>
         .m-icon-list__icon.o-icon.o-icon--map-marker
@@ -68,7 +68,7 @@
           .l-grid__item.one-half>
             = render "partials/modules/m_product"
 
-    %h2.o-headline= "Customers also viewed"
+    %h2.o-headline.o-headline--no-top-border= "Customers also viewed"
     .l-grid
       .l-grid__item.one-half>
         = render "partials/modules/m_product"

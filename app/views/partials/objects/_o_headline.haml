@@ -1,0 +1,6 @@
+- modifier ||= ""
+- title ||= (@in_styleguide)? "A title" : ""
+- content ||= (@in_styleguide)? "A headline" : ""
+
+.o-headline{ class: "#{modifier}", title: "#{title}" }
+  = content

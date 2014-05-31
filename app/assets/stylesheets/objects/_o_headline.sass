@@ -1,0 +1,35 @@
+// A headline object.
+//
+// .o-headline                - Default variation. Top and bottom border.
+// .o-headline--with-title    - Has a title on top based on the title attribute of the element.
+// .o-headline--no-top-border - Only has bottom border.
+// .o-headline--small         - Small headline size.
+//
+// Styleguide Headline.
+.o-headline
+  border-bottom: 1px solid $color__green
+  border-top: 1px solid $color__green
+  color: $color__green
+  font-family: $fonts-bold
+  font-size: em($font-size__big)
+  line-height: 1em
+  padding: em(5, $font-size__big) 0
+  position: relative
+
+.o-headline--with-title
+  &:before
+    background: $color__white
+    color: $color__brown
+    content: attr(title)
+    display: block
+    font-size: em($font-size__tiny, $font-size__big)
+    left: em(20, $font-size__tiny)
+    padding: em(0) em(4, $font-size__tiny)
+    position: absolute
+    top: -1em
+
+.o-headline--no-top-border
+  border-top: 0
+
+.o-headline--small
+  font-size: em($font-size__big, $font-size__big)
