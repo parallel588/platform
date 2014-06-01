@@ -13,8 +13,6 @@
     max-width: em($container__width, $font-size__tiny)
   a
     color: $color__white
-    &:hover
-      text-decoration: underline
 
 .m-user-area__image
   display: inline-block
@@ -44,6 +42,7 @@
   line-height: em($user-area__height, $font-size__tiny)
   margin-left: em(50, $font-size__tiny)
   text-align: center
+  +transition(background-color $animation--duration)
   vertical-align: middle
   width: em(40, $font-size__tiny)
   &:hover

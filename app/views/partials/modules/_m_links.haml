@@ -1,0 +1,16 @@
+- modifier ||= ""
+
+.m-links{ class: "#{modifier}" }
+  = link_to "About Us", "/about-us"
+  %span.m-links__separator= "\\"
+  = link_to "Payment", "/payment"
+  %span.m-links__separator= "\\"
+  = link_to "Delivery", "/delivery"
+  %span.m-links__separator= "\\"
+  = link_to "Safety", "/safety"
+  %span.m-links__separator= "\\"
+  = link_to "Contact", "/contact"
+  %span.m-links__separator= "\\"
+  = link_to "Social Responsibility", "/social-responsibility"
+  %span.m-links__separator= "\\"
+  = link_to "Help", "/help"

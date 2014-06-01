@@ -1,60 +1,40 @@
 // A simple button
 //
-// .o-button            - Default variation
-// .o-button--block     - Block, full width variation
-// .o-button--wide      - Double horizontal padding
-// .o-button--small     - Small variation of the button
-// .o-button--wireframe - Ghost button, shows up on landing page.
+// .o-button         - Default variation
+// .o-button--green  - Green background
+// .o-button--purple - Purple background
+// .o-button--orange - Orange background
+// .o-button--square - Square size
 //
 // Styleguide Button.
 
 .o-button
-  background: $color__green
   color: $color__white
   cursor: pointer
   border: 0
   display: inline-block
   font-family: $fonts
   font-size: em($font-size__base)
-  height: em($input__height__mobile, $font-size__base)
-  line-height: em($input__height__mobile, $font-size__base)
+  height: em($input__height, $font-size__base)
+  line-height: em($input__height, $font-size__base)
   padding: 0 em(40, $font-size__base)
   text-align: center
   text-decoration: none
   +transition(background-color $animation--duration)
-  width: 100%
-  .o-input + &
-    margin-top: em(10)
+
+.o-button--green
+  background: $color__green
   &:hover
-    background: lighten($color__green, 10%)
-  +respond-min($bp__tablet--portrait__width)
-    height: em($input__height, $font-size__base)
-    line-height: em($input__height, $font-size__base)
-    margin-top: 0
-    width: auto
+    background: $color__green--lite
 
-.o-button--small
-  padding: 0 em(20, $font-size__base)
-  +respond-min($bp__tablet--portrait__width)
-    height: em($input__height__mobile, $font-size__base)
-    line-height: em($input__height__mobile, $font-size__base)
+.o-button--purple
+  background: $color__purple
 
-.o-button--block
-  display: block
+.o-button--orange
+  background: $color__orange
 
-.o-button--wide
-  padding-left: em(80, $font-size__base)
-  padding-right: em(80, $font-size__base)
-
-.o-button--wireframe
-  background-color: transparent
-  border-radius: em(4, $font-size__tiny)
-  border: em(1, $font-size__tiny) solid $color__green
-  color: $color__green
-  font-size: em($font-size__tiny)
-  font-family: "Fira Mono Bold", sans-serif
-  +transition(background-color $animation--duration)
-  text-transform: uppercase
-  &:hover
-    background-color: $color__green
-    color: $color__white
+.o-button--square
+  height: em($input__height, $font-size__base)
+  padding: 0
+  width: em($input__height, $font-size__base)
+  
