@@ -1,98 +1,107 @@
+- content_for :body_class, "l-product-show"
+
 #notice= notice
 - if false
   = link_to 'Edit', edit_product_path(@product)  |
   = link_to 'Back', seller_dashboard_path
 
-
 .l-grid
   .l-grid__item.two-thirds>
-    %h1.o-headline.o-headline--with-title{ title: "PRODUCT" }= @product.name
-    .l-grid
-      .l-grid__item.one-half>
-        .m-image-gallery
-          .m-image-gallery__main
-            = image_tag("/assets/dummy/product.jpg")
-          .m-image-gallery__thumbnails
-            = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
-            = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
-            = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
-            = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
-            = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
-      .l-grid__item.one-half
-        %ul.m-icon-list
-          %li.m-icon-list__item
-            .m-icon-list__icon.o-icon.o-icon--map-marker
-            .m-icon-list__data= @product.country 
-          %li.m-icon-list__item
-            .m-icon-list__icon.o-icon.o-icon--map-marker
-            .m-icon-list__data= @product.volume
-          %li.m-icon-list__item
-            .m-icon-list__icon.o-icon.o-icon--map-marker
-            .m-icon-list__data= @product.product_category.try(:name) rescue "- None -" 
-          %li.m-icon-list__item
-            .m-icon-list__icon.o-icon.o-icon--map-marker
-            .m-icon-list__data= @product.size
-          %li.m-icon-list__item
-            .m-icon-list__icon.o-icon.o-icon--map-marker
-            .m-icon-list__data= @product.quality
-        .h3= "Data provided by the producer"
-        %p
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    .l-product-show__section
+      .l-product-show__headline
+        %h1.o-headline.o-headline--with-title{ title: "PRODUCT" }= @product.name
+      .l-grid
+        .l-grid__item.one-half>
+          .m-image-gallery
+            .m-image-gallery__main
+              = image_tag("/assets/dummy/product.jpg")
+            .m-image-gallery__thumbnails
+              = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
+              = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
+              = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
+              = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
+              = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
+        .l-grid__item.one-half
+          %ul.m-icon-list
+            %li.m-icon-list__item
+              .m-icon-list__icon.o-icon.o-icon--map-marker
+              .m-icon-list__data= @product.country 
+            %li.m-icon-list__item
+              .m-icon-list__icon.o-icon.o-icon--map-marker
+              .m-icon-list__data= @product.volume
+            %li.m-icon-list__item
+              .m-icon-list__icon.o-icon.o-icon--map-marker
+              .m-icon-list__data= @product.product_category.try(:name) rescue "- None -" 
+            %li.m-icon-list__item
+              .m-icon-list__icon.o-icon.o-icon--map-marker
+              .m-icon-list__data= @product.size
+            %li.m-icon-list__item
+              .m-icon-list__icon.o-icon.o-icon--map-marker
+              .m-icon-list__data= @product.quality
+          .h3= "Data provided by the producer"
+          %p
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     
-    %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= "Karantinos Best Quality Fruits S.A."
-    .m-icon-list.l-grid
-      .m-icon-list__item.l-grid__item.one-half>
-        .m-icon-list__icon.o-icon.o-icon--map-marker
-        .m-icon-list__data= "Athens, Greece"
-      .m-icon-list__item.l-grid__item.one-half>
-        .m-icon-list__icon.o-icon.o-icon--star
-        .m-icon-list__data= "5 stars"
-      .m-icon-list__item.l-grid__item.one-whole>
-        .m-icon-list__icon.o-icon.o-icon--map-marker
-        .m-icon-list__data
-          = "Comments from others"
-          = link_to "Show", "#", class: "o-arrow"
-      .m-icon-list__item.l-grid__item.one-whole>
-        .m-icon-list__icon.o-icon.o-icon--map-marker
-        .m-icon-list__data
-          = "Other products"
-          = link_to "Show", "#", class: "o-arrow"
-      .l-grid__item.one-whole>
-        .l-grid.m-expandable
-          .l-grid__item.one-half>
-            = render "partials/modules/m_product"
-          .l-grid__item.one-half>
-            = render "partials/modules/m_product"
+    .l-product-show__section
+      .l-product-show__headline
+        %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= "Karantinos Best Quality Fruits S.A."
+      .m-icon-list.l-grid
+        .m-icon-list__item.l-grid__item.one-half>
+          .m-icon-list__icon.o-icon.o-icon--map-marker
+          .m-icon-list__data= "Athens, Greece"
+        .m-icon-list__item.l-grid__item.one-half>
+          .m-icon-list__icon.o-icon.o-icon--star
+          .m-icon-list__data= "5 stars"
+        .m-icon-list__item.l-grid__item.one-whole>
+          .m-icon-list__icon.o-icon.o-icon--map-marker
+          .m-icon-list__data
+            = "Comments from others"
+            = link_to "Show", "#", class: "o-arrow"
+        .m-icon-list__item.l-grid__item.one-whole>
+          .m-icon-list__icon.o-icon.o-icon--map-marker
+          .m-icon-list__data
+            = "Other products"
+            = link_to "Show", "#", class: "o-arrow"
+        .l-grid__item.one-whole>
+          .l-grid.m-expandable
+            .l-grid__item.one-half>
+              = render "partials/modules/m_product"
+            .l-grid__item.one-half>
+              = render "partials/modules/m_product"
 
-    %h2.o-headline.o-headline--no-top-border= "Customers also viewed"
-    .l-grid
-      .l-grid__item.one-half>
-        = render "partials/modules/m_product"
-      .l-grid__item.one-half>
-        = render "partials/modules/m_product"
+    .l-product-show__section
+      .l-product-show__headline--big-margin
+        %h2.o-headline.o-headline--no-top-border= "Customers also viewed"
+      .l-grid
+        .l-grid__item.one-half>
+          = render "partials/modules/m_product"
+        .l-grid__item.one-half>
+          = render "partials/modules/m_product"
 
   .l-grid__item.one-third
-    .m-action-area
-      .m-action-area__section.m-action-area__section--bordered
-        .m-action-area__label= "Bid ends in"
-        .m-action-area__text= "0h:15m:20s"
-      .m-action-area__section
-        .m-action-area__label= "Last of 10 bids"
-        .m-action-area__text= "0,14€/kgr"
-      .m-action-area__section
-        %input.o-input
-        %button.o-button= "bid now"
-    .m-action-area
-      .m-action-area__section
-        %button.o-button= "buy now"
+    .l-product-show__section
+      .m-action-area
+        .m-action-area__section.m-action-area__section--bordered
+          .m-action-area__label= "Bid ends in"
+          .m-action-area__text= "0h:15m:20s"
+        .m-action-area__section
+          .m-action-area__label= "Last of 10 bids"
+          .m-action-area__text= "0,14€/kgr"
+        .m-action-area__section
+          %input.o-input
+          %button.o-button= "bid now"
+      .m-action-area
+        .m-action-area__section
+          %button.o-button= "buy now"
 
-    .o-advertisement.o-advertisement--300-600
-      = image_tag("/assets/dummy/300x250.jpg")
+    .l-product-show__section
+      .o-advertisement.o-advertisement--300-600
+        = image_tag("/assets/dummy/300x250.jpg")
 
 
 /     Bidding:
