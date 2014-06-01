@@ -5,3 +5,46 @@
 // Styleguide User Area.
 .m-user-area
   background-color: $color__green
+  color: $color__white
+  height: em($user-area__height, $font-size__tiny)
+  font-size: em($font-size__tiny)
+  .l-block
+    //reset l-block's max-width due to change of font-size context
+    max-width: em($container__width, $font-size__tiny)
+  a
+    color: $color__white
+    &:hover
+      text-decoration: underline
+
+.m-user-area__image
+  display: inline-block
+  margin: 0 em(10, $font-size__tiny)
+  position: relative
+  vertical-align: middle
+  > img
+    height: em(15, $font-size__tiny)
+    max-width: em(40, $font-size__tiny)
+    vertical-align: middle
+
+.m-user-area__notification
+  background-color: red
+  bottom: em(-5, 10)
+  border-radius: 100%
+  font-size: em(10, $font-size__tiny)
+  height: em(12, 10)
+  right: em(-5, 10)
+  line-height: em(14, 10)
+  position: absolute
+  text-align: center
+  width: em(12, 10)
+
+.m-user-area__settings
+  display: inline-block
+  height: em($user-area__height, $font-size__tiny)
+  line-height: em($user-area__height, $font-size__tiny)
+  margin-left: em(50, $font-size__tiny)
+  text-align: center
+  vertical-align: middle
+  width: em(40, $font-size__tiny)
+  &:hover
+    background-color: $color__green--lite

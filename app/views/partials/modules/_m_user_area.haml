@@ -2,9 +2,12 @@
   .l-block.l-block--skinny.text-right
     - if current_user 
       = "Good morning #{current_user.name}".html_safe
-      = "(#{link_to "Preferences", user_prefernces_path} | #{link_to "Logout", destroy_user_session_path, :method => :delete if current_user})".html_safe
-      = image_tag current_user.logo.url, :height => 40 if current_user && !current_user.logo.blank?
+      .m-user-area__image
+        = image_tag current_user.logo.url if current_user && !current_user.logo.blank?
+        .m-user-area__notification="5"
+      = link_to "Logout", destroy_user_session_path, :method => :delete if current_user
+      = link_to "", user_prefernces_path, class: "m-user-area__settings o-icon o-icon--cog"
       / = link_to "Seller Dashboard", seller_dashboard_url
       / = link_to "Buyer Dashboard", buyer_dashboard_url
     - else
-      = link_to "Login", new_user_session_path 
+      = link_to "Login", new_user_session_path
