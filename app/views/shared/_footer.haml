@@ -1,17 +1,29 @@
-.l-block.l-block--full-width.text-center
-  .m-links
-    = link_to "About Us", "/about-us"
-    %span.m-links__separator= "\\"
-    = link_to "Payment", "/payment"
-    %span.m-links__separator= "\\"
-    = link_to "Delivery", "/delivery"
-    %span.m-links__separator= "\\"
-    = link_to "Safety", "/safety"
-    %span.m-links__separator= "\\"
-    = link_to "Contact", "/contact"
-    %span.m-links__separator= "\\"
-    = link_to "Social Responsibility", "/social-responsibility"
-    %span.m-links__separator= "\\"
-    = link_to "Help", "/help"
+.l-footer.text-center
+  .l-footer__row
+    .m-links.m-links--small
+      = link_to "About Us", "/about-us"
+      %span.m-links__separator= "\\"
+      = link_to "Payment", "/payment"
+      %span.m-links__separator= "\\"
+      = link_to "Delivery", "/delivery"
+      %span.m-links__separator= "\\"
+      = link_to "Safety", "/safety"
+      %span.m-links__separator= "\\"
+      = link_to "Contact", "/contact"
+      %span.m-links__separator= "\\"
+      = link_to "Social Responsibility", "/social-responsibility"
+      %span.m-links__separator= "\\"
+      = link_to "Help", "/help"
+  .l-footer__row
+    .l-footer__half.l-footer__half--left>
+      = render "partials/modules/m_newsletter_signup" 
+    .l-footer__half.l-footer__half--right>
+      = render "partials/modules/m_social_links" 
+
+  .l-footer__row
+    .o-footnotes
+      Copyright 2014 Basketo. All Rights Reserved. Use of this site constitutes acceptance of the Basketo User Agreement and Privacy Policy.
+
+
 
 %script{ src: "/assets/libs/require.js", :"data-main" => "/assets/application.config.js" }

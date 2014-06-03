@@ -1,0 +1,12 @@
+- modifier ||= ""
+
+.m-newsletter-signup{ class: "#{modifier}" }
+  .m-newsletter-signup__label
+    newsletter
+  %form.m-newsletter-signup__form{ action: "http://basketo.us3.list-manage1.com/subscribe/post?u=937d8ae15f4bd015a027f16e0&amp;id=9d9cf9a55d", method: "post" }
+    .m-newsletter-signup__btn
+      %button.o-button.o-button--square.o-button--orange= "&raquo;".html_safe
+    .m-newsletter-signup__input-container
+      %input.o-input{ type: "email", name: "EMAIL", placeholder: "enter your email" }
+    %div{ style: "position: absolute; left: -5000px;" }
+      %input{ type: "text", name: "b_937d8ae15f4bd015a027f16e0_9d9cf9a55d" }        

@@ -1,0 +1,43 @@
+// List of social links.
+//
+// .m-social-links - Default Variation
+//
+// Styleguide Social Links.
+
+.m-social-links
+
+.m-social-links__label
+  display: inline-block
+  font-family: $fonts-headers
+  font-size: em($font-size__bigger)
+  margin-right: em(10, $font-size__bigger)
+  vertical-align: middle
+
+.m-social-links__links
+  display: inline-block
+  vertical-align: middle
+  .o-icon
+    display: inline-block
+    height: em(35)
+    line-height: em(32)
+    text-align: center
+    +transition(background-color $animation--duration)
+    width: em(35)
+  .o-icon--twitter
+    background-color: #78caef
+    &:hover
+      background-color: lighten(#78caef, 10%)
+  .o-icon--linkedin
+    background-color: #1384c8
+    &:hover
+      background-color: lighten(#1384c8, 10%)
+  .o-icon--facebook
+    background-color: #557bbc
+    &:hover
+      background-color: lighten(#557bbc, 10%)
+  .o-icon--googleplus
+    background-color: #4b4b4b
+    &:hover
+      background-color: lighten(#4b4b4b, 10%)
+
+
