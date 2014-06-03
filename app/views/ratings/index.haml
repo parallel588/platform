@@ -30,6 +30,8 @@
     = f.input :stars
   .field
     = f.input :review
+  .field
+    = f.input :auction_id, :collection => Proc.new{ @reviewed_user_possible_auctions.all.map{ |a| [Product.find(a.product_id).to_s, a.id] } }  
   .actions
     = f.submit
 

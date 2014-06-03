@@ -1,8 +1,13 @@
 class Rating < ActiveRecord::Base
 
+  belongs_to :auction
+
+
   after_create :update_user_rating_average
-
-
+  
+  validates :auction, presence: true
+  validates :auction_id, presence: true
+  validates :stars, presence: true
 
   def reviewer
     return User.find_by_id(self.from_user_id) || nil

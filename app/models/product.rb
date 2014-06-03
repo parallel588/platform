@@ -21,4 +21,9 @@ class Product < ActiveRecord::Base
   def active_auction
     return self.auctions.order("created_at DESC").first
   end
+
+
+  def to_s
+    return "#{self.volume} #{self.name} from #{self.country}"    
+  end
 end

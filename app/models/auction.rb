@@ -4,7 +4,8 @@ class Auction < ActiveRecord::Base
   belongs_to :product
   belongs_to :user, foreign_key: :seller_id
   has_many :biddings
-  
+  has_many :ratings
+
   # attr_protected [nil]
   
   validates :starting_at, presence: true 

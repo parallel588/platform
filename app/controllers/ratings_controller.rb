@@ -26,6 +26,7 @@ class RatingsController < ApplicationController
   def index
   	@reviewed_user = User.where("id = ?", params[:user_id]).first
     @ratings = Rating.where("to_user_id = ?", params[:user_id])
+    @reviewed_user_possible_auctions = Auction.where(:winning_buyer_id => current_user.id, :seller_id => @reviewed_user.id)
     @new_rating = Rating.new({:from_user_id => current_user.id, :to_user_id => params[:user_id]})
   end
 
@@ -33,7 +34,7 @@ class RatingsController < ApplicationController
 
   private
   def rating_params
-  	params.require(:rating).permit(:stars, :review)
+  	params.require(:rating).permit(:stars, :review, :rating_id)
   end
 
 end
