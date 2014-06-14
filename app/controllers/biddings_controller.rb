@@ -15,7 +15,8 @@ class BiddingsController < ApplicationController
   	if bidding.save
   		flash[:notice] = t('biddings.your_bidding_is_successfully_submitted')
   		redirect_to buyer_dashboard_url
-  	else  	  
+  	else  
+      flash[:warning] = bidding.errors[:amount][0]
   		redirect_to new_auction_bidding_path(@auction)            
   	end
   end

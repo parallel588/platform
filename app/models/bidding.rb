@@ -12,8 +12,12 @@ class Bidding < ActiveRecord::Base
   validate :amount, presence: true  
 
   validates_each :amount do |record, attr, value|
-    record.errors.add(attr, 'must be greater than the starting bid') if !value.blank? && !record.auction.starting_bid.blank? && value < record.auction.starting_bid
+    record.errors.add(attr, 'must be greater than the starting bid') if !value.blank? && !record.auction.starting_bid.blank? && value < record.auction.starting_bid    
   end
+
+  validate :bidding_is_greater_than_current
+
+
   
   
   after_save :update_auction_winning_bidding
@@ -45,12 +49,16 @@ class Bidding < ActiveRecord::Base
   
 
   
-  private
-
-  def validates_bidding_is_greater_than_current_top_bidding
-  	return self.amount > self.auction.get_current_winning_bidding_value	
-  end
   
+
+  def bidding_is_greater_than_current
+    unless self.amount > self.auction.get_current_winning_bidding_value 
+      errors.add(:amount, "can't be in the less or same as the current winning ammount")
+    end
+  end
+
+  
+  private
 
   def update_auction_winning_bidding
     self.auction.refresh_top_bidding!
