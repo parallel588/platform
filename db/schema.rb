@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601155132) do
+ActiveRecord::Schema.define(version: 20140614152730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20140601155132) do
     t.float    "starting_bid"
     t.float    "bid_increment"
     t.float    "buy_out_bid"
-    t.integer  "winning_buyer_id"
     t.integer  "winning_bidding_id"
     t.integer  "seller_id"
+    t.integer  "winning_buyer_id"
   end
 
   add_index "auctions", ["ending_at"], name: "index_auctions_on_ending_at", using: :btree
@@ -52,6 +52,26 @@ ActiveRecord::Schema.define(version: 20140601155132) do
   add_index "biddings", ["product_id"], name: "index_biddings_on_product_id", using: :btree
   add_index "biddings", ["status"], name: "index_biddings_on_status", using: :btree
   add_index "biddings", ["user_id"], name: "index_biddings_on_user_id", using: :btree
+
+  create_table "billings", force: true do |t|
+    t.string   "card_number"
+    t.date     "expiration_date"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "country"
+    t.string   "vat_number"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "three_digit"
+  end
+
+  add_index "billings", ["user_id"], name: "index_billings_on_user_id", using: :btree
 
   create_table "product_categories", force: true do |t|
     t.string   "name"
@@ -117,7 +137,6 @@ ActiveRecord::Schema.define(version: 20140601155132) do
     t.string   "email",                  default: "",     null: false
     t.string   "encrypted_password",     default: "",     null: false
     t.string   "name"
-    t.string   "vat"
     t.string   "occupation"
     t.string   "address_street"
     t.string   "address_country"
@@ -158,6 +177,5 @@ ActiveRecord::Schema.define(version: 20140601155132) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   add_index "users", ["user_type"], name: "index_users_on_user_type", using: :btree
-  add_index "users", ["vat"], name: "index_users_on_vat", using: :btree
 
 end

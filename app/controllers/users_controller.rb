@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   private 
   
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :logo, :logo_cache, :name, :occupation, :vat, :address_street, :address_country, :address_city, :address_zip, :phone_number, :fax_number, :link, :user_type, :buyer_type)
+    params.require(:user).permit(:email, :password, :password_confirmation, :logo, :logo_cache, :name, :occupation, :vat, :address_street, :address_country, :address_city, :address_zip, :phone_number, :fax_number, :link, :user_type, :buyer_type, billings_attributes: Billing.attribute_names.map(&:to_sym))
   end
   
   

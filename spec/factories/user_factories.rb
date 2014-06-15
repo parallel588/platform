@@ -5,7 +5,6 @@ FactoryGirl.define do
     sequence(:name) { |n| "Savvas Georgiou #{n}" }
     sequence(:email) { |n| "user#{n}@basekto.com" }
     
-    vat '12345VAT'
     address_street  'Salaminos 16'
     address_city 'Athens'
     address_country 'Greece'

@@ -1,13 +1,11 @@
 %h3
   Edit your personal profile
 
-= simple_form_for(@user, as: :user, :method => :put, url: update_user_preferences_path, :html => {:multipart => true}) do |f| 
+= simple_nested_form_for(@user, as: :user, :method => :put, url: update_user_preferences_path, :html => {:multipart => true}) do |f| 
 
   = f.input :email, autofocus: true,  as: :email 
   
   = f.input :name 
-
-  = f.input :vat 
 
   = f.input :occupation 
   
@@ -33,6 +31,36 @@
 
   = f.input :password_confirmation 
   
+
+  = f.fields_for :billings do |billings_form| 
+    %p
+      Add an Auction
+    = billings_form.input :card_number 
+    = billings_form.input :expiration_date 
+    = billings_form.input :three_digit
+    = billings_form.input :first_name, value: @user.name.split(" ")[0] || "" 
+    = billings_form.input :last_name, value: @user.name.split(" ")[1] || ""
+    = billings_form.input :address_line_1
+    = billings_form.input :address_line_2
+    = billings_form.input :city
+    = billings_form.input :state
+    = billings_form.input :postal_code
+    = billings_form.input :country
+    = billings_form.input :vat_number
+    
+
+    
+    = billings_form.link_to_remove "Remove this auction" 
+  
+  
+  %p
+    = f.link_to_add "Add another Biling", :billings
+
+
+
+
+
+
   %div
     = f.submit "Update preferences"
 

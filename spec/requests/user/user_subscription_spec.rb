@@ -12,7 +12,6 @@ describe "UserSubscription" do
       
       fill_in 'Email', :with =>  user.email
       fill_in 'Name', :with => user.name
-      fill_in 'Vat', :with => user.vat
       fill_in 'Occupation', :with => user.occupation
       fill_in 'street', :with => user.address_street
       fill_in 'zip', :with => user.address_zip

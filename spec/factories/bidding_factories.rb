@@ -2,7 +2,7 @@
 FactoryGirl.define do
 
   factory :bidding do
-        
+    amount 	11.0
   end
   
   

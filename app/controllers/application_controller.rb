@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   
   
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << [:logo, :logo_cache, :name, :occupation, :vat, :address_street, :address_country, :address_city, :address_zip, :phone_number, :fax_number, :link]
+    devise_parameter_sanitizer.for(:sign_up) << [:logo, :logo_cache, :name, :occupation, :address_street, :address_country, :address_city, :address_zip, :phone_number, :fax_number, :link]
   end
   # ################## End of Overriding DEVISE ################## #
   
