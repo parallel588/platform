@@ -6,44 +6,48 @@
 .m-user-area
   background-color: $color__green
   color: $color__white
-  height: em($user-area__height, $font-size__tiny)
-  font-size: em($font-size__tiny)
+  height: em($user-area__height, $font-size__small)
+  font-family: $fonts__light
+  font-size: em($font-size__small)
   .l-block
     //reset l-block's max-width due to change of font-size context
-    max-width: em($container__width, $font-size__tiny)
+    max-width: em($container__width, $font-size__small)
   a
     color: $color__white
+    display: inline-block
+    line-height: em($user-area__height, $font-size__small)
+    vertical-align: middle
 
 .m-user-area__image
   display: inline-block
-  margin: 0 em(10, $font-size__tiny)
+  margin: 0 em(10, $font-size__small)
   position: relative
   vertical-align: middle
   > img
-    height: em(15, $font-size__tiny)
-    max-width: em(40, $font-size__tiny)
+    height: em(15, $font-size__small)
+    max-width: em(40, $font-size__small)
     vertical-align: middle
 
 .m-user-area__notification
   background-color: red
-  bottom: em(-5, 10)
+  bottom: em(-5, $font-size__tiniest)
   border-radius: 100%
-  font-size: em(10, $font-size__tiny)
-  height: em(12, 10)
-  right: em(-5, 10)
-  line-height: em(14, 10)
+  font-size: em($font-size__tiniest, $font-size__small)
+  height: em(12, $font-size__tiniest)
+  right: em(-5, $font-size__tiniest)
+  line-height: em(14, $font-size__tiniest)
   position: absolute
   text-align: center
-  width: em(12, 10)
+  width: em(12, $font-size__tiniest)
 
 .m-user-area__settings
   display: inline-block
-  height: em($user-area__height, $font-size__tiny)
-  line-height: em($user-area__height, $font-size__tiny)
-  margin-left: em(50, $font-size__tiny)
+  height: em($user-area__height, $font-size__small)
+  line-height: em($user-area__height, $font-size__small)
+  margin-left: em(50, $font-size__small)
   text-align: center
   +transition(background-color $animation--duration)
   vertical-align: middle
-  width: em(40, $font-size__tiny)
+  width: em(40, $font-size__small)
   &:hover
     background-color: $color__green--lite

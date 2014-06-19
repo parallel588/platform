@@ -1,7 +1,7 @@
-@function em($px, $base: 16)
+@function em($px, $base: $font-size__base)
   @return ($px / $base) + em
 
-@function rem($px, $base: 16)
+@function rem($px, $base: $font-size__base)
   @return ($px / $base) + rem
 
 =font-size($font-size, $rem: false) 

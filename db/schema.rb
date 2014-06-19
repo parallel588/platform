@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20140614152730) do
     t.float    "starting_bid"
     t.float    "bid_increment"
     t.float    "buy_out_bid"
+    t.integer  "winning_buyer_id"
     t.integer  "winning_bidding_id"
     t.integer  "seller_id"
-    t.integer  "winning_buyer_id"
   end
 
   add_index "auctions", ["ending_at"], name: "index_auctions_on_ending_at", using: :btree

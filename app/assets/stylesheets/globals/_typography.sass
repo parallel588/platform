@@ -11,16 +11,18 @@
 // Styleguide Typography.
 body,
 .copy
-  font: normal #{$fonts__base}/#{$fonts__line-height} $fonts
-  font-weight: 400
-  
+  font-family: $fonts__regular
+  font-size: #{$font-size__base}px
+  font-weight: normal
+  line-height: #{$fonts__line-height}em
+
 .h1,
 .h2,
 .h3
-  font-family: $fonts-headers
-  font-weight: 100
+  font-family: $fonts__header--bold
+  font-weight: normal
 .h1
-  font-size: em($font-size__huge)
+  font-size: em($font-size__giga)
   line-height: 1em
 .h2
   font-size: em($font-size__mega)
@@ -29,12 +31,14 @@ body,
 .h4
   font-size: em($font-size__big)
 
-table
-  font-family: Monaco, Consolas, "Lucida Console", monospace
+b, strong
+  font-family: $fonts__bold
 
 
+//Load the webfont files
 +font-face("DINRoundPro-Light", "/assets/din-round/din-round-light")
 +font-face("DINRoundPro-Bold", "/assets/din-round/din-round-bold")
 +font-face("PFDinText-Regular", "/assets/din/din-regular")
 +font-face("PFDinText-Bold", "/assets/din/din-bold")
++font-face("PFDinText-Light", "/assets/din/din-light")
 +font-face("Icons", "/assets/elusive/elusive")

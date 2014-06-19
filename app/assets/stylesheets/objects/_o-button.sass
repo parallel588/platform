@@ -1,6 +1,7 @@
 // A simple button
 //
 // .o-button         - Default variation
+// .o-button--block  - Display block variation. Smaller h-padding (10px)
 // .o-button--green  - Green background
 // .o-button--purple - Purple background
 // .o-button--orange - Orange background
@@ -13,14 +14,20 @@
   cursor: pointer
   border: 0
   display: inline-block
-  font-family: $fonts
-  font-size: em($font-size__base)
-  height: em($input__height, $font-size__base)
-  line-height: em($input__height, $font-size__base)
-  padding: 0 em(40, $font-size__base)
+  font-family: $fonts__light
+  font-size: em($font-size__big)
+  height: em($input__height, $font-size__big)
+  line-height: em($input__height, $font-size__big)
+  padding: 0 em(40, $font-size__big)
   text-align: center
   text-decoration: none
   +transition(background-color $animation--duration)
+  &:active,
+  &:visited,
+  &:hover
+    color: $color__white
+  &:hover
+    text-decoration: none
 
 .o-button--green
   background: $color__green
@@ -36,7 +43,11 @@
     background: lighten($color__orange, 10%)
 
 .o-button--square
-  height: em($input__height, $font-size__base)
+  height: em($input__height)
+  font-size: #{$font-size__base}px
   padding: 0
-  width: em($input__height, $font-size__base)
+  width: em($input__height)
   
+.o-button--block
+  display: block
+  padding: 0 em(10, $font-size__big)
