@@ -89,7 +89,9 @@
       .m-action-area
         .m-action-area__section
           .m-action-area__left>
-            = image_tag "/assets/dummy/timer.jpg", style: "display: block; margin: 0 auto;"
+
+            #timecircle{ "data-timer" => "1728000", style: "width: 100px; height: 100px;" }
+
           .m-action-area__right
             .m-action-area__label= "Bid ends in"
             .m-action-area__text= "0h:15m:20s"
