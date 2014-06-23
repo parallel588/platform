@@ -1,13 +1,30 @@
 .m-action-area
   background-color: $color__green
-  padding: em(10)
+  padding: em(20)
   text-align: center
 
+.m-action-area__section + .m-action-area__section
+  border-top: 1px solid $color__white
+  margin-top: em(20)
+  padding-top: em(20)
+  .o-input
+    margin-bottom: em(5, $font-size__big)
+
 .m-action-area__label
-  font-size: em($font-size__small)
+  font-size: em($font-size__big)
+  margin-bottom: em(5, $font-size__big)
 
 .m-action-area__text
   color: $color__white
-  font-size: em($font-size__big)
+  font-size: em($font-size__bigger)
 
-.m-action-area__separator
+.m-action-area__left
+  display: inline-block
+  vertical-align: middle
+  width: 35%
+
+.m-action-area__right
+  display: inline-block
+  margin-left: 5%
+  vertical-align: middle
+  width: 60%

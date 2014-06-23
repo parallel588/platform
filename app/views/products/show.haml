@@ -87,18 +87,25 @@
   .l-grid__item.one-third
     .l-product-show__section
       .m-action-area
-        .m-action-area__section.m-action-area__section--bordered
-          .m-action-area__label= "Bid ends in"
-          .m-action-area__text= "0h:15m:20s"
         .m-action-area__section
-          .m-action-area__label= "Last of 10 bids"
-          .m-action-area__text= "0,14€/kgr"
+          .m-action-area__left>
+            = image_tag "/assets/dummy/timer.jpg", style: "display: block; margin: 0 auto;"
+          .m-action-area__right
+            .m-action-area__label= "Bid ends in"
+            .m-action-area__text= "0h:15m:20s"
         .m-action-area__section
-          %input.o-input
-          %button.o-button= "bid now"
+          .m-action-area__left>
+            .m-action-area__label= "Last of 10 bids"
+            .m-action-area__text= "0,14€/kgr"
+          .m-action-area__right
+            %input.o-input
+            %button.o-button.o-button--block.o-button--orange= "Bid now"
       .m-action-area
         .m-action-area__section
-          %button.o-button= "buy now"
+          .m-action-area__left>
+            .m-action-area__text= "0,14€/kgr"
+          .m-action-area__right
+            %button.o-button.o-button--block.o-button--orange= "Buy now"
 
     .l-product-show__section
       .o-advertisement.o-advertisement--300-600
