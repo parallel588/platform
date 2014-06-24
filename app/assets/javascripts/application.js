@@ -3,22 +3,14 @@ require([
   "jquery", 
   "backbone", 
   "waypoints",
-  "timecircles",
-  "rails_dependencies"
+  "rails_dependencies",
+  "modules/countdown-timer"
 ], function(app, $) {
 
-  $("#timecircle").TimeCircles({ 
-    count_past_zero: false,
-    circle_bg_color: "#8DBF44",
-    fg_width: 0.2,
-    bg_width: 0.1,
-    direction: "counterClockwise",
-    time: {
-      Days: { show: false },
-      Hours: { show: false },
-      Minutes: { color: "white" },
-      Seconds: { show: false }
-    }
+  // Initialize SVG counter in product page
+  var CountdownTimer = require("modules/countdown-timer");
+  $(".js-countdown-timer").each(function () {
+    new CountdownTimer({ el: $(this) });
   });
 
   console.log("load app js");

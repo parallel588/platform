@@ -89,9 +89,7 @@
       .m-action-area
         .m-action-area__section
           .m-action-area__left>
-
-            #timecircle{ "data-timer" => "1728000", style: "width: 100px; height: 100px;" }
-
+            .js-countdown-timer{ style: "width: 100px; height: 100px;", "data-ending-at" => @product.ending_at, "data-starting-at" => @product.starting_at }
           .m-action-area__right
             .m-action-area__label= "Bid ends in"
             .m-action-area__text= "0h:15m:20s"

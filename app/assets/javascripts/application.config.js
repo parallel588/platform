@@ -10,6 +10,6 @@ requirejs.config({
     "skrollr": "libs/skrollr",
     "waypoints": "libs/waypoints",
     "owl.carousel": "bower_components/OwlCarousel/owl-carousel/owl.carousel",
-    "timecircles": "libs/TimeCircles"
+    "raphael": "libs/raphael-min"
   }
 });
