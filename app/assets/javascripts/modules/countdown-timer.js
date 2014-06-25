@@ -1,29 +1,40 @@
 define([
   "app",
   "backbone",
-  "raphael"
+  "raphael",
+  "underscore"
 ], function (app) {
   return CountdownTimer = Backbone.View.extend({
-    events: {
-    },
-    initialize: function () {
+    
+    circleRadius: 30,
+    circleSize: 50,
 
+    initialize: function () {
+      //Set initial variables
       this.startingDate = this.$el.data("startingAt");
       this.endingDate = this.$el.data("endingAt");
       this.wholeDurationMinutes = this.getWholeDurationMinutes();
       this.remainingMinutes = this.getRemainingMinutes();
-      console.log(this.wholeDurationMinutes, this.remainingMinutes);
+      //Create the SVG and animate to value
+      this.createGraph();
+      //Set repeating update function every 5 seconds
+      this.checkTime();
+      this.interval = setInterval(_.bind(this.checkTime, this), 5000)
+    },
 
-      //Get Time
-      //Create Graph (Time)
-      //Set repeating function
-        //Get Time
-        //Update Graph (Time)
-          //If done: 
-            //Cancel timer
-            //close form
+    getRemainingMinutes: function () {
+      var endingDate = new Date(this.endingDate);
+      var currentDate = new Date();
+      return parseInt((endingDate - currentDate)/(60*1000), 10);
+    },
 
+    getWholeDurationMinutes: function () {
+      var startingDate = new Date(this.startingDate);
+      var endingDate = new Date(this.endingDate);
+      return parseInt((endingDate - startingDate)/(60*1000), 10);
+    },
 
+    createGraph: function () {
       var canvas = Raphael(this.el, 0, 0, 100, 100);
       var circle = canvas.circle(50, 50, 40);
       circle.attr({
@@ -53,29 +64,33 @@ define([
         };
       };
 
-      //make an arc at 50,50 with a radius of 30 that grows from 0 to 40 of 100 with a bounce
-      var my_arc = canvas.path().attr({
+      //make an arc at 50,50 with a radius of 30
+      this.counterCircle = canvas.path().attr({
         "stroke": "white",
         "stroke-width": 35,
-        arc: [50, 50, this.wholeDurationMinutes, this.wholeDurationMinutes, 30]
+        arc: [this.circleSize, this.circleSize, this.wholeDurationMinutes, this.wholeDurationMinutes, this.circleRadius]
       });
+    },
 
-      my_arc.animate({
-        arc: [50, 50, this.remainingMinutes, this.wholeDurationMinutes, 30]
+    animateToTime: function (timeMinutes) {
+      var color = (timeMinutes < 60) ? "red" : "white";
+      this.counterCircle.animate({
+        "stroke": color,
+        arc: [this.circleSize, this.circleSize, timeMinutes, this.wholeDurationMinutes, this.circleRadius]
       }, 1500, "bounce");
-
     },
 
-    getRemainingMinutes: function () {
-      var endingDate = new Date(this.endingDate);
-      var currentDate = new Date();
-      return parseInt((endingDate - currentDate)/(60*1000), 10);
+    checkTime: function () {
+      if (this.getRemainingMinutes() <= 0) {
+        clearInterval(this.interval);
+        this.hideForm();
+      } else {
+        this.animateToTime(this.getRemainingMinutes());
+      }
     },
 
-    getWholeDurationMinutes: function () {
-      var startingDate = new Date(this.startingDate);
-      var endingDate = new Date(this.endingDate);
-      return parseInt((endingDate - startingDate)/(60*1000), 10);
+    hideForm: function () {
+      $(".js-action-form").slideUp(app.animationDuration);
     }
 
   });
