@@ -1,7 +1,8 @@
 define([
   "app",
   "backbone",
-  "owlCarousel"
+  "owlCarousel",
+  "fancybox"
 ], function (app) {
   return ImageGallery = Backbone.View.extend({
 
@@ -11,6 +12,11 @@ define([
 
     initialize: function () {
       this.initOwlCarousel();
+      this.setFancybox();
+    },
+
+    setFancybox: function () {
+      this.$(".js-image-gallery__fancybox").fancybox();
     },
 
     onThumbnailClickHandler: function (event) {
@@ -23,7 +29,8 @@ define([
       this.$(".js-image-gallery__owl").owlCarousel({
         navigation: true,
         pagination: false,
-        rewindNav: false
+        rewindNav: false,
+        navigationText : ["<span class='o-icon o-icon--arrow-left'></span>", "<span class='o-icon o-icon--arrow-right'></span>"],
       });
     },
 

@@ -10,6 +10,7 @@ requirejs.config({
     "skrollr": "libs/skrollr",
     "waypoints": "libs/waypoints",
     "raphael": "libs/raphael-min",
-    "owlCarousel": "bower_components/OwlCarousel/owl-carousel/owl.carousel"
+    "owlCarousel": "bower_components/OwlCarousel/owl-carousel/owl.carousel",
+    "fancybox": "bower_components/fancybox/source/jquery.fancybox"
   }
 });
