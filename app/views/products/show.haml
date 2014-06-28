@@ -11,15 +11,13 @@
         %h1.o-headline.o-headline--with-title{ title: "PRODUCT" }= @product.name
       .l-grid
         .l-grid__item.one-half>
-          .m-image-gallery
-            .m-image-gallery__main
+          .m-image-gallery.js-image-gallery
+            = link_to "http://basketo.co/assets/images/background/farmer_focus_m.jpg", class: "m-image-gallery__main js-image-gallery__main" do
               = image_tag("/assets/dummy/product.jpg")
-            .m-image-gallery__thumbnails
-              = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
-              = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
-              = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
-              = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
-              = image_tag "/assets/dummy/product.jpg", class: "m-image-gallery__thumbnail", width: 55
+            .m-image-gallery__thumbnails.js-image-gallery__owl
+              - (0..10).each do |i|
+                .m-image-gallery__thumbnail.js-image-gallery__thumbnail{ class: ("is-active" if i == 0), data: { image: "http://basketo.co/assets/images/world-map-bg.png", target: "http://basketo.co/assets/images/background/hand_crops_m.jpg" }}
+                  = image_tag "/assets/dummy/product.jpg", width: 55
         .l-grid__item.one-half
           %ul.m-icon-list
             %li.m-icon-list__item

@@ -7,6 +7,7 @@
     "backbone": "",
     "backbone.wreqr": "",
     "modernizr": "",
-    "jasmine.async": ""
+    "jasmine.async": "",
+    "OwlCarousel": "1.3.2"
   }
 }
