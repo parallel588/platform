@@ -16,7 +16,10 @@ define([
     },
 
     setFancybox: function () {
-      this.$(".js-image-gallery__fancybox").fancybox();
+      this.$(".js-image-gallery__fancybox").fancybox({
+        openEffect: "elastic",
+        closeEffect: "elastic"
+      });
     },
 
     onThumbnailClickHandler: function (event) {
