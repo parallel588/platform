@@ -53,8 +53,9 @@
           .m-icon-list__icon.o-icon.o-icon--map-marker
           .m-icon-list__data= "Athens, Greece"
         .m-icon-list__item.l-grid__item.one-half>
-          .m-icon-list__icon.o-icon.o-icon--star
-          .m-icon-list__data= "5 stars"
+          .m-icon-list__icon.o-icon.o-icon--star-outline
+          .m-icon-list__data
+            = render "partials/modules/m_ratings", stars: 3
         .m-icon-list__item.l-grid__item.one-whole>
           .m-icon-list__icon.o-icon.o-icon--map-marker
           .m-icon-list__data
