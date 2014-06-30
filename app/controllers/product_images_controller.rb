@@ -1,7 +1,13 @@
 class ProductImagesController < ApplicationController
   inherit_resources
-  actions :edit, :update, :destroy
+  actions :edit, :update, :show
   belongs_to :product
+
+  def update
+    resource.crop!(params[:crop_x], params[:crop_y],
+                   params[:crop_w], params[:crop_h])
+    redirect_to  product_photo_path(parent, resource)
+  end
 
   protected
 

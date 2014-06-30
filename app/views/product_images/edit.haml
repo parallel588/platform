@@ -1,0 +1,11 @@
+= simple_form_for(resource, url: product_photo_path(parent, resource)) do |f|
+  = hidden_field_tag :crop_x
+  = hidden_field_tag :crop_y
+  = hidden_field_tag :crop_w
+  = hidden_field_tag :crop_h
+
+  .crop-image
+    = image_tag resource.url, id: 'product-image-crop'
+
+  .actions
+    = f.submit 'Crop'

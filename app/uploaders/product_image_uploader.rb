@@ -18,6 +18,7 @@ class ProductImageUploader < CarrierWave::Uploader::Base
 
 
   version :square do
+    process :crop_square
     process resize_to_fit: [100, 100]
   end
 
@@ -29,6 +30,15 @@ class ProductImageUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [1600, 1200]
   end
 
+  def crop_square
+    manipulate! do |img|
+      if model.crop_x.present? && model.crop_y.present? && model.crop_w.present? && model.crop_h.present?
+        geometry = "#{model.crop_w}x#{model.crop_h}+#{model.crop_x}+#{model.crop_y}"
+        img.crop geometry
+      end
+      img
+    end
+  end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url

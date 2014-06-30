@@ -76,7 +76,7 @@ class ProductsController < ApplicationController
                 :bidding, :ending_at, :delivery_at, :shipping_information,
                 :packaging_information, :pallets, :starting_at, :user_id,
                 :product_category_id,
-                product_images_attributes: [:file],
+                product_images_attributes: [:id, :file, :_destroy],
                 auctions_attributes: [:id, :starting_at, :ending_at, :_destroy,
                                       :starting_bid, :bid_increment,
                                       :buy_out_bid])
