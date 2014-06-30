@@ -37,7 +37,7 @@ require([
               $("#crop_h").val(Math.round(c.h * ratio));
           }
 
-          $('#product-image-crop').Jcrop({keySupport: false, onSelect: updateCoordinates, maxSize: [100, 100]});
+          $('#product-image-crop').Jcrop({keySupport: false, onSelect: updateCoordinates, minSize: [100, 100]});
       }
   })
 });
