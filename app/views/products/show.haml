@@ -13,22 +13,25 @@
         .l-grid__item.one-half>
           .m-image-gallery.js-image-gallery
             = link_to "http://basketo.co/assets/images/background/farmer_focus_m.jpg", class: "m-image-gallery__main js-image-gallery__main js-image-gallery__fancybox" do
-              = image_tag("/assets/dummy/product.jpg")
+              - if @product.product_image
+                = image_tag @product.product_image.url(:medium), style: 'max-width: 300px;'
+              - else
+                = image_tag("/assets/dummy/product.jpg")
             .m-image-gallery__thumbnails.js-image-gallery__owl
-              - (0..10).each do |i|
+              - @product.product_images.limit(10).each_with_index do |image, i|
                 .m-image-gallery__thumbnail.js-image-gallery__thumbnail{ class: ("is-active" if i == 0), data: { image: "http://basketo.co/assets/images/world-map-bg.png", target: "http://basketo.co/assets/images/background/hand_crops_m.jpg" }}
-                  = image_tag "/assets/dummy/product.jpg", width: 55
+                  = image_tag image.url(:square), width: 55
         .l-grid__item.one-half
           %ul.m-icon-list
             %li.m-icon-list__item
               .m-icon-list__icon.o-icon.o-icon--map-marker
-              .m-icon-list__data= @product.country 
+              .m-icon-list__data= @product.country
             %li.m-icon-list__item
               .m-icon-list__icon.o-icon.o-icon--map-marker
               .m-icon-list__data= @product.volume
             %li.m-icon-list__item
               .m-icon-list__icon.o-icon.o-icon--map-marker
-              .m-icon-list__data= @product.product_category.try(:name) rescue "- None -" 
+              .m-icon-list__data= @product.product_category.try(:name) rescue "- None -"
             %li.m-icon-list__item
               .m-icon-list__icon.o-icon.o-icon--map-marker
               .m-icon-list__data= @product.size
@@ -44,7 +47,7 @@
               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
               proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    
+
     .l-product-show__section
       .l-product-show__headline
         %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= "Karantinos Best Quality Fruits S.A."
@@ -111,28 +114,28 @@
 
 
 /     Bidding:
-/   = @product.bidding 
+/   = @product.bidding
 / %p
 /   %strong
 /     Ending at:
-/   = @product.ending_at 
+/   = @product.ending_at
 / %p
 /   %strong
 /     Delivery at:
-/   = @product.delivery_at 
+/   = @product.delivery_at
 / %p
 /   %strong
 /     Shipping information:
-/   = @product.shipping_information 
+/   = @product.shipping_information
 / %p
 /   %strong
 /     Packaging information:
-/   = @product.packaging_information 
+/   = @product.packaging_information
 / %p
 /   %strong
 /     Pallets:
-/   = @product.pallets 
+/   = @product.pallets
 / %p
 /   %strong
 /     Starting at:
-/   = @product.starting_at 
+/   = @product.starting_at

@@ -11,6 +11,7 @@ requirejs.config({
     "waypoints": "libs/waypoints",
     "raphael": "libs/raphael-min",
     "owlCarousel": "bower_components/OwlCarousel/owl-carousel/owl.carousel",
-    "fancybox": "bower_components/fancybox/source/jquery.fancybox"
+    "fancybox": "bower_components/fancybox/source/jquery.fancybox",
+    'jquery_nested_form' : 'jquery_nested_form'
   }
 });

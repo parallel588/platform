@@ -1,55 +1,65 @@
-= simple_nested_form_for(@product) do |f| 
-  - if @product.errors.any? 
+= simple_nested_form_for(@product) do |f|
+  - if @product.errors.any?
     #error_explanation
       %h2
         = "#{pluralize(@product.errors.count, "error")}  prohibited this product from being saved:"
 
       %ul
-        - @product.errors.full_messages.each do |msg| 
+        - @product.errors.full_messages.each do |msg|
           %li= msg
 
   .field
-    = f.input :name 
+    = f.input :name
   .field
-    = f.input :product_category_id, collection: ProductCategory.roots, as: :grouped_select, group_method: :children  
+    = f.input :product_category_id, collection: ProductCategory.roots, as: :grouped_select, group_method: :children
   .field
-    = f.input :country 
+    = f.input :country
   .field
-    = f.input :volume 
+    = f.input :volume
   .field
-    = f.input :size 
+    = f.input :size
   .field
-    = f.input :quality 
+    = f.input :quality
   .field
-    = f.input :bidding, label: "Bidding Price per Kg." 
+    = f.input :bidding, label: "Bidding Price per Kg."
   .field
-    = f.input :ending_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year] 
+    = f.input :ending_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year]
   .field
-    = f.input :starting_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year] 
+    = f.input :starting_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year]
   .field
-    = f.input :delivery_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year] 
+    = f.input :delivery_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year]
   .field
-    = f.input :shipping_information, :as => :text 
+    = f.input :shipping_information, :as => :text
   .field
-    = f.input :packaging_information 
+    = f.input :packaging_information
   .field
-    = f.input :pallets 
-  
-  
-  = f.fields_for :auctions do |auctions_form| 
+    = f.input :pallets
+
+
+  = f.fields_for :auctions do |auctions_form|
     %p
       Add an Auction
-    = auctions_form.input :starting_at 
-    = auctions_form.input :ending_at 
+    = auctions_form.input :starting_at
+    = auctions_form.input :ending_at
     = auctions_form.input :starting_bid
-    = auctions_form.input :bid_increment    
+    = auctions_form.input :bid_increment
     = auctions_form.input :buy_out_bid
-    
-    = auctions_form.link_to_remove "Remove this auction" 
-  
+
+    = auctions_form.link_to_remove "Remove this auction"
+
   %p
     = f.link_to_add "Add an Auction", :auctions
-  
-  
+    = f.fields_for :product_images do |image_form|
+      - if image_form.object.persisted?
+        %p
+          = image_tag image_form.object.url(:square)
+          = image_form.link_to_remove "Remove image"
+          = link_to "Crop image", '#'
+      - else
+        %p
+          New Image
+          = image_form.input :file
+  %p
+    = f.link_to_add "Add an Image", :product_images
   .actions
-    = f.submit 
+    = f.submit

@@ -1,8 +1,9 @@
 require([
   "app",
-  "jquery", 
-  "backbone", 
+  "jquery",
+  "backbone",
   "waypoints",
+  'jquery_nested_form',
   // "rails_dependencies",
   "modules/countdown-timer",
   "modules/image-gallery"
