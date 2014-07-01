@@ -18,7 +18,7 @@ class Product < ActiveRecord::Base
     # Returns an auction resource
     # Each product can have  many auctions - The current auction is the last one active
     # Todo - Add the Cache fetch / push / invalidate part
-    self.products.auctions.not_expired.last
+    self.auctions.not_expired.last
   end
 
   def active_auction

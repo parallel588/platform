@@ -90,25 +90,26 @@
       .m-action-area
         .m-action-area__section
           .m-action-area__left>
+          -unless @product.active_auction.blank?
             .js-countdown-timer{ style: "width: 100px; height: 100px; overflow: hidden;", "data-ending-at" => @product.ending_at, "data-starting-at" => @product.starting_at }
-          .m-action-area__right
-            .m-action-area__label= "Bid ends in"
-            .m-action-area__text= "0h:15m:20s"
-        .m-action-area__section
-          .m-action-area__left>
-            .m-action-area__label= "Last of 10 bids"
-            .m-action-area__text= "0,14€/kgr"
-          .m-action-area__right
-            %form.js-action-form
-              %input.o-input
-              %button.o-button.o-button--block.o-button--orange= "Bid now"
-      .m-action-area
-        .m-action-area__section
-          .m-action-area__left>
-            .m-action-area__text= "0,14€/kgr"
-          .m-action-area__right
-            %form.js-action-form
-              %button.o-button.o-button--block.o-button--orange= "Buy now"
+            .m-action-area__right
+              .m-action-area__label= "Bid ends in"
+              .m-action-area__text= "0h:15m:20s"
+            .m-action-area__section
+            .m-action-area__left>
+              .m-action-area__label= "Last of #{@product.active_auction.biddings.count} bids"
+              .m-action-area__text= "#{@product.active_auction.get_current_winning_bidding_value}€/kgr"
+            .m-action-area__right
+              %form.js-action-form
+                %input.o-input
+                %button.o-button.o-button--block.o-button--orange= "Bid now"
+        .m-action-area
+          .m-action-area__section
+            .m-action-area__left>
+              .m-action-area__text= "#{@product.active_auction.buy_out_bid}€/kgr"
+            .m-action-area__right
+              %form.js-action-form
+                %button.o-button.o-button--block.o-button--orange= "Buy now"
 
     .l-product-show__section
       .o-advertisement.o-advertisement--300-600
