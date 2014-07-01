@@ -14,7 +14,7 @@
       .l-grid
         .l-grid__item.one-half>
           .m-image-gallery.js-image-gallery
-            = link_to "http://basketo.co/assets/images/background/farmer_focus_m.jpg", class: "m-image-gallery__main js-image-gallery__main js-image-gallery__fancybox" do
+            = link_to @product.product_image.url(:large), class: "m-image-gallery__main js-image-gallery__main js-image-gallery__fancybox" do
               - if @product.product_image
                 = image_tag @product.product_image.url(:medium), style: 'max-width: 300px;'
               - else
@@ -43,12 +43,11 @@
           .m-small-text
             .m-small-text__title= "Data provided by the producer"
             .m-small-text__text
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              %b="Shipping Information"
+              %p= @product.shipping_information
+
+              %b="Packaging Information"
+              %p= @product.packaging_information
 
     .l-product-show__section
       .l-product-show__headline
@@ -60,7 +59,7 @@
         .m-icon-list__item.l-grid__item.one-half>
           .m-icon-list__icon.o-icon.o-icon--star-outline
           .m-icon-list__data
-            = render "partials/modules/m_ratings", stars: 3
+            = render "partials/modules/m_ratings", stars: @product.user.try(:rating_average)      
         .m-icon-list__item.l-grid__item.one-whole>
           .m-icon-list__icon.o-icon.o-icon--map-marker
           .m-icon-list__data
@@ -69,12 +68,13 @@
           .m-icon-list__icon.o-icon.o-icon--map-marker
           .m-icon-list__data
             = "Other products"
-        .l-grid__item.one-whole>
-          .l-grid.l-expandable
-            .l-grid__item.one-half>
-              = render "partials/modules/m_product"
-            .l-grid__item.one-half>
-              = render "partials/modules/m_product"
+        -if @product.user.relevant_products(@product.id, 2).count > 0          
+          .l-grid__item.one-whole>
+            .l-grid.l-expandable
+              .l-grid__item.one-half>
+                = render "partials/modules/m_product", p: @product.user.relevant_products(@product.id, 2).try(:first) || nil
+              .l-grid__item.one-half>
+                = render "partials/modules/m_product", p: @product.user.relevant_products(@product.id, 2).try(:first) || nil
 
     .l-product-show__section
       .l-product-show__headline--big-margin

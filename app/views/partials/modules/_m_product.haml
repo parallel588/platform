@@ -1,23 +1,25 @@
-.m-product
-  .l-grid
-    .l-grid__item.one-half>
-      = link_to "#", class: "m-product__image" do
-        = image_tag "/assets/dummy/product.jpg", width: "100%"
-      = link_to "Read More", "#", class: "m-product__button o-button o-button--green o-button--block"
-    .l-grid__item.one-half>
-      = link_to "#", class: "m-product__title-link" do
-        %h3.o-headline.o-headline--small= "Oranges Merlin from Greece"
-        .m-product__supplier= "Karantinos Best Quality Fruits S.A."
-  %ul.m-icon-list
-    %li.m-icon-list__item
-      .m-icon-list__icon.o-icon.o-icon--map-marker
-      .m-icon-list__data= "Athens, Greece"
-    %li.m-icon-list__item
-      .m-icon-list__icon.o-icon.o-icon--map-marker
-      .m-icon-list__data= "0,15€/kilo"
-    %li.m-icon-list__item
-      .m-icon-list__icon.o-icon.o-icon--map-marker
-      .m-icon-list__data= "boomsgewas"
-    %li.m-icon-list__item
-      .m-icon-list__icon.o-icon.o-icon--map-marker
-      .m-icon-list__data= "2 tons"
+-unless p.blank?
+  .m-product
+    .l-grid
+      .l-grid__item.one-half>
+        - if p.product_image
+          = link_to "#", class: "m-product__image" do
+            = image_tag p.product_image.url(:square), width: "100%"
+        = link_to "Read More", product_url(p), class: "m-product__button o-button o-button--green o-button--block"
+      .l-grid__item.one-half>
+        = link_to "#", class: "m-product__title-link" do
+          %h3.o-headline.o-headline--small= "#{p.name}"
+          .m-product__supplier= "#{p.user.name}"
+    %ul.m-icon-list
+      %li.m-icon-list__item
+        .m-icon-list__icon.o-icon.o-icon--map-marker
+        .m-icon-list__data=p.country
+      %li.m-icon-list__item
+        .m-icon-list__icon.o-icon.o-icon--map-marker
+        .m-icon-list__data=p.bidding
+      %li.m-icon-list__item
+        .m-icon-list__icon.o-icon.o-icon--map-marker
+        .m-icon-list__data= "boomsgewas"
+      %li.m-icon-list__item
+        .m-icon-list__icon.o-icon.o-icon--map-marker
+        .m-icon-list__data=p.volume
