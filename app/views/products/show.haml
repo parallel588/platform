@@ -51,15 +51,15 @@
 
     .l-product-show__section
       .l-product-show__headline
-        %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= "Karantinos Best Quality Fruits S.A."
+        %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= @product.user.name
       .m-icon-list.l-grid
         .m-icon-list__item.l-grid__item.one-half>
           .m-icon-list__icon.o-icon.o-icon--map-marker
-          .m-icon-list__data= "Athens, Greece"
+          .m-icon-list__data= "#{@product.user.address_city}, #{@product.user.address_country}"
         .m-icon-list__item.l-grid__item.one-half>
           .m-icon-list__icon.o-icon.o-icon--star-outline
           .m-icon-list__data
-            = render "partials/modules/m_ratings", stars: @product.user.try(:rating_average)      
+            = render "partials/modules/m_ratings", stars: @product.user.try(:rating_average)
         .m-icon-list__item.l-grid__item.one-whole>
           .m-icon-list__icon.o-icon.o-icon--map-marker
           .m-icon-list__data
@@ -68,22 +68,22 @@
           .m-icon-list__icon.o-icon.o-icon--map-marker
           .m-icon-list__data
             = "Other products"
-        -if @product.user.relevant_products(@product.id, 2).count > 0          
+        - if @product.user.relevant_products(@product.id, 4).count > 0
           .l-grid__item.one-whole>
             .l-grid.l-expandable
-              .l-grid__item.one-half>
-                = render "partials/modules/m_product", p: @product.user.relevant_products(@product.id, 2).try(:first) || nil
-              .l-grid__item.one-half>
-                = render "partials/modules/m_product", p: @product.user.relevant_products(@product.id, 2).try(:first) || nil
+              - @product.user.relevant_products(@product.id, 4).each do |product|
+                .l-grid__item.one-half>
+                  = render "partials/modules/m_product", p: product
 
     .l-product-show__section
       .l-product-show__headline--big-margin
         %h2.o-headline.o-headline--no-top-border= "Customers also viewed"
-      -if @product.relevant_products(2).count > 0                  
+      -if @product.relevant_products(4).count > 0                  
         .l-grid
-          = render "partials/modules/m_product", p: @product.relevant_products(2).try(:first) || nil
-        .l-grid__item.one-half>
-          = render "partials/modules/m_product", p: @product.relevant_products(2).try(:first) || nil
+          .l-grid__item.one-half>
+            = render "partials/modules/m_product", p: @product.relevant_products(2).try(:first) || nil
+          .l-grid__item.one-half>
+            = render "partials/modules/m_product", p: @product.relevant_products(2).try(:first) || nil
 
   .l-grid__item.one-third
     .l-product-show__section
