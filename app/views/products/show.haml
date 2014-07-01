@@ -91,10 +91,10 @@
         .m-action-area__section
           .m-action-area__left>
           -unless @product.active_auction.blank?
-            .js-countdown-timer{ style: "width: 100px; height: 100px; overflow: hidden;", "data-ending-at" => @product.ending_at, "data-starting-at" => @product.starting_at }
+            .js-countdown-timer{ style: "width: 100px; height: 100px; overflow: hidden;", "data-ending-at" => @product.active_auction.ending_at, "data-starting-at" => @product.active_auction.starting_at }
             .m-action-area__right
               .m-action-area__label= "Bid ends in"
-              .m-action-area__text= "0h:15m:20s"
+              .m-action-area__text= "#{@product.active_auction.ending_at}"
             .m-action-area__section
             .m-action-area__left>
               .m-action-area__label= "Last of #{@product.active_auction.biddings.count} bids"
