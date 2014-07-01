@@ -39,7 +39,11 @@ class User < ActiveRecord::Base
   
   
   
-  
+  def relevant_products(excluded_product_id, limit)
+    self.products.where("id <> ?", excluded_product_id).limit(limit)
+  end
+
+
   def build_seller_object
     # Call this only when a Seller user is created and not in every case of new user!
     # It depends on the UI / How the form will look or if we will have separate forms for the 2 user types.

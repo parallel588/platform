@@ -9,7 +9,7 @@
       .l-grid__item.one-half>
         = link_to "#", class: "m-product__title-link" do
           %h3.o-headline.o-headline--small= "#{p.name}"
-          .m-product__supplier= "#{p.user.name}"
+          .m-product__supplier= "#{p.user.try(:name)}"
     %ul.m-icon-list
       %li.m-icon-list__item
         .m-icon-list__icon.o-icon.o-icon--map-marker

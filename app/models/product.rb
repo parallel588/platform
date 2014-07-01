@@ -26,6 +26,11 @@ class Product < ActiveRecord::Base
   end
 
 
+  def relevant_products(limit)
+    self.product_category.products.where("id <> ?", self.id).limit(limit)
+  end
+
+
   def to_s
     return "#{self.volume} #{self.name} from #{self.country}"
   end

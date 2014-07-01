@@ -79,11 +79,11 @@
     .l-product-show__section
       .l-product-show__headline--big-margin
         %h2.o-headline.o-headline--no-top-border= "Customers also viewed"
-      .l-grid
+      -if @product.relevant_products(2).count > 0                  
+        .l-grid
+          = render "partials/modules/m_product", p: @product.relevant_products(2).try(:first) || nil
         .l-grid__item.one-half>
-          = render "partials/modules/m_product"
-        .l-grid__item.one-half>
-          = render "partials/modules/m_product"
+          = render "partials/modules/m_product", p: @product.relevant_products(2).try(:first) || nil
 
   .l-grid__item.one-third
     .l-product-show__section
