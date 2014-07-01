@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])    
     if @user.user_type == "seller"
+      @seller_ratings = Rating.where("to_user_id = ?", @user.id).order("created_at DESC").limit(10)
       render "seller"
     else
       render "show"

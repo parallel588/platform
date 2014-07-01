@@ -1,0 +1,8 @@
+%h1="This is a seller page for: #{@user.name}"
+
+%h2="Here are the last 10 ratings for the corresponding auctions"
+
+- @seller_ratings.each_with_index do |rating, i|
+    %p=rating.auction.product.name
+    %p=rating.stars
+    %p=rating.review  
