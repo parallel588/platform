@@ -7,14 +7,14 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     if params.include?(:user_id)
-      @products = User.find(params[:user_id]).products 
-      render "users/products/index"     
+      @products = User.find(params[:user_id]).products
+      render "users/products/index"
     else
       @auctions = Auction.active.load
       render "index"
     end
   end
-  
+
 
   # GET /products/1
   # GET /products/1.json
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    
+
   end
 
   # POST /products
@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
       if @product.update_attributes(product_params)
         redirect_to @product, notice: 'Product was successfully updated.'
       else
-        render action: 'edit' 
+        render action: 'edit'
       end
   end
 
@@ -71,13 +71,21 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :type, :subtype, :country, :volume, :size, :quality, :bidding, :ending_at, :delivery_at, :shipping_information, :packaging_information, :pallets, :starting_at, :user_id, :product_category_id, auctions_attributes: [:id, :starting_at, :ending_at, :_destroy, :starting_bid, :bid_increment, :buy_out_bid])
+      params.require(:product)
+        .permit(:name, :type, :subtype, :country, :volume, :size, :quality,
+                :bidding, :ending_at, :delivery_at, :shipping_information,
+                :packaging_information, :pallets, :starting_at, :user_id,
+                :product_category_id,
+                product_images_attributes: [:id, :file, :_destroy],
+                auctions_attributes: [:id, :starting_at, :ending_at, :_destroy,
+                                      :starting_bid, :bid_increment,
+                                      :buy_out_bid])
     end
-    
+
     def authenticate_product_ownership!
       @product.user_id == current_user.id
     end
-    
-    
-    
+
+
+
 end
