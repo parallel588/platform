@@ -5,9 +5,8 @@ require([
   "waypoints",
   'jquery_nested_form',
   'libs/jquery.color',
-
   'libs/jquery.Jcrop',
-  // "rails_dependencies",
+  "rails_dependencies",
   "modules/countdown-timer",
   "modules/image-gallery"
 ], function(app, $) {
