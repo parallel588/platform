@@ -17,7 +17,7 @@
                 = image_tag("/assets/dummy/product.jpg")
             .m-image-gallery__thumbnails.js-image-gallery__owl
               - @product.product_images.limit(10).each_with_index do |image, i|
-                .m-image-gallery__thumbnail.js-image-gallery__thumbnail{ class: ("is-active" if i == 0), data: { image: "http://basketo.co/assets/images/world-map-bg.png", target: "http://basketo.co/assets/images/background/hand_crops_m.jpg" }}
+                .m-image-gallery__thumbnail.js-image-gallery__thumbnail{ class: ("is-active" if i == 0), data: { image: image.url(:medium), target: image.url(:large) }}
                   = image_tag image.url(:square), width: 55
         .l-grid__item.palm--one-whole.one-half
           %ul.m-icon-list
