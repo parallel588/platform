@@ -10,16 +10,16 @@
         = link_to "#", class: "m-product__title-link" do
           %h3.o-headline.o-headline--small= "#{p.name}"
           .m-product__supplier= "#{p.user.try(:name)}"
-    %ul.m-icon-list
-      %li.m-icon-list__item
-        .m-icon-list__icon.o-icon.o-icon--map-marker
-        .m-icon-list__data=p.country
-      %li.m-icon-list__item
-        .m-icon-list__icon.o-icon.o-icon--map-marker
-        .m-icon-list__data=p.bidding
-      %li.m-icon-list__item
-        .m-icon-list__icon.o-icon.o-icon--map-marker
-        .m-icon-list__data= "boomsgewas"
-      %li.m-icon-list__item
-        .m-icon-list__icon.o-icon.o-icon--map-marker
-        .m-icon-list__data=p.volume
+        %ul.m-icon-list
+          %li.m-icon-list__item
+            .m-icon-list__icon.o-icon.o-icon--map-marker
+            .m-icon-list__data=p.country
+          %li.m-icon-list__item
+            .m-icon-list__icon.o-icon.o-icon--map-marker
+            .m-icon-list__data=p.bidding
+          %li.m-icon-list__item
+            .m-icon-list__icon.o-icon.o-icon--map-marker
+            .m-icon-list__data= "boomsgewas"
+          %li.m-icon-list__item
+            .m-icon-list__icon.o-icon.o-icon--map-marker
+            .m-icon-list__data=p.volume
