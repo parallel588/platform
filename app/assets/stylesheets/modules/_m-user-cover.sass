@@ -1,0 +1,39 @@
+.m_user_cover
+
+.m-user-cover__cover-img
+  > img
+    width: 100%
+
+.m-user-cover__info
+  margin: em(10) 0 em(30)
+  +respond-min($bp__lap)
+    margin: em(-40) em(60) em(60)
+
+.m-user-cover__image
+  display: inline-block
+  vertical-align: bottom
+  margin-right: em(10)
+  > img
+    display: block
+    width: em(30)
+    +respond-min($bp__lap)
+      width: em(100)
+
+.m-user-cover__name
+  display: inline-block
+  vertical-align: bottom
+  font-family: $fonts__light
+  font-size: em(24)
+
+.m-user-cover__ratings
+  margin-top: em(10)
+  +respond-min($bp__lap)
+    margin-top: 0
+    text-align: right
+
+.m-user-cover__description
+  font-size: em($font-size__bigger)
+  line-height: 1.4em
+  margin-top: em(10, $font-size__bigger)
+  +respond-min($bp__lap)
+    margin-top: em(30, $font-size__bigger)

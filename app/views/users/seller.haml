@@ -1,3 +1,20 @@
+- content_for :body_class, "l-user-seller"
+
+.m-user-cover
+  .m-user-cover__cover-img= image_tag("/assets/dummy/cover.jpg")
+  .m-user-cover__info
+    .l-grid.l-grid--bottom
+      .l-grid__item.desk--two-thirds>
+        .m-user-cover__image= image_tag("/assets/dummy/user.png")
+        .m-user-cover__name= @user.name
+      .m-user-cover__ratings.l-grid__item.desk--one-third
+        = render "partials/modules/m_ratings", stars: 4, modifier: "m-ratings--big m-ratings--green"
+    .m-user-cover__description
+      For more than half a century, the company KARANTINOS Ltd., headquartered at the Central Vegetable Market of Athens, specializes in the packaging and trading of GREEK agricultural products (fresh fruits and vegetables). The main goal of the company is the fastest and most comprehensive supply of top quality greek products to its customers, including well-known super market chains and foreign companies.
+
+  
+
+
 %h1="This is a seller page for: #{@user.name}"
 
 %h2="Here are the last 10 ratings for the corresponding auctions"
