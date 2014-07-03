@@ -7,18 +7,23 @@
     color: $color__white
 
 .l-footer__row
+  padding: 0 em(10)
   margin-top: em(40)
 
 .l-footer__half
   display: inline-block
   padding: em(10) 0
-  width: 50%
+  width: 100%
+  +respond-min($bp__desk)
+    width: 50%
 
 .l-footer__half--left
-  border-right: 1px solid $color__yellow
-  padding-right: em(30)
-  text-align: right
+  +respond-min($bp__desk)
+    text-align: right
+    border-right: 1px solid $color__yellow
+    padding-right: em(30)
 
 .l-footer__half--right
-  text-align: left
-  padding-left: em(20)
+  +respond-min($bp__desk)
+    text-align: left
+    padding-left: em(20)

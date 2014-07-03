@@ -3,6 +3,6 @@
 %h2="Here are the last 10 ratings for the corresponding auctions"
 
 - @seller_ratings.each_with_index do |rating, i|
-    %p=rating.auction.product.name
-    %p=rating.stars
-    %p=rating.review  
+  %p=rating.auction.product.name
+  %p=rating.stars
+  %p=rating.review

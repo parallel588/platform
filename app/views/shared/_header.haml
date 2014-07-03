@@ -3,15 +3,16 @@
 .l-header
   .l-block
     .l-grid.l-grid--middle
-      .l-grid__item.two-thirds>
-        .l-header__logo>
-          = render "partials/objects/o_logo"
-        .l-header__search
-          %button.o-button.o-button--square.o-button--green
-            .o-icon.o-icon--magnifier
-          .l-header__search__input-container
-            %input.o-input{ type: "text", placeholder: "Search" }
-      .l-grid__item.one-third.text-center>
+      .l-grid__item.desk--two-thirds>
+        .l-grid.l-grid--middle
+          .l-header__logo.l-grid__item.portable--one-half.desk--one-third>
+            = render "partials/objects/o_logo"
+          .l-header__search.l-grid__item.portable--one-half.desk--two-thirds
+            %button.o-button.o-button--square.o-button--green
+              .o-icon.o-icon--magnifier
+            .l-header__search__input-container
+              %input.o-input{ type: "text", placeholder: "Search" }
+      .l-header__links.l-grid__item.desk--one-third.text-center>
         .m-links
           = link_to "All users",  all_users_path
           %span.m-links__separator= "\\"

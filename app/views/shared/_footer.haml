@@ -1,5 +1,10 @@
 .l-footer.text-center
   .l-footer__row
+    .l-footer__half.l-footer__half--left>
+      = render "partials/modules/m_newsletter_signup" 
+    .l-footer__half.l-footer__half--right>
+      = render "partials/modules/m_social_links" 
+  .l-footer__row
     .m-links.m-links--small
       = link_to "About Us", "/about-us"
       %span.m-links__separator= "\\"
@@ -14,11 +19,6 @@
       = link_to "Social Responsibility", "/social-responsibility"
       %span.m-links__separator= "\\"
       = link_to "Help", "/help"
-  .l-footer__row
-    .l-footer__half.l-footer__half--left>
-      = render "partials/modules/m_newsletter_signup" 
-    .l-footer__half.l-footer__half--right>
-      = render "partials/modules/m_social_links" 
 
   .l-footer__row
     .o-footnotes

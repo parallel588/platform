@@ -9,10 +9,9 @@
 .o-logo__image
   @extend .clearfix
   display: block
-  max-width: em(150)
-  width: 70%
-  +respond-min($bp__tablet--portrait__width)
-    width: 100%
+  max-width: 90%
+  +respond-min($bp__desk)
+    max-width: 80%
 
 .o-logo__image__icon
   float: left
@@ -30,5 +29,5 @@
 .o-logo__tagline
   display: none
   margin-top: em(10)
-  +respond-min($bp__tablet--portrait__width)
+  +respond-min($bp__desk)
     font-size: em($font-size__giga)

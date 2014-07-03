@@ -1,29 +1,25 @@
 - content_for :body_class, "l-product-show"
 
-- if false
-  = link_to 'Edit', edit_product_path(@product)  |
-  = link_to 'Back', seller_dashboard_path
-
 .l-grid
-  .l-grid__item.two-thirds>
+  .l-grid__item.desk--two-thirds>
     .l-product-show__section
       .l-product-show__headline
         .l-product-show__headline__buttons
           .addthis_sharing_toolbox
         %h1.o-headline.o-headline--with-title{ title: "PRODUCT" }= @product.name
       .l-grid
-        .l-grid__item.one-half>
+        .l-grid__item.palm--one-whole.one-half>
           .m-image-gallery.js-image-gallery
             = link_to @product.product_image.url(:large), class: "m-image-gallery__main js-image-gallery__main js-image-gallery__fancybox" do
               - if @product.product_image
-                = image_tag @product.product_image.url(:medium), style: 'max-width: 300px;'
+                = image_tag @product.product_image.url(:medium)
               - else
                 = image_tag("/assets/dummy/product.jpg")
             .m-image-gallery__thumbnails.js-image-gallery__owl
               - @product.product_images.limit(10).each_with_index do |image, i|
                 .m-image-gallery__thumbnail.js-image-gallery__thumbnail{ class: ("is-active" if i == 0), data: { image: "http://basketo.co/assets/images/world-map-bg.png", target: "http://basketo.co/assets/images/background/hand_crops_m.jpg" }}
                   = image_tag image.url(:square), width: 55
-        .l-grid__item.one-half
+        .l-grid__item.palm--one-whole.one-half
           %ul.m-icon-list
             %li.m-icon-list__item
               .m-icon-list__icon.o-icon.o-icon--map-marker
@@ -85,60 +81,33 @@
           .l-grid__item.one-half>
             = render "partials/modules/m_product", p: @product.relevant_products(2).try(:first) || nil
 
-  .l-grid__item.one-third
-    .l-product-show__section
-      .m-action-area
-        .m-action-area__section
-          .m-action-area__left>
-          -unless @product.active_auction.blank?
-            .js-countdown-timer{ style: "width: 100px; height: 100px; overflow: hidden;", "data-ending-at" => @product.active_auction.ending_at, "data-starting-at" => @product.active_auction.starting_at }
-            .m-action-area__right
-              .m-action-area__label= "Bid ends in"
-              .m-action-area__text= "#{@product.active_auction.ending_at}"
-            .m-action-area__section
-            .m-action-area__left>
-              .m-action-area__label= "Last of #{@product.active_auction.biddings.count} bids"
-              .m-action-area__text= "#{@product.active_auction.get_current_winning_bidding_value}€/kgr"
-            .m-action-area__right
-              %form.js-action-form
-                %input.o-input
-                %button.o-button.o-button--block.o-button--orange= "Bid now"
-        .m-action-area
-          .m-action-area__section
-            .m-action-area__left>
-              .m-action-area__text= "#{@product.active_auction.buy_out_bid}€/kgr"
-            .m-action-area__right
-              %form.js-action-form
-                %button.o-button.o-button--block.o-button--orange= "Buy now"
+  .l-grid__item.desk--one-third
+    .l-grid
+      .l-product-show__section.l-grid__item.lap--one-half>
+        -unless @product.active_auction.blank?
+          .m-action-area
+            .m-action-area__section.l-grid.l-grid--middle
+              .l-grid__item.palm--one-whole.one-third>
+                .js-countdown-timer{ style: "width: 100px; height: 100px; overflow: hidden;", "data-ending-at" => @product.active_auction.ending_at, "data-starting-at" => @product.active_auction.starting_at }
+              .l-grid__item.palm--one-whole.two-thirds
+                .m-action-area__label= "Bid ends in"
+                .m-action-area__text= "#{@product.active_auction.ending_at}"
+            .m-action-area__section.l-grid.l-grid--middle
+              .l-grid__item.palm--one-whole.one-third>
+                .m-action-area__label= "Last of #{@product.active_auction.biddings.count} bids"
+                .m-action-area__text= "#{@product.active_auction.get_current_winning_bidding_value}€/kgr"
+              .l-grid__item.palm--one-whole.two-thirds
+                %form.js-action-form
+                  %input.o-input
+                  %button.o-button.o-button--block.o-button--orange= "Bid now"
+          .m-action-area
+            .m-action-area__section.l-grid.l-grid--middle
+              .l-grid__item.palm--one-whole.one-third>
+                .m-action-area__text= "#{@product.active_auction.buy_out_bid}€/kgr"
+              .l-grid__item.palm--one-whole.two-thirds
+                %form.js-action-form
+                  %button.o-button.o-button--block.o-button--orange= "Buy now"
 
-    .l-product-show__section
-      .o-advertisement.o-advertisement--300-600
-        = image_tag("/assets/dummy/300x250.jpg")
-
-
-/     Bidding:
-/   = @product.bidding
-/ %p
-/   %strong
-/     Ending at:
-/   = @product.ending_at
-/ %p
-/   %strong
-/     Delivery at:
-/   = @product.delivery_at
-/ %p
-/   %strong
-/     Shipping information:
-/   = @product.shipping_information
-/ %p
-/   %strong
-/     Packaging information:
-/   = @product.packaging_information
-/ %p
-/   %strong
-/     Pallets:
-/   = @product.pallets
-/ %p
-/   %strong
-/     Starting at:
-/   = @product.starting_at
+      .l-product-show__section.l-grid__item.lap--one-half
+        .o-advertisement.o-advertisement--300-600
+          = image_tag("/assets/dummy/300x250.jpg", style: "width: 100%;")

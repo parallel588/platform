@@ -10,8 +10,11 @@
   display: inline-block
   font-family: $fonts__light
   font-size: em($font-size__giga)
+  margin-bottom: em(10, $font-size__giga)
   margin-right: em(10, $font-size__giga)
   vertical-align: middle
+  +respond-min($bp__desk)
+    margin-bottom: 0
 
 .m-social-links__links
   display: inline-block
