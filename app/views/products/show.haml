@@ -39,6 +39,9 @@
           .m-small-text
             .m-small-text__title= "Data provided by the producer"
             .m-small-text__text
+              %b="Description"
+              %p= @product.description
+
               %b="Shipping Information"
               %p= @product.shipping_information
 

@@ -13,6 +13,8 @@
   .field
     = f.input :product_category_id, collection: ProductCategory.roots, as: :grouped_select, group_method: :children
   .field
+    = f.input :description 
+  .field
     = f.input :country
   .field
     = f.input :volume
