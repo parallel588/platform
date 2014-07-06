@@ -100,16 +100,17 @@
                 .m-action-area__label= "Last of #{@product.active_auction.biddings.count} bids"
                 .m-action-area__text= "#{@product.active_auction.get_current_winning_bidding_value}€/kgr"
               .l-grid__item.palm--one-whole.two-thirds
-                %form.js-action-form
-                  %input.o-input
-                  %button.o-button.o-button--block.o-button--orange= "Bid now"
+              = simple_form_for(Bidding.new(auction: @product.active_auction), url: auction_biddings_path(@product.active_auction), :class => "js-action-form", ) do |f|
+                =f.input :amount, label: "My Bid"
+                =f.submit "Bid now", :class => "o-button o-button--block o-button--orange"
           .m-action-area
             .m-action-area__section.l-grid.l-grid--middle
               .l-grid__item.palm--one-whole.one-third>
                 .m-action-area__text= "#{@product.active_auction.buy_out_bid}€/kgr"
               .l-grid__item.palm--one-whole.two-thirds
-                %form.js-action-form
-                  %button.o-button.o-button--block.o-button--orange= "Buy now"
+              - if !@product.active_auction.buy_out_bid.blank?
+                = simple_form_for(Bidding.new(auction: @product.active_auction), url:  buy_now_auction_path(:id => @product.active_auction.id), :class => "js-action-form") do |f|
+                  =f.submit "Buy now", :class => "o-button o-button--block o-button--orange"
 
       .l-product-show__section.l-grid__item.lap--one-half
         .o-advertisement.o-advertisement--300-600
