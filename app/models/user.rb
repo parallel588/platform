@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   has_many :auctions,foreign_key: :seller_id # as a seller
   has_many :biddings # as a buyer
   has_many :billings
+  has_one  :seller
 
   accepts_nested_attributes_for :billings, :allow_destroy => true
   
@@ -69,6 +70,11 @@ class User < ActiveRecord::Base
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+
+  def ratings_received
+    return Rating.where(to_user_id: self.id).all
   end
   
 
