@@ -5,6 +5,32 @@
 = simple_form_for(@seller, as: :seller, :method => :put, url: seller_path, :html => {:multipart => true}) do |f|
  
   = f.input :description 
+
+
+  - if !f.object.seller_logo.blank?
+    %p
+      = image_tag f.object.seller_logo.url, :height => 100
+      = f.input :remove_seller_logo, :as => :boolean
+
+  - else
+    %p
+      New Image
+      = f.input :seller_logo
+
+
+
+  - if !f.object.seller_cover.blank?
+    %p
+      = image_tag f.object.seller_cover.url, :height => 100
+      = f.input :remove_seller_cover, :as => :boolean
+
+  - else
+    %p
+      New Image
+      = f.input :seller_cover
+  
   
   %div
     = f.submit "Update seller"
+
+

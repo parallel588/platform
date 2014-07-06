@@ -6,6 +6,7 @@ class SellersController < ApplicationController
 	
   def edit
   	@seller = Seller.find_by_user_id(current_user.id)
+    
   end
 
 
@@ -31,6 +32,6 @@ class SellersController < ApplicationController
 
   private
   def seller_params
-    params.require(:seller).permit(:description)
+    params.require(:seller).permit(:description, :seller_logo, :seller_cover, :remove_seller_logo, :remove_seller_cover)
   end
 end
