@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
@@ -92,6 +93,15 @@ end
 
 gem 'rails_12factor', group: :production # needed for heroku: https://devcenter.heroku.com/articles/getting-started-with-rails4
 
+gem 'rails-assets-jquery', '~> 1.10'
+gem 'rails-assets-underscore'
+gem 'rails-assets-backbone', '~> 1.1.2'
+gem 'rails-assets-backbone.wreqr'
+gem 'rails-assets-OwlCarousel'
+gem 'rails-assets-jasmine.async'
+gem 'rails-assets-fancybox'
+gem 'rails-assets-modernizr'
+gem 'rails-assets-raphael'
 
 
 

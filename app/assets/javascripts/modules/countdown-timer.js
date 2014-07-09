@@ -1,11 +1,9 @@
-define([
-  "app",
-  "backbone",
-  "raphael",
-  "underscore"
-], function (app) {
-  return CountdownTimer = Backbone.View.extend({
-    
+//= require raphael
+
+(function (win) { 
+
+  win.basketo.Modules.CountdownTimer = Backbone.View.extend({
+
     circleRadius: 30,
     circleSize: 50,
 
@@ -92,6 +90,7 @@ define([
     hideForm: function () {
       $(".js-action-form").slideUp(app.animationDuration);
     }
-
+  
   });
-});
+
+})(window);

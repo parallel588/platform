@@ -1,10 +1,9 @@
-define([
-  "app",
-  "backbone",
-  "owlCarousel",
-  "fancybox"
-], function (app) {
-  return ImageGallery = Backbone.View.extend({
+//= require OwlCarousel/owl-carousel/owl.carousel
+//= require fancybox/source/jquery.fancybox
+
+(function (win) {
+
+  win.basketo.Modules.ImageGallery = Backbone.View.extend({
 
     events: { 
       "click .js-image-gallery__thumbnail": "onThumbnailClickHandler"
@@ -54,4 +53,5 @@ define([
 
 
   });
-});
+
+})(window);
