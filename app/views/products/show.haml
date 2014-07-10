@@ -2,9 +2,9 @@
 
 .l-grid
   .l-grid__item.desk--two-thirds>
-    .l-product-show__section
-      .l-product-show__headline
-        .l-product-show__headline__buttons
+    .l-list-block
+      .l-list-block__headline
+        .l-list-block__headline__buttons
           .addthis_sharing_toolbox
         %h1.o-headline.o-headline--with-title{ title: "PRODUCT" }= @product.name
       .l-grid
@@ -49,8 +49,8 @@
               %b="Packaging Information"
               %p= @product.packaging_information
 
-    .l-product-show__section
-      .l-product-show__headline
+    .l-list-block
+      .l-list-block__headline
         %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= @product.user.name
       .m-icon-list.l-grid
         .m-icon-list__item.l-grid__item.one-half>
@@ -75,8 +75,8 @@
                 .l-grid__item.one-half>
                   = render "partials/modules/m_product", p: product
 
-    .l-product-show__section
-      .l-product-show__headline--big-margin
+    .l-list-block
+      .l-list-block__headline--big-margin
         %h2.o-headline.o-headline--no-top-border= "Customers also viewed"
       -if @product.relevant_products(4).count > 0                  
         .l-grid
@@ -87,7 +87,7 @@
 
   .l-grid__item.desk--one-third
     .l-grid
-      .l-product-show__section.l-grid__item.lap--one-half>
+      .l-list-block.l-grid__item.lap--one-half>
         -unless @product.active_auction.blank?
           .m-action-area
             .m-action-area__section.l-grid.l-grid--middle
@@ -113,6 +113,6 @@
                 = simple_form_for(Bidding.new(auction: @product.active_auction), url:  buy_now_auction_path(:id => @product.active_auction.id), :class => "js-action-form") do |f|
                   =f.submit "Buy now", :class => "o-button o-button--block o-button--orange"
 
-      .l-product-show__section.l-grid__item.lap--one-half
+      .l-list-block.l-grid__item.lap--one-half
         .o-advertisement.o-advertisement--300-600
           = image_tag("/assets/dummy/300x250.jpg", style: "width: 100%;")

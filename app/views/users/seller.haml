@@ -1,6 +1,6 @@
 - content_for :body_class, "l-user-seller"
 
-.l-user-seller__section
+.l-list-block
   .m-user-cover
     .m-user-cover__cover-img
       - if @user.seller.seller_cover
@@ -20,16 +20,16 @@
           = render "partials/modules/m_ratings", stars: @user.try(:rating_average), modifier: "m-ratings--big m-ratings--green"
       .m-user-cover__description= @user.seller.description        
 
-.l-user-seller__section
-  .l-user-seller__headline
+.l-list-block
+  .l-list-block__headline
     %h2.o-headline= "Recently Sold"
   .l-grid
   - @user.products.limit(3).each do |product|  
     .l-grid__item.desk--one-third>
       = render "partials/modules/m_product", p: product
 
-.l-user-seller__section
-  .l-user-seller__headline
+.l-list-block
+  .l-list-block__headline
     %h2.o-headline= "Producers' Comments"
   - @user.ratings_received.each do |rating|
     = render "partials/modules/m_review", rating: rating
