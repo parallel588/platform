@@ -2,11 +2,19 @@
 
 .l-user-seller__section
   .m-user-cover
-    .m-user-cover__cover-img= image_tag @user.seller.seller_cover, :height => 200
+    .m-user-cover__cover-img
+      - if @user.seller.seller_cover
+        = image_tag @user.seller.seller_cover
+      - else
+        = image_tag "/assets/defaults/seller-profile-cover.png"
     .m-user-cover__info
       .l-grid.l-grid--bottom
         .l-grid__item.desk--two-thirds>
-          .m-user-cover__image= image_tag @user.seller.seller_logo
+          .m-user-cover__image
+            - if @user.seller.seller_logo
+              = image_tag @user.seller.seller_logo
+            - else
+              = image_tag "/assets/defaults/seller-profile-image.png"
           .m-user-cover__name= @user.name
         .m-user-cover__ratings.l-grid__item.desk--one-third
           = render "partials/modules/m_ratings", stars: @user.try(:rating_average), modifier: "m-ratings--big m-ratings--green"

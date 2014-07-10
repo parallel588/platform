@@ -10,11 +10,12 @@
       .l-grid
         .l-grid__item.palm--one-whole.one-half>
           .m-image-gallery.js-image-gallery
-            = link_to @product.product_image.url(:large), class: "m-image-gallery__main js-image-gallery__main js-image-gallery__fancybox" do
-              - if @product.product_image
+            - if @product.product_image
+              = link_to @product.product_image.url(:large), class: "m-image-gallery__main js-image-gallery__main js-image-gallery__fancybox" do
                 = image_tag @product.product_image.url(:medium)
-              - else
-                = image_tag("/assets/dummy/product.jpg")
+            - else
+              .m-image-gallery__main
+                = image_tag "/assets/defaults/product-image.png"
             .m-image-gallery__thumbnails.js-image-gallery__owl
               - @product.product_images.limit(10).each_with_index do |image, i|
                 .m-image-gallery__thumbnail.js-image-gallery__thumbnail{ class: ("is-active" if i == 0), data: { image: image.url(:medium), target: image.url(:large) }}
