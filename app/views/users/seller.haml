@@ -24,14 +24,16 @@
   .l-list-block__headline
     %h2.o-headline= "Recently Sold"
   .l-grid
-  - @user.products.limit(3).each do |product|  
-    .l-grid__item.desk--one-third>
-      = render "partials/modules/m_product", p: product
+    - @user.products.limit(3).each do |product|  
+      .l-grid__item.palm--one-half.desk--one-third>
+        = render "partials/modules/m_product", p: product
 
 .l-list-block
   .l-list-block__headline
     %h2.o-headline= "Producers' Comments"
-  - @user.ratings_received.each do |rating|
+  - (1..5).each do |rating|
     = render "partials/modules/m_review", rating: rating
+  / - @user.ratings_received.each do |rating|
+  /   = render "partials/modules/m_review", rating: rating
   
 

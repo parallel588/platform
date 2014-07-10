@@ -1,7 +1,7 @@
 -unless p.blank?
   .m-product
     .l-grid
-      .l-grid__item.one-half>
+      .l-grid__item.palm--one-whole.one-half>
         - if p.product_image
           = link_to "#", class: "m-product__image" do
             = image_tag p.product_image.url(:square)
@@ -9,7 +9,7 @@
           .m-product__image
             = image_tag "/assets/defaults/product-image.png"
         = link_to "Read More", product_url(p), class: "m-product__button o-button o-button--green o-button--block"
-      .l-grid__item.one-half>
+      .l-grid__item.palm--one-whole.one-half>
         = link_to "#", class: "m-product__title-link" do
           %h3.o-headline.o-headline--small= "#{p.name}"
           .m-product__supplier= "#{p.user.try(:name)}"
