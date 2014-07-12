@@ -8,6 +8,7 @@
 
 //= require config/head
 //= require config/app
+//= require ./libs/jquery.plugin
 
 //= require_tree ./libs
 //= require_tree ./modules
@@ -24,11 +25,26 @@
     new countdownTimer({ el: $(this) });
   });
 
+  // Initialize Text counter next to the circle
+  var countdownTimerText = basketo.Modules.CountdownTimerText;
+  $(".js-countdown-timer-text").each(function () {
+    var endingDate = new Date($(this).data("endingAt"));
+    $(this).countdown({
+      until: endingDate,
+      compact: true,
+      layout: '{dn}d {hnn}h{sep}{mnn}min{sep}{snn}"'
+    });
+  });
+
   // Initialize Image Gallery plugin, in product page
   var ImageGallery = basketo.Modules.ImageGallery;
   $(".js-image-gallery").each(function () {
     new ImageGallery({ el: $(this) });
   });
+
+
+
+
 
 
   $(function(){
