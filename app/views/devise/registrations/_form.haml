@@ -1,27 +1,27 @@
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:multipart => true}) do |f|
 
-  = f.input :email, autofocus: true,  as: :email
+  = f.input :email, autofocus: true, as: :email, input_html: { class: "o-input" }
   
-  = f.input :name
+  = f.input :name, input_html: { class: "o-input" }
 
-  = f.input :occupation 
+  = f.input :occupation, input_html: { class: "o-input" }
   
-  = f.input :address_street 
+  = f.input :address_street, input_html: { class: "o-input" }
 
-  = f.input :address_city 
+  = f.input :address_city, input_html: { class: "o-input" }
 
-  = f.input :address_country 
+  = f.input :address_country, input_html: { class: "o-input" }
   
-  = f.input :address_zip 
+  = f.input :address_zip, input_html: { class: "o-input" }
   
   = image_tag(resource.logo_url) if resource.logo? 
   = f.input :logo, :as => :file 
   = f.input :logo_cache, :as => :hidden 
 
 
-  = f.input :password 
+  = f.input :password, input_html: { class: "o-input" }
 
-  = f.input :password_confirmation 
+  = f.input :password_confirmation, input_html: { class: "o-input" }
   
   %div
-    = f.submit "Sign up"
+    = f.submit "Sign up", class: "o-button o-button--green"
