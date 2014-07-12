@@ -1,6 +1,44 @@
-= link_to "Signup Now", new_user_registration_path 
+- content_for :body_class, "l-home-index"
 
-
-= link_to "Login", new_user_session_path 
-
-= current_user.email if current_user 
+.m-search-hero
+  .m-search-hero__container
+    .o-highlighted
+      .o-highlighted__line= "We curate and support forward thinking farmers, helping them connect with top buyers of fruits and vegetables from around the world."
+    .l-grid.l-grid--small-gutter
+      .l-grid__item.three-quarters>
+        %input.o-input{ placeholder: "What product are you looking for?" }
+        .l-grid.l-grid--small-gutter
+          .l-grid__item.one-third>
+            %input.o-input{ placeholder: "From" }
+          .l-grid__item.one-third>
+            %input.o-input{ placeholder: "Quantity" }
+          .l-grid__item.one-third>
+            %input.o-input{ placeholder: "Price" }
+      .l-grid__item.one-quarter>
+        %button.o-button.o-button--block.o-button--green= "Search"
+  
+.l-block
+  - if @last_minute_products
+    .l-list-block
+      .l-list-block__headline
+        %h2.o-headline= "Last minute offers"
+      .l-grid
+        - @last_minute_products.each do |product|
+          .l-grid__item.one-third>
+            = render "partials/modules/m_product", p: product
+  - if @farmers_popular_products
+    .l-list-block
+      .l-list-block__headline
+        %h2.o-headline= "Farmers' Popular Products"
+      .l-grid
+        - @farmers_popular_products.each do |product|
+          .l-grid__item.one-third>
+            = render "partials/modules/m_product", p: product
+  - if @buyers_popular_products
+    .l-list-block
+      .l-list-block__headline
+        %h2.o-headline= "Buyers' Popular Products"
+      .l-grid
+        - @buyers_popular_products.each do |product|
+          .l-grid__item.one-third>
+            = render "partials/modules/m_product", p: product
