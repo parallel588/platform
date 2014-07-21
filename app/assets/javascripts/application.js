@@ -42,6 +42,12 @@
     new ImageGallery({ el: $(this) });
   });
 
+  // Initialize Search Hero functionality, in home page
+  var SearchHero = basketo.Modules.SearchHero;
+  $(".js-search-hero").each(function () {
+    new SearchHero({ el: $(this) });
+  });
+
 
 
 

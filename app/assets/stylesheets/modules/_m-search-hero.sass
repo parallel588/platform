@@ -2,9 +2,22 @@
   +box-sizing(border-box)
   background: transparent url(/assets/homepage.jpg) center center
   +background-size(cover)
-  height: em(400)
-  padding-top: em(100)
+  min-height: em(200)
+  padding-bottom: em(20)
+  padding-top: em(20)
+  +respond-min($bp__lap)
+    min-height: em(400)
+    padding-top: em(100)
 
 .m-search-hero__container
   margin: 0 auto
   max-width: em(700)
+  padding: 0 em(10)
+
+.m-search-hero__search-row
+  margin-top: em(5)
+  max-height: 0
+  overflow: hidden
+  +transition($animation--duration max-height)
+  .m-search-hero.is-active &
+    max-height: em(80)

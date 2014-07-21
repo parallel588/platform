@@ -6,6 +6,7 @@
 // .o-button--purple - Purple background
 // .o-button--orange - Orange background
 // .o-button--square - Square size
+// .o-button--square - Taller size (40px)
 //
 // Styleguide Button.
 
@@ -54,3 +55,7 @@
   display: block
   padding: 0 em(10, $font-size__big)
   width: 100%
+
+.o-button--tall
+  +respond-min($bp__lap)
+    height: em($input__height--big, $font-size__big)

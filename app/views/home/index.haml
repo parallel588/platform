@@ -1,22 +1,23 @@
 - content_for :body_class, "l-home-index"
 
-.m-search-hero
+.m-search-hero.js-search-hero
   .m-search-hero__container
     .o-highlighted
       .o-highlighted__line= "We curate and support forward thinking farmers, helping them connect with top buyers of fruits and vegetables from around the world."
     .l-grid.l-grid--small-gutter
-      .l-grid__item.three-quarters>
-        %input.o-input{ placeholder: "What product are you looking for?" }
-        .l-grid.l-grid--small-gutter
-          .l-grid__item.one-third>
-            %input.o-input{ placeholder: "From" }
-          .l-grid__item.one-third>
-            %input.o-input{ placeholder: "Quantity" }
-          .l-grid__item.one-third>
-            %input.o-input{ placeholder: "Price" }
-      .l-grid__item.one-quarter>
-        %button.o-button.o-button--block.o-button--green= "Search"
-  
+      .l-grid__item.palm--one-whole.three-quarters>
+        %input.o-input.o-input--tall.o-input--green-border.js-search-hero__main-search{ placeholder: "What product are you looking for?", tabindex: 1 }
+        .m-search-hero__search-row
+          .l-grid.l-grid--small-gutter
+            .l-grid__item.palm--one-whole.one-third>
+              %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Date Added", tabindex: 2 }
+            .l-grid__item.palm--one-half.one-third>
+              %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Quantity Kgr", type: "number", step: "10", tabindex: 3 }
+            .l-grid__item.palm--one-half.one-third>
+              %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Price €", type: "number", step: "0.1", tabindex: 4 }
+      .l-grid__item.palm--one-whole.one-quarter>
+        %button.o-button.o-button--block.o-button--tall.o-button--green{ tabindex: 5 }= "Search"
+    
 .l-block
   - if @last_minute_products
     .l-list-block
@@ -24,7 +25,7 @@
         %h2.o-headline= "Last minute offers"
       .l-grid
         - @last_minute_products.each do |product|
-          .l-grid__item.one-third>
+          .l-grid__item.palm--one-whole.one-third>
             = render "partials/modules/m_product", p: product
   - if @farmers_popular_products
     .l-list-block
@@ -32,7 +33,7 @@
         %h2.o-headline= "Farmers' Popular Products"
       .l-grid
         - @farmers_popular_products.each do |product|
-          .l-grid__item.one-third>
+          .l-grid__item.palm--one-whole.one-third>
             = render "partials/modules/m_product", p: product
   - if @buyers_popular_products
     .l-list-block
@@ -40,5 +41,5 @@
         %h2.o-headline= "Buyers' Popular Products"
       .l-grid
         - @buyers_popular_products.each do |product|
-          .l-grid__item.one-third>
+          .l-grid__item.palm--one-whole.one-third>
             = render "partials/modules/m_product", p: product
