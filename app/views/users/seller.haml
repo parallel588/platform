@@ -26,7 +26,7 @@
   .l-grid
     - @user.products.limit(3).each do |product|  
       .l-grid__item.palm--one-half.desk--one-third>
-        = render "partials/modules/m_product", p: product
+        = render "partials/modules/m_product", p: product, modifier: "m-product--compact"
 
 .l-list-block
   .l-list-block__headline
