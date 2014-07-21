@@ -16,7 +16,7 @@
             .l-grid__item.palm--one-half.one-third>
               %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Price €", type: "number", min: 0, step: "0.1", tabindex: 4 }
       .l-grid__item.palm--one-whole.one-quarter>
-        %button.o-button.o-button--block.o-button--tall.o-button--green{ tabindex: 5 }= "Search"
+        %button.o-button.o-button--block.o-button--tall.o-button--green.o-button--lined{ tabindex: 5 }= "Search"
     
 .l-block
   - if @last_minute_products
@@ -26,7 +26,7 @@
       .l-grid
         - @last_minute_products.each do |product|
           .l-grid__item.palm--one-whole.one-third>
-            = render "partials/modules/m_product", p: product
+            = render "partials/modules/m_product", p: product, modifier: "m-product--compact"
   - if @farmers_popular_products
     .l-list-block
       .l-list-block__headline
@@ -34,7 +34,7 @@
       .l-grid
         - @farmers_popular_products.each do |product|
           .l-grid__item.palm--one-whole.one-third>
-            = render "partials/modules/m_product", p: product
+            = render "partials/modules/m_product", p: product, modifier: "m-product--compact"
   - if @buyers_popular_products
     .l-list-block
       .l-list-block__headline
@@ -42,4 +42,4 @@
       .l-grid
         - @buyers_popular_products.each do |product|
           .l-grid__item.palm--one-whole.one-third>
-            = render "partials/modules/m_product", p: product
+            = render "partials/modules/m_product", p: product, modifier: "m-product--compact"

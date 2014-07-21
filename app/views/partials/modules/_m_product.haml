@@ -1,12 +1,13 @@
+- modifier ||= ""
+
 -unless p.blank?
-  .m-product
+  .m-product{ class: "#{modifier}"}
     .l-grid
       .l-grid__item.palm--one-whole.one-half>
-        - if p.product_image
-          = link_to "#", class: "m-product__image" do
+        = link_to product_url(p), class: "m-product__image" do
+          - if p.product_image
             = image_tag p.product_image.url(:square)
-        - else
-          .m-product__image
+          - else
             = image_tag "/assets/defaults/product-image.png"
         = link_to "Read More", product_url(p), class: "m-product__button o-button o-button--green o-button--block"
       .l-grid__item.palm--one-whole.one-half>

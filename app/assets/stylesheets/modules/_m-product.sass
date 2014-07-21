@@ -2,9 +2,15 @@
   +respond-max($bp__lap)
     margin-bottom: em(20)
 
+.m-product--compact
+  .o-headline
+    border-top: 0
+
 .m-product__supplier
   color: $color__orange
   margin-top: em(5)
+  .m-product--compact &
+    display: none
 
 .m-product__image
   > img
