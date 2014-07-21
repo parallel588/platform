@@ -12,9 +12,9 @@
             .l-grid__item.palm--one-whole.one-third>
               %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Date Added", tabindex: 2 }
             .l-grid__item.palm--one-half.one-third>
-              %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Quantity Kgr", type: "number", step: "10", tabindex: 3 }
+              %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Quantity Kgr", type: "number", min: 0, step: "10", tabindex: 3 }
             .l-grid__item.palm--one-half.one-third>
-              %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Price €", type: "number", step: "0.1", tabindex: 4 }
+              %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Price €", type: "number", min: 0, step: "0.1", tabindex: 4 }
       .l-grid__item.palm--one-whole.one-quarter>
         %button.o-button.o-button--block.o-button--tall.o-button--green{ tabindex: 5 }= "Search"
     
