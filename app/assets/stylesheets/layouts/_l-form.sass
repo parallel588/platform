@@ -1,0 +1,24 @@
+// Holds information about how form elements are spaced between.
+//
+// .l-form - Default Variation
+//
+// Styleguide Default form
+
+.l-form
+
+.l-form__row
+  @extend .clearfix
+  clear: both
+  min-height: em($input__height)
+  line-height: em($input__height)
+  margin-bottom: em(10)
+  position: relative
+
+.l-form__label
+  clear: right
+  font-size: em($font-size__small)
+  height: 1em
+  display: block
+  line-height: 1em
+  margin: em(5, $font-size__small) 0
+
