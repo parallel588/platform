@@ -26,6 +26,7 @@ gem 'mini_magick'
 gem 'kaminari'
 gem 'ancestry'
 gem 'inherited_resources', '~> 1.5.0'
+gem "zendesk_api"
 
 
 # Use postgresql as the database for Active Record
@@ -66,6 +67,7 @@ gem 'jbuilder', '~> 1.2'
 
 group :development do
   # gem 'rack-mini-profiler'
+  gem 'pry'
 end
 gem 'dotenv-rails', :groups => [:development, :test]
 gem "codeclimate-test-reporter", group: :test, require: nil

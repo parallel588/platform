@@ -9,6 +9,11 @@ Basekto::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index', as: 'home_without_locale'
 
+  # ZENDESK PLAYGROUND
+  scope :zendesk do
+    get '/test' => "zendesk#test"
+  end
+
   # STYLEGUIDE
   get "/styleguide", to: redirect("/styleguide/globals")
   get "styleguide/globals", to: "styleguide#globals", as: :styleguide_globals
