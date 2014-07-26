@@ -1,5 +1,5 @@
-%h3
-  Edit your personal profile
+= render :partial => "users/shared/user_preferences_menu"
+
 
 = simple_nested_form_for(@user, as: :user, :method => :put, url: update_user_preferences_path, :html => {:multipart => true}) do |f| 
 
@@ -30,37 +30,7 @@
   = f.input :password, input_html: { class: "o-input" }
 
   = f.input :password_confirmation, input_html: { class: "o-input" }
-  
-
-  = link_to t('user.update_billing_information'), preferences_billing_user_path(current_user)
-
-  / = f.fields_for :billings do |billings_form| 
-  /   %p
-  /     Add an Auction
-  /   = billings_form.input :card_number, input_html: { class: "o-input" }
-  /   = billings_form.input :expiration_date, input_html: { class: "o-input" }
-  /   = billings_form.input :three_digit, input_html: { class: "o-input" }
-  /   = billings_form.input :first_name, value: @user.name.blank? ? "" : @user.name.split(" ")[0], input_html: { class: "o-input" }
-  /   = billings_form.input :last_name, value: @user.name.blank? ? "" : @user.name.split(" ")[1], input_html: { class: "o-input" }
-  /   = billings_form.input :address_line_1, input_html: { class: "o-input" }
-  /   = billings_form.input :address_line_2, input_html: { class: "o-input" }
-  /   = billings_form.input :city, input_html: { class: "o-input" }
-  /   = billings_form.input :state, input_html: { class: "o-input" }
-  /   = billings_form.input :postal_code, input_html: { class: "o-input" }
-  /   = billings_form.input :country, input_html: { class: "o-input" }
-  /   = billings_form.input :vat_number, input_html: { class: "o-input" }
     
-
-  /   = billings_form.link_to_remove "Remove this Billing Address/Information" 
-  
-  
-  / %p
-  /   = f.link_to_add "Add another Billing Address/Information", :billings
-
-
-
-
-
 
   %div
     = f.submit "Update preferences", class: "o-button o-button--green"

@@ -45,10 +45,22 @@ class UsersController < ApplicationController
       if @billing.update_attributes(billing_params)
         flash[:notice] = t('user.billing_preferences_successfully_saved')
       else
-        flash[:alert] = t('user.billin_preferences_could_not_be_saved')
+        flash[:alert] = t('user.billing_preferences_could_not_be_saved')
       end
     end
     render "users/billings/edit"
+  end
+
+
+  def shipping
+    if params.include?(:user)
+      if current_user.update_attributes(shipping_params)
+        flash[:notice] = t('user.shipping_preferences_successfully_saved')
+      else
+        flash[:alert] = t('user.shipping_preferences_could_not_be_saved')
+      end
+    end
+    render "users/shippings/edit"    
   end
   
   
@@ -69,6 +81,9 @@ class UsersController < ApplicationController
   
   private 
   
+  def shipping_params
+    params.require(:user).permit(:shipping_type, :address_street, :address_country, :address_city, :address_zip, :shipping_custom_instructions)
+  end
 
   def billing_params
     params.require(:billing).permit(Billing.attribute_names.map(&:to_sym))

@@ -36,9 +36,13 @@ class User < ActiveRecord::Base
   
   
   
+    
   
-  
-  
+  def billing_info
+    # The specs are now with single billing / user - this can change in the future though on this architecture.    
+    self.billings.first  
+  end
+
   
   def relevant_products(excluded_product_id, limit)
     self.products.where("id <> ?", excluded_product_id).limit(limit)

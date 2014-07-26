@@ -1,0 +1,31 @@
+%h1= t('user.shipping_information')
+
+= simple_form_for current_user, :url => preferences_shipping_user_path(current_user), :method => :put do |shippings_form| 
+    %p
+    = shippings_form.input :shipping_type, :collection => [["Same as Billing Address", "billing"], ["Different than Billing Address", "shipping"], ["Custom", "custom"]]
+
+    %hr
+
+    %h2= "Existing Billing Address"    
+    = current_user.billing_info.address_line_1 + " " + current_user.billing_info.address_line_2
+    = current_user.billing_info.city
+    = current_user.billing_info.state
+    = current_user.billing_info.postal_code
+    = current_user.billing_info.country
+    
+    %hr  
+
+    %h2= "Custom Shipping Address"
+    %p
+    = shippings_form.input :address_street, input_html: { class: "o-input" }
+    = shippings_form.input :address_city, input_html: { class: "o-input" }
+    = shippings_form.input :address_zip, input_html: { class: "o-input" }
+    = shippings_form.input :address_country, input_html: { class: "o-input" }
+  
+    %hr
+    %h2= "Custom Shipping Instructions"
+    %p
+    = shippings_form.input :shipping_custom_instructions
+
+    = shippings_form.submit :value => "Update user shipping information"
+

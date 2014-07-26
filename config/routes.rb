@@ -81,6 +81,8 @@ Basekto::Application.routes.draw do
         member do
           get 'preferences/billing' => "users#billing"
           put 'preferences/billing' => "users#billing"
+          get 'preferences/shipping' => "users#shipping"
+          put 'preferences/shipping' => "users#shipping"
         end
     end
 
