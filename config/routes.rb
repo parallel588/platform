@@ -77,7 +77,6 @@ Basekto::Application.routes.draw do
           get :buyers, :controller => "users", :action => "index", :filter => "buyers"
           get :sellers, :controller => "users", :action => "index", :filter => "sellers"
         end
-        resources :ratings
         member do
           get 'preferences/billing' => "users#billing"
           put 'preferences/billing' => "users#billing"
@@ -85,6 +84,9 @@ Basekto::Application.routes.draw do
           put 'preferences/shipping' => "users#shipping"
         end
     end
+
+    resources :ratings
+
 
 
     # CHECKOUT PROCESS / CART.

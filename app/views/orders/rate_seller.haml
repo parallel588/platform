@@ -1,0 +1,17 @@
+%h2= "Rate Seller #{@seller.name} (#{@seller.email})"
+%hr
+%h2= "This rating concerns the oder: #{@order.id} for the product: #{@order.auction.product.name} / Auction Id: #{@order.auction.id}"
+
+%hr
+
+= simple_form_for(@new_rating) do |f| 
+  .field
+    = f.input :stars
+  .field
+    = f.input :review
+  .field
+    = f.input :auction_id, :input_html => {:value => @order.auction.id}
+  .actions
+    = f.submit
+
+
