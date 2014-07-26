@@ -68,7 +68,9 @@ gem 'jbuilder', '~> 1.2'
 group :development do
   # gem 'rack-mini-profiler'
   gem 'pry'
+  gem 'quiet_assets'
 end
+
 gem 'dotenv-rails', :groups => [:development, :test]
 gem "codeclimate-test-reporter", group: :test, require: nil
 
