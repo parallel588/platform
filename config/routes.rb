@@ -96,6 +96,8 @@ Basekto::Application.routes.draw do
       member do
         get '/rate_buyer' => "orders#rate_buyer"
         get '/rate_seller' => "orders#rate_seller"
+        put '/rate_buyer' => "orders#rate_buyer"
+        put '/rate_seller' => "orders#rate_seller"
         
 
         scope :checkout do

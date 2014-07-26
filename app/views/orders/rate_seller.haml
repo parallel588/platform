@@ -4,7 +4,7 @@
 
 %hr
 
-= simple_form_for(@new_rating) do |f| 
+= simple_form_for(@new_rating, :url => rate_seller_order_path(@order), :method => :put) do |f| 
   .field
     = f.input :stars
   .field
