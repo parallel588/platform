@@ -37,6 +37,19 @@ class UsersController < ApplicationController
     end
     
   end
+
+
+  def billing
+    @billing = Billing.find_or_create_by(user_id: current_user.id)
+    if params.include?(:billing)
+      if @billing.update_attributes(billing_params)
+        flash[:notice] = t('user.billing_preferences_successfully_saved')
+      else
+        flash[:alert] = t('user.billin_preferences_could_not_be_saved')
+      end
+    end
+    render "users/billings/edit"
+  end
   
   
   def index
@@ -56,8 +69,14 @@ class UsersController < ApplicationController
   
   private 
   
+
+  def billing_params
+    params.require(:billing).permit(Billing.attribute_names.map(&:to_sym))
+  end
+
+
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :logo, :logo_cache, :name, :occupation, :vat, :address_street, :address_country, :address_city, :address_zip, :phone_number, :fax_number, :link, :user_type, :buyer_type, billings_attributes: Billing.attribute_names.map(&:to_sym))
+    params.require(:user).permit(:email, :password, :password_confirmation, :logo, :logo_cache, :name, :occupation, :vat, :address_street, :address_country, :address_city, :address_zip, :phone_number, :fax_number, :link, :user_type, :buyer_type)
   end
   
   

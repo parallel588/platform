@@ -51,6 +51,7 @@ Basekto::Application.routes.draw do
       resources :photos, only: [:edit, :update, :show], controller: :product_images
     end
 
+
     resources :auctions do
       member do
         get 'bidding_submitted'
@@ -77,9 +78,27 @@ Basekto::Application.routes.draw do
           get :sellers, :controller => "users", :action => "index", :filter => "sellers"
         end
         resources :ratings
+        member do
+          get 'preferences/billing' => "users#billing"
+          put 'preferences/billing' => "users#billing"
+        end
     end
+
+
+    # CHECKOUT PROCESS / CART.
+    scope :checkout do
+      get '/cart' => "checkouts#cart"
+      get '/billing' => "checkouts#billing"
+      get '/shipping' => "checkouts#shipping"
+      get '/thankyou' => "checkouts#thankyou"
+    end
+
+
+
+
     # So that the user of type = seller to have forms for updating his profile
     resources :sellers, :only => [:edit, :update]
+
 
     get 'preferences' => "users#edit", as: "user_prefernces"
     put 'preferences' => "users#update", as: "update_user_preferences"
