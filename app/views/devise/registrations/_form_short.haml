@@ -1,0 +1,8 @@
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+
+  = f.input :email, autofocus: true, as: :email, input_html: { class: "o-input" }
+  
+  = f.input :password, input_html: { class: "o-input" }
+
+  %div
+    = f.submit "Sign up", class: "o-button o-button--green"

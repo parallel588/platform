@@ -19,8 +19,5 @@
           = link_to "Forgot your password?", new_user_password_path
   .l-grid__item.palm--one-whole.one-half>
     %h2.o-headline= "Reasons to become a member"
-    %ul
-      %li= "You will be able to place bids and buy products."
-      %li= "You will be able to place bids and buy products."
-      %li= "You will be able to place bids and buy products."
-      %li= "You will be able to place bids and buy products."
+    
+    = render :partial => "devise/registrations/form_short", :resource_name => resource_name

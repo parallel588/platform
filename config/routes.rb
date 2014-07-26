@@ -25,7 +25,7 @@ Basekto::Application.routes.draw do
   devise_for :users,
     path: "/",
     path_names: {
-      sign_in: 'login',
+      sign_in: 'login_register',
       sign_out: 'logout',
       password: 'reset_password',
       confirmation: 'verification',

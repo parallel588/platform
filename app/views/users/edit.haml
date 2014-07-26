@@ -38,8 +38,8 @@
     = billings_form.input :card_number, input_html: { class: "o-input" }
     = billings_form.input :expiration_date, input_html: { class: "o-input" }
     = billings_form.input :three_digit, input_html: { class: "o-input" }
-    = billings_form.input :first_name, value: @user.name.split(" ")[0] || "", input_html: { class: "o-input" }
-    = billings_form.input :last_name, value: @user.name.split(" ")[1] || "", input_html: { class: "o-input" }
+    = billings_form.input :first_name, value: @user.name.blank? ? "" : @user.name.split(" ")[0], input_html: { class: "o-input" }
+    = billings_form.input :last_name, value: @user.name.blank? ? "" : @user.name.split(" ")[1], input_html: { class: "o-input" }
     = billings_form.input :address_line_1, input_html: { class: "o-input" }
     = billings_form.input :address_line_2, input_html: { class: "o-input" }
     = billings_form.input :city, input_html: { class: "o-input" }

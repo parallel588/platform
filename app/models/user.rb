@@ -105,5 +105,18 @@ class User < ActiveRecord::Base
   def is_premium_seller?
     return user_type == "buyer" && seller_type == "premium"
   end
+
+
+
+  # OVERRRIDING DEVISE FOR PASSWORD CONFIRMATION MISSING AND REQUIRED
+  def password_required?
+    false
+  end
+
+  def password_match?
+    self.errors[:password] << "can't be blank" if password.blank?
+    return true unless password.blank?
+  end
+
   
 end
