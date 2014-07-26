@@ -51,11 +51,11 @@
 
     .l-list-block
       .l-list-block__headline
-        %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= @product.user.name
+        %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= @product.user.try(:name)
       .m-icon-list.l-grid
         .m-icon-list__item.l-grid__item.one-half>
           .m-icon-list__icon.o-icon.o-icon--map-marker
-          .m-icon-list__data= "#{@product.user.address_city}, #{@product.user.address_country}"
+          .m-icon-list__data= "#{@product.user.try(:address_city)}, #{@product.user.try(:address_country)}"
         .m-icon-list__item.l-grid__item.one-half>
           .m-icon-list__icon.o-icon.o-icon--star-outline
           .m-icon-list__data
@@ -68,7 +68,7 @@
           .m-icon-list__icon.o-icon.o-icon--map-marker
           .m-icon-list__data
             = "Other products"
-        - if @product.user.relevant_products(@product.id, 4).count > 0
+        - if @product.user && @product.user.relevant_products(@product.id, 4).count > 0
           .l-grid__item.one-whole>
             .l-grid.l-expandable
               - @product.user.relevant_products(@product.id, 4).each do |product|
@@ -78,7 +78,7 @@
     .l-list-block
       .l-list-block__headline--big-margin
         %h2.o-headline.o-headline--no-top-border= "Customers also viewed"
-      -if @product.relevant_products(4).count > 0                  
+      -if @product.relevant_products(4) && @product.relevant_products(4).count > 0                  
         .l-grid
           .l-grid__item.one-half>
             = render "partials/modules/m_product", p: @product.relevant_products(2).try(:first) || nil
