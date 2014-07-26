@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_locale
-  after_filter :store_location # Note that if you happen to have before_filter :authenticate_user! in your ApplicationController you will need to use before_filter 
+  before_filter :store_location # Note that if you happen to have before_filter :authenticate_user! in your ApplicationController you will need to use before_filter 
 
   
   
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   
   # ################## START of Overriding DEVISE ################## #
   def store_location
-    if !(request.fullpath =~ Regexp.union("/login", "/logout", "signup", "reset_password")) && !request.xhr?
+    if !(request.fullpath =~ Regexp.union("/login_register", "/login", "/logout", "signup", "reset_password")) && !request.xhr?
       session[:previous_url] = request.fullpath 
     else      
       session[:previous_url] = nil
@@ -34,7 +34,13 @@ class ApplicationController < ActionController::Base
     # end      
     
     # If the policy is that we want the user to be redirected back to the url that he requested before being asked to login/signup
-    session[:previous_url] || home_path
+    sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
+    if request.referer == sign_in_url
+      super
+    else
+      stored_location_for(resource) || request.referer || root_path
+    end
+    # session[:previous_url] || home_path
   end
   
   
