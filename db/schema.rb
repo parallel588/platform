@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706134038) do
+ActiveRecord::Schema.define(version: 20140726124038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20140706134038) do
     t.float    "starting_bid"
     t.float    "bid_increment"
     t.float    "buy_out_bid"
-    t.integer  "winning_buyer_id"
     t.integer  "winning_bidding_id"
     t.integer  "seller_id"
+    t.integer  "winning_buyer_id"
   end
 
   add_index "auctions", ["ending_at"], name: "index_auctions_on_ending_at", using: :btree
@@ -72,6 +72,19 @@ ActiveRecord::Schema.define(version: 20140706134038) do
   end
 
   add_index "billings", ["user_id"], name: "index_billings_on_user_id", using: :btree
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "auction_id"
+    t.integer  "product_id"
+    t.integer  "bidding_id"
+    t.integer  "assignee_id"
+    t.string   "assignee_email"
+    t.string   "status"
+    t.integer  "zendesk_ticket_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "product_categories", force: true do |t|
     t.string   "name"
