@@ -37,9 +37,13 @@ class OrdersController < ApplicationController
     @new_rating = Rating.new({:from_user_id => current_user.id, :to_user_id => @buyer.id})
 
     if params.include?(:rating)  
-
-    else
-
+      if @new_rating.update_attributes(rating_params)
+        @order.update_attribute(:buyer_rating_id, @new_rating.id)      
+        redirect_to orders_path   
+      else
+        flash[:alert] = "PROBLEMO"
+        redirect_to rate_buyer_order_path(@order)
+      end      
     end
   end
 
