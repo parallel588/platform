@@ -92,6 +92,10 @@ Basekto::Application.routes.draw do
 
     resources :orders, :only => [:index] do
       member do
+        get '/rate_buyer' => "orders#rate_buyer"
+        get '/rate_seller' => "orders#rate_seller"
+        
+
         scope :checkout do
           get '/billing' => "checkouts#billing"
           get '/shipping' => "checkouts#shipping"

@@ -1,0 +1,32 @@
+%table
+  %thead
+    %tr
+      %th
+        Id      
+      %th
+        Product
+      %th
+        Auction
+      %th
+        Winner
+      %th
+        Rate Seller
+      %th
+        Rate Buyer          
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.id
+        %td= order.auction.product.name
+        %td= order.auction.inspect
+        %td= order.user.inspect
+        %td
+          - if order.seller_rating_id.blank?
+            = link_to "Pending Seller Rating for this order", rate_seller_order_path(order)
+          - else
+            = order.seller_rating_id
+        %td
+          - if order.buyer_rating_id.blank?
+            = link_to "Pending Buyer Rating for this order", rate_buyer_order_path(order)
+          - else
+            = order.buyer_rating_id

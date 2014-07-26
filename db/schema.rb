@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726145657) do
+ActiveRecord::Schema.define(version: 20140726161849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,7 +84,12 @@ ActiveRecord::Schema.define(version: 20140726145657) do
     t.integer  "zendesk_ticket_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "buyer_rating_id"
+    t.integer  "seller_rating_id"
   end
+
+  add_index "orders", ["buyer_rating_id"], name: "index_orders_on_buyer_rating_id", using: :btree
+  add_index "orders", ["seller_rating_id"], name: "index_orders_on_seller_rating_id", using: :btree
 
   create_table "product_categories", force: true do |t|
     t.string   "name"
