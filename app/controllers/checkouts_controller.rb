@@ -1,5 +1,6 @@
 class CheckoutsController < ApplicationController
   before_action :authenticate_user!
+  before_action :define_order, :except => [:cart]
 
 
   def cart
@@ -18,7 +19,22 @@ class CheckoutsController < ApplicationController
   end
 
 
+  def confirm
+        
+  end
+
+
+  def place
+    # ZENDESK CONNECTION HERE
+    @order.confirm!
+    redirect_to thankyou_order_path(@order)
+  end
+
 
   private
 
+
+  def define_order
+    @order = Order.find(params[:id])
+  end
 end

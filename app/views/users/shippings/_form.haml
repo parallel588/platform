@@ -27,5 +27,9 @@
     %p
     = shippings_form.input :shipping_custom_instructions
 
+    - if !@order.blank?
+        %input{:name => "order_id", :value => @order.id, :type => "hidden"}
+
+
     = shippings_form.submit :value => "Update user shipping information"
 

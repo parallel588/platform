@@ -1,0 +1,25 @@
+%h1= "Confirmation for the ORDER ##{@order.id}"
+
+%p= "Auction"
+%p= @order.auction.inspect
+
+%hr
+
+%p= "Product"
+%p= @order.auction.product.inspect
+
+%hr
+
+%p= "Billing"
+%p= current_user.billing_info.inspect
+
+%hr
+
+%p= "Shipping"
+%p= current_user.shipping_info
+
+%hr
+
+= simple_form_for @order, :url => place_order_path(@order), :method => :put do |order_form| 
+    %p
+    = order_form.submit :value => "Confirm this Order" 

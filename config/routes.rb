@@ -88,13 +88,21 @@ Basekto::Application.routes.draw do
 
 
     # CHECKOUT PROCESS / CART.
-    scope :checkout do
-      get '/cart' => "checkouts#cart"
-      get '/billing' => "checkouts#billing"
-      get '/shipping' => "checkouts#shipping"
-      get '/thankyou' => "checkouts#thankyou"
+    get '/cart' => "checkouts#cart"
+
+    resources :orders, :only => [:index] do
+      member do
+        scope :checkout do
+          get '/billing' => "checkouts#billing"
+          get '/shipping' => "checkouts#shipping"
+          get '/confirm' => "checkouts#confirm"
+          put '/place' => "checkouts#place"
+          get '/thankyou' => "checkouts#thankyou"
+        end
+      end
     end
 
+    
 
 
 

@@ -11,5 +11,9 @@ class Billing < ActiveRecord::Base
   validates :country, presence: true
   
 
+
+  def address_summary
+    return "#{self.address_line_1} #{self.address_line_2} #{self.city} #{self.postal_code} #{self.country}"
+  end
   
 end

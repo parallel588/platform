@@ -1,1 +1,10 @@
-cart.haml
+%h1= t('user.cart')
+
+%p= t('user.orders')
+
+- current_user.orders.initialized.each do |order|
+  %div
+    %p= order.auction.product.name
+    %p= link_to "Pay now", billing_order_path(order)
+  %hr 
+  

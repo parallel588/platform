@@ -48,7 +48,13 @@ class UsersController < ApplicationController
         flash[:alert] = t('user.billing_preferences_could_not_be_saved')
       end
     end
-    render "users/billings/edit"
+    # Decide wether we are in a continuous checkout process or in a user preferences page.
+    if params.include?(:order_id)
+      redirect_to shipping_order_path(Order.find(params[:order_id]))
+    else
+      render "users/billings/edit"
+    end
+    
   end
 
 
@@ -60,7 +66,11 @@ class UsersController < ApplicationController
         flash[:alert] = t('user.shipping_preferences_could_not_be_saved')
       end
     end
-    render "users/shippings/edit"    
+    if params.include?(:order_id)
+      redirect_to confirm_order_path(Order.find(params[:order_id]))
+    else
+      render "users/shippings/edit"    
+    end
   end
   
   

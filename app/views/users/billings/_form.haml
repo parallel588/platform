@@ -13,4 +13,8 @@
     = billings_form.input :country, input_html: { class: "o-input" }
     = billings_form.input :vat_number, input_html: { class: "o-input" }
     
+    - if !@order.blank?
+        %input{:name => "order_id", :value => @order.id, :type => "hidden"}
+
+        
     = billings_form.submit :value => "Save this" 

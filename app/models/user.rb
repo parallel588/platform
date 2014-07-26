@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   has_many :auctions,foreign_key: :seller_id # as a seller
   has_many :biddings # as a buyer
   has_many :billings
+  has_many :orders
   has_one  :seller
 
   accepts_nested_attributes_for :billings, :allow_destroy => true
@@ -41,6 +42,23 @@ class User < ActiveRecord::Base
   def billing_info
     # The specs are now with single billing / user - this can change in the future though on this architecture.    
     self.billings.first  
+  end
+
+
+  def shipping_info
+    case shipping_type 
+      when "billing"
+        self.billing_info.address_summary
+      when "shipping"
+        self.user_address_summary
+      when "custom"
+        self.shipping_custom_instructions
+    end      
+  end
+
+
+  def user_address_summary
+    return "#{self.address_street} #{self.address_city} #{self.address_zip} #{self.address_country}"
   end
 
   
