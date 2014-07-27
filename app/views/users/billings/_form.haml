@@ -1,20 +1,46 @@
-= simple_form_for @billing, :url => preferences_billing_user_path(current_user), :method => :put do |billings_form| 
-    %p
-    = billings_form.input :card_number, input_html: { class: "o-input" }
-    = billings_form.input :expiration_date, input_html: { class: "o-input" }
-    = billings_form.input :three_digit, input_html: { class: "o-input" }
-    = billings_form.input :first_name, value: current_user.name.blank? ? "" : @user.name.split(" ")[0], input_html: { class: "o-input" }
-    = billings_form.input :last_name, value: current_user.name.blank? ? "" : @user.name.split(" ")[1], input_html: { class: "o-input" }
-    = billings_form.input :address_line_1, input_html: { class: "o-input" }
-    = billings_form.input :address_line_2, input_html: { class: "o-input" }
-    = billings_form.input :city, input_html: { class: "o-input" }
-    = billings_form.input :state, input_html: { class: "o-input" }
-    = billings_form.input :postal_code, input_html: { class: "o-input" }
-    = billings_form.input :country, input_html: { class: "o-input" }
-    = billings_form.input :vat_number, input_html: { class: "o-input" }
-    
+.l-form
+  = simple_form_for @billing, :url => preferences_billing_user_path(current_user), :method => :put do |billings_form| 
+    .l-form__row
+      .l-form__label= billings_form.label :card_number
+      = billings_form.text_field :card_number, class: "o-input"
+    .l-form__row
+      .l-form__label= billings_form.label :expiration_date
+      = billings_form.input :expiration_date, label: false
+    .l-form__row
+      .l-form__label= billings_form.label :three_digit
+      = billings_form.text_field :three_digit, class: "o-input"
+    .l-form__row
+      .l-grid
+        .l-grid__item.one-half>    
+          .l-form__label= billings_form.label :first_name
+          = billings_form.text_field :first_name, value: current_user.name.blank? ? "" : current_user.name.split(" ")[0], class: "o-input"
+        .l-grid__item.one-half>
+          .l-form__label= billings_form.label :last_name
+          = billings_form.text_field :last_name, value: current_user.name.blank? ? "" : current_user.name.split(" ")[1], class: "o-input"
+    .l-form__row
+      .l-form__label= billings_form.label :address_line_1
+      = billings_form.text_field :address_line_1, class: "o-input"
+    .l-form__row
+      .l-form__label= billings_form.label :address_line_2
+      = billings_form.text_field :address_line_2, class: "o-input"
+    .l-form__row
+      .l-grid
+        .l-grid__item.two-fifths>
+          .l-form__row
+            .l-form__label= billings_form.label "City"
+            = billings_form.text_field :city, class: "o-input"
+        .l-grid__item.two-fifths>
+          .l-form__row
+            .l-form__label= billings_form.label :country
+            = billings_form.text_field :country, class: "o-input"
+        .l-grid__item.one-fifth>
+          .l-form__row
+            .l-form__label= billings_form.label :postal_code
+            = billings_form.text_field :postal_code, class: "o-input"
+    .l-form__row
+      .l-form__label= billings_form.label :vat_number
+      = billings_form.text_field :vat_number, class: "o-input"
     - if !@order.blank?
-        %input{:name => "order_id", :value => @order.id, :type => "hidden"}
-
-        
-    = billings_form.submit :value => "Save this" 
+      %input{:name => "order_id", :value => @order.id, :type => "hidden"}
+    .l-form__row.l-form__row--top-margin
+      = billings_form.submit :value => "Save your Billing Information", class: "o-button o-button--orange"

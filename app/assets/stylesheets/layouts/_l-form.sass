@@ -5,6 +5,8 @@
 // Styleguide Default form
 
 .l-form
+  .o-headline + &
+    margin-top: em(10)
 
 .l-form__row
   @extend .clearfix
@@ -14,6 +16,12 @@
   margin-bottom: em(10)
   position: relative
 
+.l-form__row--bottom-margin
+  margin-bottom: em(20)
+
+.l-form__row--top-margin
+  margin-top: em(20)
+
 .l-form__label
   clear: right
   height: 1em
@@ -21,3 +29,7 @@
   line-height: 1em
   margin: em(5) 0
 
+.l-form__profile-image
+  border: 1px solid $color__grey--lite
+  height: auto
+  max-width: 100%

@@ -1,35 +1,42 @@
-%h1= t('user.shipping_information')
-
-= simple_form_for current_user, :url => preferences_shipping_user_path(current_user), :method => :put do |shippings_form| 
-    %p
-    = shippings_form.input :shipping_type, :collection => [["Same as Billing Address", "billing"], ["Different than Billing Address", "shipping"], ["Custom", "custom"]]
-
-    %hr
-
-    %h2= "Existing Billing Address"    
-    = current_user.billing_info.address_line_1 + " " + current_user.billing_info.address_line_2
-    = current_user.billing_info.city
-    = current_user.billing_info.state
-    = current_user.billing_info.postal_code
-    = current_user.billing_info.country
-    
-    %hr  
-
-    %h2= "Custom Shipping Address"
-    %p
-    = shippings_form.input :address_street, input_html: { class: "o-input" }
-    = shippings_form.input :address_city, input_html: { class: "o-input" }
-    = shippings_form.input :address_zip, input_html: { class: "o-input" }
-    = shippings_form.input :address_country, input_html: { class: "o-input" }
-  
-    %hr
-    %h2= "Custom Shipping Instructions"
-    %p
-    = shippings_form.input :shipping_custom_instructions
-
-    - if !@order.blank?
-        %input{:name => "order_id", :value => @order.id, :type => "hidden"}
-
-
-    = shippings_form.submit :value => "Update user shipping information"
-
+.l-form
+  = simple_form_for current_user, :url => preferences_shipping_user_path(current_user), :method => :put do |shippings_form| 
+    .l-form__row.l-form__row--bottom-margin
+      .l-form__label= shippings_form.label :shipping_type
+      = shippings_form.select :shipping_type, [["Same as Billing Address", "billing"], ["Different than Billing Address", "shipping"], ["Custom", "custom"]]
+    .l-grid
+      .l-grid__item.desk--two-thirds>
+        %h2.o-headline.o-headline--small= "Custom Shipping Address"
+        .l-form
+          .l-form__row
+            .l-form__label= shippings_form.label "Street"
+            = shippings_form.text_field :address_street, class: "o-input"
+          .l-form__row
+            .l-grid
+              .l-grid__item.two-fifths>
+                .l-form__row
+                  .l-form__label= shippings_form.label "City"
+                  = shippings_form.text_field :address_city, class: "o-input"
+              .l-grid__item.two-fifths>
+                .l-form__row
+                  .l-form__label= shippings_form.label "Country"
+                  = shippings_form.text_field :address_country, class: "o-input"
+              .l-grid__item.one-fifth>
+                .l-form__row
+                  .l-form__label= shippings_form.label "Zip"
+                  = shippings_form.text_field :address_zip, class: "o-input"
+          .l-form__row
+            .l-form__label= shippings_form.label :shipping_custom_instructions
+            = shippings_form.text_area :shipping_custom_instructions, class: "o-input o-input--tall"
+          - if !@order.blank?
+            %input{:name => "order_id", :value => @order.id, :type => "hidden"}
+      .l-grid__item.desk--one-third>
+        %h2.o-headline.o-headline--small= "Existing Billing Address"
+        .l-form
+          .l-form__row
+            = current_user.billing_info.address_line_1 + " " + current_user.billing_info.address_line_2
+            = current_user.billing_info.city
+            = current_user.billing_info.state
+            = current_user.billing_info.postal_code
+            = current_user.billing_info.country
+    .l-form__row.l-form__row--top-margin
+      = shippings_form.submit :value => "Update user shipping information", class: "o-button o-button--orange"

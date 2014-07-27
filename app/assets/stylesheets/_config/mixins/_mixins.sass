@@ -20,7 +20,7 @@
   +respond-min(0) //to overcome specificity of fallback sizes inside the media queries
     font-size: #{$vw-font-size}vw
 
-=triangle($width: 20px, $height: 20px, $direction: up, $color: primary)
+=triangle($width: 20px, $height: 20px, $direction: up, $color: $color__black)
   width: 0 
   height: 0
   // Right
@@ -28,22 +28,22 @@
     border-top: $height/2 solid transparent
     border-bottom: $height/2 solid transparent
     border-left: $width solid transparent
-    +fs-color($color, border-left-color)
+    border-left-color: $color
   // Left
   @if $direction == left
     border-top: $height/2 solid transparent
     border-bottom: $height/2 solid transparent
     border-right: $width solid transparent
-    +fs-color($color, border-right-color)
+    border-right-color: $color
   // Up
   @if $direction == up
     border-left: $width/2 solid transparent
     border-right: $width/2 solid transparent
     border-bottom: $height solid transparent
-    +fs-color($color, border-bottom-color)
+    border-bottom-color: $color
   // Down
   @if $direction == down
     border-left: $width/2 solid transparent
     border-right: $width/2 solid transparent
     border-top: $height solid transparent
-    +fs-color($color, border-top-color)
+    border-top-color: $color

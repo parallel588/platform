@@ -1,0 +1,33 @@
+.m-side-links
+
+.m-side-links__link
+  background: $color__grey--lite
+  +box-sizing(border-box)
+  display: block
+  height: em(35)
+  line-height: em(35)
+  padding: 0 em(10)
+  +transition(background $animation--duration)
+  &:after
+    display: inline-block
+    content: ""
+    float: right
+    margin-top: em(12)
+    +triangle(5px, 10px, right, $color__orange)
+    +transition(all $animation--duration)
+  &:hover
+    background: $color__white
+    &:after
+      +transform(translateX(-5px))
+  & + &
+    border-top: 1px solid $color__white
+  &.is-active
+    background: transparent
+    font-weight: bold
+    color: $color__black
+    &:after
+      +triangle(5px, 10px, right, $color__black)
+
+
+a.m-side-links__link //specificity
+  text-decoration: none

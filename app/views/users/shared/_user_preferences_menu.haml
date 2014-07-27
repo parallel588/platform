@@ -1,5 +1,4 @@
-= link_to t('user.update_personal_profile'), user_prefernces_path
-|
-= link_to t('user.update_billing_information'), preferences_billing_user_path(current_user)
-|
-= link_to t('user.update_shipping_information'), preferences_shipping_user_path(current_user)
+.m-side-links
+  = link_to t('user.update_personal_profile'), user_prefernces_path, class: "m-side-links__link #{"is-active" if @current_settings_page == "personal"}"
+  = link_to t('user.update_billing_information'), preferences_billing_user_path(current_user), class: "m-side-links__link #{"is-active" if @current_settings_page == "billing"}"
+  = link_to t('user.update_shipping_information'), preferences_shipping_user_path(current_user), class: "m-side-links__link #{"is-active" if @current_settings_page == "shipping"}"

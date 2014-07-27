@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   
   def edit
+    @current_settings_page = "personal"
     @user = current_user
   end
   
@@ -40,6 +41,7 @@ class UsersController < ApplicationController
 
 
   def billing
+    @current_settings_page = "billing"
     @billing = Billing.find_or_create_by(user_id: current_user.id)
     if params.include?(:billing)
       if @billing.update_attributes(billing_params)
@@ -59,6 +61,7 @@ class UsersController < ApplicationController
 
 
   def shipping
+    @current_settings_page = "shipping"
     if params.include?(:user)
       if current_user.update_attributes(shipping_params)
         flash[:notice] = t('user.shipping_preferences_successfully_saved')
