@@ -1,11 +1,13 @@
-.l-grid
+- content_for :body_class, "l-login-register js-login-register"
+
+.l-grid.l-grid--big-gutter
   .l-grid__item.palm--one-whole.one-half>
     %h1.o-headline= "Sign in"
-    .l-form
+    .l-form.js-login-register__form{ class: ("is-active" if params[:type] == "login") }
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .l-form__row
           .l-form__label= f.label :email
-          = f.email_field :email, autofocus: true, class: "o-input"
+          = f.email_field :email, autofocus: (true if params[:type] == "login"), class: "o-input"
         .l-form__row
           .l-form__label= f.label :password 
           = f.password_field :password, autocomplete: "off", class: "o-input"
@@ -14,10 +16,11 @@
             = f.check_box :remember_me
             = f.label :remember_me
         .l-form__row
-          = f.submit "Sign in", class: "o-button o-button--green"
+          = f.submit "Sign in", class: "o-button o-button--orange"
         .l-form__row
           = link_to "Forgot your password?", new_user_password_path
+
   .l-grid__item.palm--one-whole.one-half>
-    %h2.o-headline= "Reasons to become a member"
+    %h2.o-headline= "Become a member"
     
     = render :partial => "devise/registrations/form_short", :resource_name => resource_name

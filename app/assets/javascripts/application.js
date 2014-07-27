@@ -20,9 +20,8 @@
   var basketo = win.basketo, app = basketo.app;
 
   // Initialize SVG counter in product page
-  var countdownTimer = basketo.Modules.CountdownTimer;
   $(".js-countdown-timer").each(function () {
-    new countdownTimer({ el: $(this) });
+    new basketo.Modules.CountdownTimer({ el: $(this) });
   });
 
   // Initialize Text counter next to the circle
@@ -37,15 +36,18 @@
   });
 
   // Initialize Image Gallery plugin, in product page
-  var ImageGallery = basketo.Modules.ImageGallery;
   $(".js-image-gallery").each(function () {
-    new ImageGallery({ el: $(this) });
+    new basketo.Modules.ImageGallery({ el: $(this) });
   });
 
   // Initialize Search Hero functionality, in home page
-  var SearchHero = basketo.Modules.SearchHero;
   $(".js-search-hero").each(function () {
-    new SearchHero({ el: $(this) });
+    new basketo.Modules.SearchHero({ el: $(this) });
+  });
+
+  // Login-Register page
+  $(".js-login-register").each(function () {
+    new basketo.Modules.LoginRegister({ el: $(this) });
   });
 
 

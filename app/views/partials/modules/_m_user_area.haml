@@ -11,4 +11,6 @@
       / = link_to "Buyer Dashboard", buyer_dashboard_url
       = link_to "Cart", cart_path
     - else
-      = link_to "Login", new_user_session_path
+      = link_to "Login", new_user_session_path(:type => "login")
+      &nbsp; | &nbsp;
+      = link_to "Register", new_user_session_path(:type => "register")
