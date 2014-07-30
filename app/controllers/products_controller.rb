@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
       @products = User.find(params[:user_id]).products
       render "users/products/index"
     else
+      @products = Product.all
       @auctions = Auction.active.load
       render "index"
     end

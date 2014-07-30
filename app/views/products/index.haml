@@ -1,37 +1,22 @@
-%h1
-  Listing products with Active Auctions
+.l-list-block
+  .l-list-block__headline--big-margin
+    %h1.o-headline= "Products"                
+  .l-grid
+    - @products.each do |product|
+      .l-grid__item.palm--one-whole.one-third>
+        = render "partials/modules/m_product", p: product || nil
 
-%table
-  %thead
-    %tr
-      %th
-        Name      
-      %th
-        Category
-      %th
-        Country    
-      %th
-        Min Bidding
-      %th
-        Buy-out Bidding
-      %th  
-        Auction Ending at
-      %th  
-        Current Winning Bidding  
-      %th
-        Auction
-
-  %tbody
-    - @auctions.each do |auction|
-      %tr
-        %td= auction.product.name
-        %td= auction.product.product_category.try(:name) 
-        %td= auction.product.country         
-        %td= auction.starting_bid 
-        %td= auction.buy_out_bid 
-        %td= auction.ending_at
-        %td= "#{auction.get_winning_bidding_obj.try(:amount)} by <b>#{auction.get_winning_bidding_obj.user.email}</b>".html_safe if !auction.get_winning_bidding_obj.blank?
-        %td= link_to "Place your bidding (> #{auction.get_current_winning_bidding_value})", new_auction_bidding_path(auction) 
+  / %tbody
+  /   - @auctions.each do |auction|
+  /     %tr
+  /       %td= auction.product.name
+  /       %td= auction.product.product_category.try(:name) 
+  /       %td= auction.product.country         
+  /       %td= auction.starting_bid 
+  /       %td= auction.buy_out_bid 
+  /       %td= auction.ending_at
+  /       %td= "#{auction.get_winning_bidding_obj.try(:amount)} by <b>#{auction.get_winning_bidding_obj.user.email}</b>".html_safe if !auction.get_winning_bidding_obj.blank?
+  /       %td= link_to "Place your bidding (> #{auction.get_current_winning_bidding_value})", new_auction_bidding_path(auction) 
 
 %br
 
