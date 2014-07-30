@@ -1,22 +1,27 @@
-%h1= params[:filter].to_s.titleize
+.l-list-block
+  .l-list-block__headline
+    %h1.o-headline= "Users"
+  .l-grid
+    - @users.each do |u|
+      .l-grid__item.palm--one-whole.one-third>
+        = link_to user_path(u), class: "m-user" do
+          .l-grid
+            .l-grid__item.one-third>
+              .m-user__image
+                = image_tag current_user.logo.url if current_user && !current_user.logo.blank?
+            .l-grid__item.two-thirds>
+              %ul.m-icon-list
+                %li.m-icon-list__item
+                  .m-icon-list__icon.o-icon.o-icon--map-marker
+                  .m-icon-list__data= u.name
+                %li.m-icon-list__item
+                  .m-icon-list__icon.o-icon.o-icon--map-marker
+                  .m-icon-list__data= u.occupation
+                %li.m-icon-list__item
+                  .m-icon-list__icon.o-icon.o-icon--map-marker
+                  .m-icon-list__data= u.user_type
+                %li.m-icon-list__item
+                  .m-icon-list__icon.o-icon.o-icon--map-marker
+                  .m-icon-list__data= u.address_country
 
-
-%table
-  %thead
-    %tr
-      %th
-        Name      
-      %th
-        Products
-      %th
-        Review
-
-  %tbody
-  - @users.each do |u| 
-    %tr
-      %td= u.name_and_email 
-      %td= link_to "See the products of #{u.name}.", user_path(u)  if u.user_type == "seller" 
-      %td= link_to "Add a review for this #{u.user_type}", user_ratings_path(u)
-
-  
-= paginate @users 
+    = paginate @users 

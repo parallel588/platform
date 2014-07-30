@@ -27,14 +27,14 @@
       = yield
     - else
       .l-block
-        .o-breadcrumb
-          = link_to "Home", "/"
-          >
-          = link_to "Products", "/"
-          >
-          = link_to "Fruits", "/"
-          >
-          = link_to "Apples", "/"
+        / .o-breadcrumb
+        /   = link_to "Home", "/"
+        /   >
+        /   = link_to "Products", "/"
+        /   >
+        /   = link_to "Fruits", "/"
+        /   >
+        /   = link_to "Apples", "/"
         = yield
 
     = render "shared/footer"
