@@ -1,67 +1,77 @@
-= simple_nested_form_for(@product) do |f|
-  - if @product.errors.any?
-    #error_explanation
-      %h2
-        = "#{pluralize(@product.errors.count, "error")}  prohibited this product from being saved:"
+.l-form
+  = simple_nested_form_for(@product) do |f|
+    - if @product.errors.any?
+      #error_explanation
+        %h2
+          = "#{pluralize(@product.errors.count, "error")}  prohibited this product from being saved:"
 
-      %ul
-        - @product.errors.full_messages.each do |msg|
-          %li= msg
+        %ul
+          - @product.errors.full_messages.each do |msg|
+            %li= msg
+    .l-form__row
+      .l-form__label= f.label :name
+      = f.text_field :name, autofocus: true, class: "o-input"
+    .l-form__row
+      = f.input :product_category_id, collection: ProductCategory.roots, as: :grouped_select, group_method: :children, input_html: { class: "o-input" }
+    .l-form__row
+      .l-form__label= f.label :description
+      = f.text_field :description, class: "o-input"
+    .l-form__row
+      .l-form__label= f.label :country
+      = f.text_field :country, class: "o-input"
+    .l-form__row
+      .l-form__label= f.label :volume
+      = f.text_field :volume, class: "o-input"
+    .l-form__row
+      .l-form__label= f.label :size
+      = f.text_field :size, class: "o-input"
+    .l-form__row
+      .l-form__label= f.label :quality
+      = f.text_field :quality, class: "o-input"
+    .l-form__row
+      .l-form__label= f.label :bidding, label: "Bidding Price per Kg."
+      = f.text_field :bidding, class: "o-input"
+    .l-form__row
+      = f.input :ending_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year]
+    .l-form__row
+      = f.input :starting_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year]
+    .l-form__row
+      = f.input :delivery_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year]
+    .l-form__row
+      .l-form__label= f.label :shipping_information
+      = f.text_field :shipping_information, :as => :text, class: "o-input"
+    .l-form__row
+      .l-form__label= f.label :packaging_information
+      = f.text_field :packaging_information, :as => :text, class: "o-input"
+    .l-form__row
+      .l-form__label= f.label :pallets
+      = f.text_field :pallets, :as => :text, class: "o-input"
 
-  .field
-    = f.input :name, input_html: { class: "o-input" }
-  .field
-    = f.input :product_category_id, collection: ProductCategory.roots, as: :grouped_select, group_method: :children, input_html: { class: "o-input" }
-  .field
-    = f.input :description, input_html: { class: "o-input" } 
-  .field
-    = f.input :country, input_html: { class: "o-input" }
-  .field
-    = f.input :volume, input_html: { class: "o-input" }
-  .field
-    = f.input :size, input_html: { class: "o-input" }
-  .field
-    = f.input :quality, input_html: { class: "o-input" }
-  .field
-    = f.input :bidding, label: "Bidding Price per Kg.", input_html: { class: "o-input" }
-  .field
-    = f.input :ending_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year], input_html: { class: "o-input" }
-  .field
-    = f.input :starting_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year], input_html: { class: "o-input" }
-  .field
-    = f.input :delivery_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year], input_html: { class: "o-input" }
-  .field
-    = f.input :shipping_information, :as => :text, input_html: { class: "o-input" }
-  .field
-    = f.input :packaging_information, input_html: { class: "o-input" }
-  .field
-    = f.input :pallets, input_html: { class: "o-input" }
+    = f.fields_for :auctions do |auctions_form|
+      %p
+        Add an Auction
+      .l-form__row
+        = auctions_form.input :starting_at, input_html: { class: "o-input" }
+        = auctions_form.input :ending_at, input_html: { class: "o-input" }
+        = auctions_form.input :starting_bid, input_html: { class: "o-input" }
+        = auctions_form.input :bid_increment, input_html: { class: "o-input" }
+        = auctions_form.input :buy_out_bid, input_html: { class: "o-input" }
 
+        = auctions_form.link_to_remove "Remove this auction"
 
-  = f.fields_for :auctions do |auctions_form|
     %p
-      Add an Auction
-    = auctions_form.input :starting_at, input_html: { class: "o-input" }
-    = auctions_form.input :ending_at, input_html: { class: "o-input" }
-    = auctions_form.input :starting_bid, input_html: { class: "o-input" }
-    = auctions_form.input :bid_increment, input_html: { class: "o-input" }
-    = auctions_form.input :buy_out_bid, input_html: { class: "o-input" }
-
-    = auctions_form.link_to_remove "Remove this auction"
-
-  %p
-    = f.link_to_add "Add an Auction", :auctions
-    = f.fields_for :product_images do |image_form|
-      - if image_form.object.persisted?
-        %p
-          = image_tag image_form.object.url(:square)
-          = image_form.link_to_remove "Remove image"
-          = link_to "Crop image", edit_product_photo_path(@product, image_form.object)
-      - else
-        %p
-          New Image
-          = image_form.input :file
-  %p
-    = f.link_to_add "Add an Image", :product_images
-  .actions
-    = f.submit
+      = f.link_to_add "Add an Auction", :auctions
+      = f.fields_for :product_images do |image_form|
+        - if image_form.object.persisted?
+          %p
+            = image_tag image_form.object.url(:square)
+            = image_form.link_to_remove "Remove image"
+            = link_to "Crop image", edit_product_photo_path(@product, image_form.object)
+        - else
+          %p
+            New Image
+            = image_form.input :file
+    %p
+      = f.link_to_add "Add an Image", :product_images
+    .l-form__row.l-form__row--top-margin
+      = f.submit "Add Product", class: "o-button o-button--orange"
