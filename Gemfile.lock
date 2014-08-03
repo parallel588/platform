@@ -254,6 +254,8 @@ GEM
     rails-assets-backbone.wreqr (1.3.1)
       rails-assets-backbone (>= 0.9.9, <= 1.1.2)
       rails-assets-underscore (>= 1.3.3, <= 1.6.0)
+    rails-assets-datetimepicker (2.3.3)
+      rails-assets-jquery (>= 1.7.2)
     rails-assets-fancybox (2.1.5)
     rails-assets-jasmine.async (0.1.0)
     rails-assets-jquery (1.11.1)
@@ -402,6 +404,7 @@ DEPENDENCIES
   rails-assets-OwlCarousel
   rails-assets-backbone (~> 1.1.2)
   rails-assets-backbone.wreqr
+  rails-assets-datetimepicker
   rails-assets-fancybox
   rails-assets-jasmine.async
   rails-assets-jquery (~> 1.10)

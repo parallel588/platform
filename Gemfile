@@ -106,6 +106,7 @@ gem 'rails-assets-jasmine.async'
 gem 'rails-assets-fancybox'
 gem 'rails-assets-modernizr'
 gem 'rails-assets-raphael'
+gem 'rails-assets-datetimepicker'
 
 
 

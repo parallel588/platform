@@ -5,6 +5,7 @@
 //= require jquery_nested_form
 //= require underscore
 //= require backbone
+//= require datetimepicker
 
 //= require config/head
 //= require config/app
@@ -50,9 +51,8 @@
     new basketo.Modules.LoginRegister({ el: $(this) });
   });
 
-
-
-
+  // Initidate datetimepicker plugin
+  $(".js-datetimepicker").datetimepicker();
 
 
   $(function(){
