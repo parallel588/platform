@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   has_many :biddings # as a buyer
   has_many :billings
   has_many :orders
+  has_many :notifications
+  
   has_one  :seller
 
   accepts_nested_attributes_for :billings, :allow_destroy => true

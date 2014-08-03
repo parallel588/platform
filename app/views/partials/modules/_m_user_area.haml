@@ -4,7 +4,7 @@
       = "Good morning #{current_user.name}".html_safe
       .m-user-area__image
         = image_tag current_user.logo.url if current_user && !current_user.logo.blank?
-        .m-user-area__notification="5"
+        .m-user-area__notification=current_user.notifications.count
       = link_to "Logout", destroy_user_session_path, :method => :delete if current_user
       = link_to "", user_prefernces_path, class: "m-user-area__settings o-icon o-icon--cog"
       / = link_to "Seller Dashboard", seller_dashboard_url
