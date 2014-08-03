@@ -15,14 +15,17 @@ class Notification < ActiveRecord::Base
   # constructors
 
   # When a buyer makes a new bidding
-  def self.enqueue_new_bidding_notifications(auction_id)
-      
+  def self.enqueue_new_bidding_notifications(auction_id, previous_winning_bidding_id, current_winning_bidding_id)
+    # Enqueue an email to the latest winner / buyer
+    AuctionMailer.inform_winner_for_new_bidding(auction_id, previous_winning_bidding_id, current_winning_bidding_id).deliver
+    AuctionMailer.inform_loser_for_bidding(auction_id, previous_winning_bidding_id, current_winning_bidding_id).deliver
+    AuctionMailer.inform_auction_seller_for_new_bidding(auction_id, previous_winning_bidding_id, current_winning_bidding_id).deliver
   end
 
 
   # When a buyer is awarded with a new auction
   def self.enqueue_auction_finished_notifications(auction_id)
-    
+    AuctionMailer.inform_awarded_winner()    
   end
 
   
