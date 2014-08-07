@@ -52,7 +52,7 @@ class Bidding < ActiveRecord::Base
   
 
   def bidding_is_greater_than_current
-    unless self.amount >= self.auction.get_current_winning_bidding_value 
+    unless self.amount >= self.auction.get_current_winning_bidding_value.to_f
       errors.add(:amount, "can't be in the less or same as the current winning ammount")
     end
   end
