@@ -54,8 +54,7 @@
       .l-grid__item.palm--one-whole.one-third>
         %h2.o-headline.o-headline--small.o-headline--no-top-border= "Auction Information"
         .l-form
-          = f.link_to_add "Add an Auction", :auctions
-          = f.fields_for :auctions do |auctions_form|
+          = f.fields_for :auctions, @product.auctions.first_or_initialize(product: @product) do |auctions_form|          
             .l-form__row
               .l-form__label= f.label :starting_at
               = auctions_form.text_field :starting_at, class: "o-input js-datetimepicker"

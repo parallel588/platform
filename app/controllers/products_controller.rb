@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @auction = @product.auctions.build
   end
 
   # GET /products/1/edit
@@ -77,6 +78,7 @@ class ProductsController < ApplicationController
                 :bidding, :ending_at, :delivery_at, :shipping_information,
                 :packaging_information, :pallets, :starting_at, :user_id,
                 :product_category_id,
+                :auction,
                 product_images_attributes: [:id, :file, :_destroy],
                 auctions_attributes: [:id, :starting_at, :ending_at, :_destroy,
                                       :starting_bid, :bid_increment,
