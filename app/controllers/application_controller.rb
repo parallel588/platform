@@ -35,12 +35,11 @@ class ApplicationController < ActionController::Base
     
     # If the policy is that we want the user to be redirected back to the url that he requested before being asked to login/signup
     sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
-    if request.referer == sign_in_url
+    if request.referer == sign_in_url || request.referer.to_s.include?("login_register")
       super
     else
-      stored_location_for(resource) || request.referer || root_path
+      stored_location_for(user) || request.referer || home_without_locale_path
     end
-    # session[:previous_url] || home_path
   end
   
   
