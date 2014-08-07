@@ -11,9 +11,7 @@ class AuctionMailer < ActionMailer::Base
     @product @auction.product  
     @seller = @auction.product.user
 
-    mail( to: @seller.email, 
-          subject: "A new winning bidding your auction #{@auction.id} for product #{@product.name}", 
-    )
+    mail( to: @seller.email, subject: "A new winning bidding your auction #{@auction.id} for product #{@product.name}" )
   end
 
 
@@ -21,10 +19,7 @@ class AuctionMailer < ActionMailer::Base
     @auction = Auction.find(auction_id)
     @product =@auction.product
     @winner_buyer = Bidding.find(winning_bidding_id).user
-    mail (
-      to: @winner_buyer.email,
-      subject: "Congratulations! You are officially the winner of the auction #{auction.id} for the product #{@product.name}"
-    )
+    mail( to: @winner_buyer.email, subject: "Congratulations! You are officially the winner of the auction #{auction.id} for the product #{@product.name}" )
   end
 
 
