@@ -6,7 +6,7 @@ class AuctionsController < ApplicationController
   def buy_now
     @auction = Auction.where("id = ?", params[:id]).includes(:product).first
 	  bidding =  Bidding.new( {amount: @auction.buy_out_bid, user: current_user,  auction: @auction,  product: @auction.product} )
-	  if bidding.save!
+	  if bidding.save
 		  flash[:notice] = t('biddings.the_product_is_yours')
       Order.create(
         :auction => @auction,
@@ -14,8 +14,9 @@ class AuctionsController < ApplicationController
         :user    => current_user
       )
 		  redirect_to buyer_dashboard_url
-	  else  	  
-		  redirect_to new_auction_bidding_path(@auction)            
+	  else  	 
+      flash[:warning]  = t('biddings.amount_of_bidding_cannot_be_less_than_the_current_winning_bidding')
+		  redirect_to product_url(@auction.product)            
 	  end
   end
     

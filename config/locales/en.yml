@@ -37,3 +37,6 @@ en:
          previous: "&lsaquo; Prev"
          next: "Next &rsaquo;"
          truncate: "&hellip;"
+
+  biddings:
+    amount_of_bidding_cannot_be_less_than_the_current_winning_bidding: "The amount of bidding cannot be less than the current winning bidding."
