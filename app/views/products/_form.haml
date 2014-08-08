@@ -79,7 +79,7 @@
                 = image_tag image_form.object.url(:square)
               .l-form__row
                 = image_form.link_to_remove "Remove image", class: "o-button o-button--grey"
-                =#link_to "Crop image", edit_product_photo_path(@product, image_form.object)
+                = link_to "Crop image", edit_product_photo_path(@product, image_form.object)
             - else
               .l-form__row
                 = image_form.input :file
