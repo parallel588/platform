@@ -54,8 +54,7 @@
       .l-grid__item.palm--one-whole.one-third>
         %h2.o-headline.o-headline--small.o-headline--no-top-border= "Auction Information"
         .l-form
-          = f.link_to_add "Add an Auction", :auctions
-          = f.fields_for :auctions do |auctions_form|
+          = f.fields_for :auctions, @product.auctions.first_or_initialize(product: @product) do |auctions_form|          
             .l-form__row
               .l-form__label= f.label :starting_at
               = auctions_form.text_field :starting_at, class: "o-input js-datetimepicker"
@@ -79,8 +78,8 @@
               .l-form__row
                 = image_tag image_form.object.url(:square)
               .l-form__row
-                = image_form.link_to_remove "Remove image", :product_images, class: "o-button o-button--grey"
-                / = link_to "Crop image", edit_product_photo_path(@product, image_form.object)
+                = image_form.link_to_remove "Remove image", class: "o-button o-button--grey"
+                = link_to "Crop image", edit_product_photo_path(@product, image_form.object)
             - else
               .l-form__row
                 = image_form.input :file
