@@ -1,0 +1,9 @@
+{
+  "author": "Spiros Martzoukos",
+  "private": true,
+  "name": "Basketo",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt-svgstore": ""
+  }
+}

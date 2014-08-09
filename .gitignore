@@ -20,6 +20,9 @@ coverage/*
 # Ignore bower_components files
 app/assets/javascripts/bower_components/
 
+# Ignore node folders
+node_modules/*
+
 /config/database.yml
 
 .env
