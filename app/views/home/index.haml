@@ -22,24 +22,8 @@
   - if @last_minute_products
     .l-list-block
       .l-list-block__headline
-        %h2.o-headline= "Last minute offers"
+        %h2.o-headline= "Our latest products"
       .l-grid
         - @last_minute_products.each do |product|
-          .l-grid__item.palm--one-whole.one-third>
-            = render "partials/modules/m_product", p: product, modifier: "m-product--compact"
-  - if @farmers_popular_products
-    .l-list-block
-      .l-list-block__headline
-        %h2.o-headline= "Farmers' Popular Products"
-      .l-grid
-        - @farmers_popular_products.each do |product|
-          .l-grid__item.palm--one-whole.one-third>
-            = render "partials/modules/m_product", p: product, modifier: "m-product--compact"
-  - if @buyers_popular_products
-    .l-list-block
-      .l-list-block__headline
-        %h2.o-headline= "Buyers' Popular Products"
-      .l-grid
-        - @buyers_popular_products.each do |product|
           .l-grid__item.palm--one-whole.one-third>
             = render "partials/modules/m_product", p: product, modifier: "m-product--compact"
