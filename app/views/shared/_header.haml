@@ -9,7 +9,7 @@
             = render "partials/objects/o_logo"
           .l-header__search.l-grid__item.portable--one-half.desk--two-thirds
             %button.o-button.o-button--square.o-button--green
-              .o-icon.o-icon--magnifier
+              = render "partials/objects/o_icon", icon: "magnifier", modifier: "o-icon--white"
             .l-header__search__input-container
               %input.o-input{ type: "text", placeholder: "Search" }
       .l-header__links.l-grid__item.desk--one-third.text-center>

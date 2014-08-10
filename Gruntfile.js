@@ -8,8 +8,10 @@ module.exports = function(grunt) {
           viewBox : '0 0 100 100'
         }
       },
-      your_target: {
-        'dest/dest.svg': ['svgs/*.svg'],
+      default: {
+        files: {
+          'app/assets/images/icons.svg': ['app/assets/images/icons/*.svg']
+        }
       },
     },
   });
@@ -17,6 +19,6 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-svgstore');
 
-  grunt.registerTask('default', ['svgstore']);
+  grunt.registerTask('icons', ['svgstore']);
 
 };

@@ -1,73 +1,25 @@
 // Basic icon font.
 //
-// .o-icon--magnifier     - Magnifier
-// .o-icon--map-marker    - Map Marker
-// .o-icon--hamburger     - Hamburger
-// .o-icon--star          - Star
-// .o-icon--star-outline  - Star outline
-// .o-icon--cog           - Cog
-// .o-icon--shopping-cart - Shopping cart
-// .o-icon--arrow-left    - Left Arrow
-// .o-icon--arrow-right   - Right Arrow
-// .o-icon--linkedin      - Linkedin
-// .o-icon--twitter       - Twitter
-// .o-icon--googleplus    - Google Plus
-// .o-icon--facebook      - Facebook
+// .o-icon             - Default. Defines only sizing attributes.
+// .o-icon--brown      - Brown color.
+// .o-icon--brown-dark - Dark Brown color.
+// .o-icon--white      - White color.
+// 
 //
 // Styleguide Icons.
-.o-icon:before 
-  font-family: 'Icons'
+.o-icon
   display: inline-block
-  speak: none
-  line-height: 1
+  height: 1.3em
+  line-height: 1.3em
   vertical-align: middle
-  font-weight: normal
-  font-style: normal
-  font-size: em($font-size__giga)
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
+  width: 1.3em
 
+.o-icon--brown
+  fill: $color__brown
+  stroke: $color__brown
 
-.o-icon:empty:before 
-  width: 1em
-  text-align: center
-  box-sizing: content-box
+.o-icon--brown-dark
+  fill: $color__brown--dark
 
-.o-icon--magnifier:before
-  content: "\e800" 
-
-.o-icon--map-marker:before
-  content: "\e804"
-
-.o-icon--hamburger:before
-  content: "\e801" 
-
-.o-icon--star:before
-  content: "\e802" 
-
-.o-icon--star-outline:before
-  content: "\e803" 
-
-.o-icon--cog:before
-  content: "\e805" 
-
-.o-icon--shopping-cart:before
-  content: "\e806" 
-
-.o-icon--arrow-left:before
-  content: "\e807" 
-
-.o-icon--arrow-right:before
-  content: "\e808"
-
-.o-icon--linkedin:before
-  content: "\e80a" 
-
-.o-icon--twitter:before
-  content: "\e80b" 
-
-.o-icon--googleplus:before
-  content: "\e80c" 
-
-.o-icon--facebook:before
-  content: "\e80d" 
+.o-icon--white
+  fill: $color__white

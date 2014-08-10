@@ -15,15 +15,15 @@
           %h3.o-headline.o-headline--small= "#{p.name}"
           .m-product__supplier= "#{p.user.try(:name)}"
         %ul.m-icon-list
-          %li.m-icon-list__item
-            .m-icon-list__icon.o-icon.o-icon--map-marker
+          %li.m-icon-list__item{ title: "Country of origin" }
+            .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
             .m-icon-list__data=p.country
-          %li.m-icon-list__item
-            .m-icon-list__icon.o-icon.o-icon--map-marker
+          %li.m-icon-list__item{ title: "Price" }
+            .m-icon-list__icon= render "partials/objects/o_icon", icon: "price"
             .m-icon-list__data=p.bidding
-          %li.m-icon-list__item
-            .m-icon-list__icon.o-icon.o-icon--map-marker
-            .m-icon-list__data= "boomsgewas"
-          %li.m-icon-list__item
-            .m-icon-list__icon.o-icon.o-icon--map-marker
-            .m-icon-list__data=p.volume
+          %li.m-icon-list__item{ title: "Quality" }
+            .m-icon-list__icon= render "partials/objects/o_icon", icon: "quality"
+            .m-icon-list__data= p.quality
+          %li.m-icon-list__item{ title: "Volume" }
+            .m-icon-list__icon= render "partials/objects/o_icon", icon: "volume"
+            .m-icon-list__data= p.volume

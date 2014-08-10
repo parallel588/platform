@@ -1,7 +1,6 @@
 .m-social-links
   .m-social-links__label= "we are social"
   .m-social-links__links
-    = link_to "", "", class: "o-icon o-icon--twitter"
-    = link_to "", "", class: "o-icon o-icon--linkedin"
-    = link_to "", "", class: "o-icon o-icon--facebook"
-    = link_to "", "", class: "o-icon o-icon--googleplus"
+    - ["twitter", "linkedin", "facebook", "google-plus"].each do |social|
+      = link_to "https://twitter.com/basketo_", class: "m-social-links__link m-social-links__link--#{social}" do
+        = render "partials/objects/o_icon", icon: social, modifier: "o-icon--white"

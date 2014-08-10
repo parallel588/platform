@@ -1,3 +1,5 @@
-- modifier ||= ""
+- modifier ||= "o-icon--brown-dark"
+- icon ||= "timeclock"
 
-.o-icon{ class: "#{modifier}" }
+%svg{ class: "o-icon #{modifier}" }
+  %use{ :"xlink:href" => "#icon-#{icon}" }
