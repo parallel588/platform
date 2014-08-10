@@ -1,13 +1,15 @@
 .m-ratings
 
 .m-ratings__star
-  color: $color__grey--lite
   display: inline-block
   vertical-align: middle
   .m-ratings--big &
     font-size: em($font-size__bigger)
+  .o-icon
+    fill: $color__grey--lite
 
 .m-ratings__star--active
-  color: $color__purple
-  .m-ratings--green &
-    color: $color__green
+  .o-icon
+    fill: $color__purple
+    .m-ratings--green &
+      fill: $color__green
