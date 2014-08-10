@@ -52,7 +52,11 @@
   });
 
   // Initidate datetimepicker plugin
-  $(".js-datetimepicker").datetimepicker();
+  $(".js-datetimepicker").each(function () {
+    var options = $(this).data("datetimepickerOptions");
+    console.log(options);
+    $(this).datetimepicker(options);
+  });
 
 
   $(function(){

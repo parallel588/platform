@@ -10,7 +10,7 @@
         .m-search-hero__search-row
           .l-grid.l-grid--small-gutter
             .l-grid__item.palm--one-whole.one-third>
-              %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Date Added", tabindex: 2 }
+              %input.o-input.o-input--tall.o-input--green-border.js-datetimepicker{ placeholder: "Date Added", tabindex: 2, data: { :"datetimepicker-options" => '{ "timepicker": false, "format": "d/m/Y" }'}}
             .l-grid__item.palm--one-half.one-third>
               %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Quantity Kgr", type: "number", min: 0, step: "10", tabindex: 3 }
             .l-grid__item.palm--one-half.one-third>
