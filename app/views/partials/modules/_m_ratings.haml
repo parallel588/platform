@@ -4,5 +4,5 @@
 .m-ratings{ class: "#{modifier}" }
   - (1..5).each do |i|
     .m-ratings__star{ class: ("m-ratings__star--active" if i <= stars) }
-      .o-icon.o-icon--star
+      = render "partials/objects/o_icon", icon: "star-filled"
   = "(#{stars})"

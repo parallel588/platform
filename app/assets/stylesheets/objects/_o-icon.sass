@@ -1,6 +1,7 @@
 // Basic icon font.
 //
 // .o-icon             - Default. Defines only sizing attributes.
+// .o-icon--small      - Smaller dimensions: 14px wide.
 // .o-icon--brown      - Brown color.
 // .o-icon--brown-dark - Dark Brown color.
 // .o-icon--white      - White color.
@@ -9,10 +10,13 @@
 // Styleguide Icons.
 .o-icon
   display: inline-block
-  height: 1.3em
-  line-height: 1.3em
+  height: em(20)
   vertical-align: middle
-  width: 1.3em
+  width: em(20)
+
+.o-icon--small
+  height: em(12)
+  width: em(12)
 
 .o-icon--brown
   fill: $color__brown

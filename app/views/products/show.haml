@@ -22,20 +22,20 @@
                   = image_tag image.url(:square), width: 55
         .l-grid__item.palm--one-whole.one-half
           %ul.m-icon-list
-            %li.m-icon-list__item
-              .m-icon-list__icon.o-icon.o-icon--map-marker
+            %li.m-icon-list__item{ title: "Country of origin" }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
               .m-icon-list__data= @product.country
-            %li.m-icon-list__item
-              .m-icon-list__icon.o-icon.o-icon--map-marker
+            %li.m-icon-list__item{ title: "Volume" }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "volume"
               .m-icon-list__data= @product.volume
-            %li.m-icon-list__item
-              .m-icon-list__icon.o-icon.o-icon--map-marker
+            %li.m-icon-list__item{ title: "Type of product" }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "carrot"
               .m-icon-list__data= @product.product_category.try(:name) rescue "- None -"
-            %li.m-icon-list__item
-              .m-icon-list__icon.o-icon.o-icon--map-marker
+            %li.m-icon-list__item{ title: "Size" }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "box"
               .m-icon-list__data= @product.size
-            %li.m-icon-list__item
-              .m-icon-list__icon.o-icon.o-icon--map-marker
+            %li.m-icon-list__item{ title: "Quality" }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "quality"
               .m-icon-list__data= @product.quality
           .m-small-text
             .m-small-text__title= "Data provided by the producer"
@@ -53,21 +53,21 @@
       .l-list-block__headline
         %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= @product.user.try(:name)
       .m-icon-list.l-grid
-        .m-icon-list__item.l-grid__item.one-half>
-          .m-icon-list__icon.o-icon.o-icon--map-marker
+        .m-icon-list__item.l-grid__item.one-half{ title: "Location" }>
+          .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
           .m-icon-list__data= "#{@product.user.try(:address_city)}, #{@product.user.try(:address_country)}"
-        .m-icon-list__item.l-grid__item.one-half>
-          .m-icon-list__icon.o-icon.o-icon--star-outline
+        .m-icon-list__item.l-grid__item.one-half{ title: "Rating"}>
+          .m-icon-list__icon= render "partials/objects/o_icon", icon: "star-outline"
           .m-icon-list__data
             = render "partials/modules/m_ratings", stars: @product.user.try(:rating_average)
-        .m-icon-list__item.l-grid__item.one-whole>
-          .m-icon-list__icon.o-icon.o-icon--map-marker
+        .m-icon-list__item.l-grid__item.one-whole{ title: "Comments" }>
+          .m-icon-list__icon= render "partials/objects/o_icon", icon: "bubble"
           .m-icon-list__data
             = "Comments from others"
-        .m-icon-list__item.l-grid__item.one-whole>
-          .m-icon-list__icon.o-icon.o-icon--map-marker
+        .m-icon-list__item.l-grid__item.one-whole{ title: "Other products from this producer" }>
+          .m-icon-list__icon= render "partials/objects/o_icon", icon: "carrot"
           .m-icon-list__data
-            = "Other products"
+            = "Other products from this producer"
         - if @product.user && @product.user.relevant_products(@product.id, 4).count > 0
           .l-grid__item.one-whole>
             .l-grid.l-expandable
