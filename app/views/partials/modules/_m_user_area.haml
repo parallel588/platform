@@ -4,12 +4,14 @@
       = "Good morning #{current_user.name}".html_safe
       .m-user-area__image
         = image_tag current_user.logo.url if current_user && !current_user.logo.blank?
-        .m-user-area__notification=current_user.notifications.count
+        - if current_user.notifications.count and current_user.notifications.count > 0
+          .m-user-area__notification=current_user.notifications.count
       = link_to "Logout", destroy_user_session_path, :method => :delete if current_user
-      = link_to "", user_prefernces_path, class: "m-user-area__settings o-icon o-icon--cog"
+      = link_to user_prefernces_path, class: "m-user-area__settings" do
+        = render "partials/objects/o_icon", icon: "cog", modifier: "o-icon--white"
       / = link_to "Seller Dashboard", seller_dashboard_url
       / = link_to "Buyer Dashboard", buyer_dashboard_url
-      = link_to "Cart", cart_path
+      / = link_to "Cart", cart_path
     - else
       = link_to "Login", new_user_session_path(:type => "login")
       &nbsp; | &nbsp;
