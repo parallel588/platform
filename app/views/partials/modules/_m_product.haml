@@ -1,29 +1,69 @@
 - modifier ||= ""
+- hide_producer ||= false
 
 -unless p.blank?
-  .m-product{ class: "#{modifier}"}
-    .l-grid
-      .l-grid__item.palm--one-whole.one-half>
-        = link_to product_url(p), class: "m-product__image" do
-          - if p.product_image
-            = image_tag p.product_image.url(:square)
+  - if modifier.include?"m-product--compact"
+    .m-product{ class: "#{modifier}"}
+      .l-grid
+        .l-grid__item.palm--one-whole.one-half>
+          = link_to product_url(p), class: "m-product__image" do
+            - if p.product_image
+              = image_tag p.product_image.url(:square)
+            - else
+              = image_tag "/assets/defaults/product-image.png"
+          - if p.active_auction && p.active_auction.ending_at > Time.now()
+            = link_to product_url(p), class: "m-product__countdown" do
+              .m-product__countdown__icon
+                = render "partials/objects/o_icon", icon: "timeclock", modifier: "o-icon--white"
+              .js-countdown-timer-text{ "data-ending-at" => p.active_auction.ending_at, "data-format" => '{dn}d {hnn}h {mnn}m' } 
           - else
-            = image_tag "/assets/defaults/product-image.png"
-        = link_to "Read More", product_url(p), class: "m-product__button o-button o-button--green o-button--block"
-      .l-grid__item.palm--one-whole.one-half>
-        = link_to "#", class: "m-product__title-link" do
-          %h3.o-headline.o-headline--small= "#{p.name}"
-          .m-product__supplier= "#{p.user.try(:name)}"
-        %ul.m-icon-list
-          %li.m-icon-list__item{ title: "Country of origin" }
-            .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
-            .m-icon-list__data=p.country
-          %li.m-icon-list__item{ title: "Price" }
-            .m-icon-list__icon= render "partials/objects/o_icon", icon: "price"
-            .m-icon-list__data=p.bidding
-          %li.m-icon-list__item{ title: "Quality" }
-            .m-icon-list__icon= render "partials/objects/o_icon", icon: "quality"
-            .m-icon-list__data= p.quality
-          %li.m-icon-list__item{ title: "Volume" }
-            .m-icon-list__icon= render "partials/objects/o_icon", icon: "volume"
-            .m-icon-list__data= p.volume
+            = link_to "Read More", product_url(p), class: "o-button o-button--green o-button--block"
+        .l-grid__item.palm--one-whole.one-half>
+          = link_to product_url(p), class: "m-product__title-link" do
+            %h3.o-headline.o-headline--small= "#{p.name}"
+            - unless hide_producer
+              .m-product__supplier= "#{p.user.try(:name)}"
+          %ul.m-icon-list
+            %li.m-icon-list__item{ title: "Country of origin" }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
+              .m-icon-list__data=p.country
+            %li.m-icon-list__item{ title: "Price" }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "price"
+              .m-icon-list__data=p.bidding
+            %li.m-icon-list__item{ title: "Quality" }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "quality"
+              .m-icon-list__data= p.quality
+            %li.m-icon-list__item{ title: "Volume" }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "volume"
+              .m-icon-list__data= p.volume
+  - else
+    .m-product{ class: "#{modifier}"}
+      .l-grid
+        .l-grid__item.palm--one-whole.one-half>
+          = link_to product_url(p), class: "m-product__image" do
+            - if p.product_image
+              = image_tag p.product_image.url(:square)
+            - else
+              = image_tag "/assets/defaults/product-image.png"
+        .l-grid__item.palm--one-whole.one-half>
+          = link_to product_url(p), class: "m-product__title-link" do
+            %h3.o-headline.o-headline--small= "#{p.name}"
+          = link_to "Read More", product_url(p), class: "m-product__button o-button o-button--green o-button--block"
+      %ul.m-icon-list
+        - unless hide_producer
+          %li.m-icon-list__item{ title: "Producer" }
+            = link_to user_path(p.user) do
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "farmer"
+              .m-icon-list__data.m-product__supplier= p.user.try(:name)
+        %li.m-icon-list__item{ title: "Country of origin" }
+          .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
+          .m-icon-list__data=p.country
+        %li.m-icon-list__item{ title: "Price" }
+          .m-icon-list__icon= render "partials/objects/o_icon", icon: "price"
+          .m-icon-list__data=p.bidding
+        %li.m-icon-list__item{ title: "Quality" }
+          .m-icon-list__icon= render "partials/objects/o_icon", icon: "quality"
+          .m-icon-list__data= p.quality
+        %li.m-icon-list__item{ title: "Volume" }
+          .m-icon-list__icon= render "partials/objects/o_icon", icon: "volume"
+          .m-icon-list__data= p.volume

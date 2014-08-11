@@ -29,10 +29,11 @@
   var countdownTimerText = basketo.Modules.CountdownTimerText;
   $(".js-countdown-timer-text").each(function () {
     var endingDate = new Date($(this).data("endingAt"));
+    var format = $(this).data("format");
     $(this).countdown({
       until: endingDate,
       compact: true,
-      layout: '{dn}d {hnn}h{sep}{mnn}min{sep}{snn}"'
+      layout: format || '{dn}d {hnn}h{sep}{mnn}min{sep}{snn}"'
     });
   });
 
