@@ -16,7 +16,7 @@
   %body{ class: "#{yield(:body_class)}" }
 
     -# Include the svg icons code at the top, because of a chrome bug: https://code.google.com/p/chromium/issues/detail?id=349175
-    = render "partials/svg_icons"
+    = inline_svg "icons.svg"
 
     - if flash.present?
       %div{ style: "background: #C00; color: white; padding: 5px; text-align: center" }
