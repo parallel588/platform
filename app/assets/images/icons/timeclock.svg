@@ -2,16 +2,16 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="18.75px" height="20.938px" viewBox="0 0 18.75 20.938" enable-background="new 0 0 18.75 20.938" xml:space="preserve">
+	 width="18.75px" height="20.938px" viewBox="0 0 18.75 20.938" style="enable-background:new 0 0 18.75 20.938;"
+	 xml:space="preserve">
 <g id="timeclock">
 	<g id="Time">
-		<rect x="5.875" y="0" fill="none" width="7" height="2"/>
-		<rect x="8.375" y="1.438" fill="none" width="2" height="11.188"/>
-		
-			<rect x="15.62" y="3.033" transform="matrix(0.7071 0.7071 -0.7071 0.7071 8.2158 -10.3655)" fill="none" width="2" height="3.403"/>
-		<path fill="none" d="M9.375,20.937C4.206,20.937,0,16.731,0,11.562c0-5.169,4.206-9.375,9.375-9.375
-			c5.169,0,9.375,4.206,9.375,9.375C18.75,16.731,14.544,20.937,9.375,20.937z M9.375,4.187C5.309,4.187,2,7.495,2,11.562
-			s3.309,7.375,7.375,7.375s7.375-3.309,7.375-7.375S13.441,4.187,9.375,4.187z"/>
+		<rect x="5.875" y="0" width="7" height="2"/>
+		<rect x="8.375" y="1.438" width="2" height="11.188"/>
+		<rect x="15.62" y="3.033" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 25.0244 19.8347)" width="2" height="3.403"/>
+		<path d="M9.375,20.937C4.206,20.937,0,16.731,0,11.562s4.206-9.375,9.375-9.375s9.375,4.206,9.375,9.375
+			S14.544,20.937,9.375,20.937z M9.375,4.187C5.309,4.187,2,7.495,2,11.562c0,4.067,3.309,7.375,7.375,7.375
+			c4.066,0,7.375-3.309,7.375-7.375C16.75,7.496,13.441,4.187,9.375,4.187z"/>
 	</g>
 </g>
 <g id="Layer_1_1_">
