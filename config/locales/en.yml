@@ -22,8 +22,7 @@
 en:
   hello: "Hello world"
   
-  
-  
+
   user:
     preferences_successfully_saved: "Your preferences are successfully saved."
     preferences_not_saved: "Preferences not saved."
@@ -31,12 +30,36 @@ en:
 
 
   views:
+    header:
+      users: "Users"
+      register: "Register"
+      products: "Products"
+      new_product: "New Product"
+      search: "Search"
+      hello: "Hello"
+      logout: "Log out"
+      login: "Login"
+      register: "Register"
+      settings: "Settings"
+    footer:
+      copyright_notice: "Copyright 2014 Basketo. All Rights Reserved. Use of this site constitutes acceptance of the Basketo User Agreement and Privacy Policy."
+      enter_your_email: "enter your email"
     pagination:
-         first: "&laquo; First"
-         last: "Last &raquo;"
-         previous: "&lsaquo; Prev"
-         next: "Next &rsaquo;"
-         truncate: "&hellip;"
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "&hellip;"
+    home:
+      index:
+        slogan: "We curate and support forward thinking farmers, helping them connect with top buyers of fruits and vegetables from around the world."
+        search_text: "Which product are you looking for?"
+        search_date: "Date Added"
+        search_quantity: "Quantity Kgr"
+        search_price: "Price €"
+        search_button: "Search"
+        latest_products: "Our latest products"
+
 
   biddings:
     amount_of_bidding_cannot_be_less_than_the_current_winning_bidding: "The amount of bidding cannot be less than the current winning bidding."

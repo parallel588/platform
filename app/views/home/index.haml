@@ -3,26 +3,26 @@
 .m-search-hero.js-search-hero
   .m-search-hero__container
     .o-highlighted
-      .o-highlighted__line= "We curate and support forward thinking farmers, helping them connect with top buyers of fruits and vegetables from around the world."
+      .o-highlighted__line= t("views.home.index.slogan")
     .l-grid.l-grid--small-gutter
       .l-grid__item.palm--one-whole.three-quarters>
-        %input.o-input.o-input--tall.o-input--green-border.js-search-hero__main-search{ placeholder: "What product are you looking for?", tabindex: 1 }
+        %input.o-input.o-input--tall.o-input--green-border.js-search-hero__main-search{ placeholder: t("views.home.index.search_text"), tabindex: 1 }
         .m-search-hero__search-row
           .l-grid.l-grid--small-gutter
             .l-grid__item.palm--one-whole.one-third>
-              %input.o-input.o-input--tall.o-input--green-border.js-datetimepicker{ placeholder: "Date Added", tabindex: 2, data: { :"datetimepicker-options" => '{ "timepicker": false, "format": "d/m/Y" }'}}
+              %input.o-input.o-input--tall.o-input--green-border.js-datetimepicker{ placeholder: t("views.home.index.search_date"), tabindex: 2, data: { :"datetimepicker-options" => '{ "timepicker": false, "format": "d/m/Y" }'}}
             .l-grid__item.palm--one-half.one-third>
-              %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Quantity Kgr", type: "number", min: 0, step: "10", tabindex: 3 }
+              %input.o-input.o-input--tall.o-input--green-border{ placeholder: t("views.home.index.search_quantity"), type: "number", min: 0, step: "10", tabindex: 3 }
             .l-grid__item.palm--one-half.one-third>
-              %input.o-input.o-input--tall.o-input--green-border{ placeholder: "Price €", type: "number", min: 0, step: "0.1", tabindex: 4 }
+              %input.o-input.o-input--tall.o-input--green-border{ placeholder: t("views.home.index.search_price"), type: "number", min: 0, step: "0.1", tabindex: 4 }
       .l-grid__item.palm--one-whole.one-quarter>
-        %button.o-button.o-button--block.o-button--tall.o-button--green.o-button--lined{ tabindex: 5 }= "Search"
+        %button.o-button.o-button--block.o-button--tall.o-button--green.o-button--lined{ tabindex: 5 }= t("views.home.index.search_button")
     
 .l-block
   - if @last_minute_products
     .l-list-block
       .l-list-block__headline
-        %h2.o-headline= "Our latest products"
+        %h2.o-headline= t("views.home.index.latest_products")
       .l-grid
         - @last_minute_products.each do |product|
           .l-grid__item.palm--one-whole.lap--one-half.one-third>

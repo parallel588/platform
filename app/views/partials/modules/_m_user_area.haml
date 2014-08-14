@@ -1,11 +1,11 @@
 .m-user-area
   .l-block.l-block--skinny.text-right
     - if current_user 
-      = "Hello #{current_user.name}".html_safe
+      = "#{t("view.header.hello")} #{current_user.name}".html_safe
       (
-      = link_to "Logout", destroy_user_session_path, :method => :delete if current_user
+      = link_to t("view.header.logout"), destroy_user_session_path, :method => :delete if current_user
       |
-      = link_to "Settings", user_prefernces_path
+      = link_to t("view.header.settings"), user_prefernces_path
       -#  = render "partials/objects/o_icon", icon: "cog", modifier: "o-icon--white"
       )
       = link_to user_prefernces_path, class: "m-user-area__image" do
@@ -16,6 +16,6 @@
       / = link_to "Buyer Dashboard", buyer_dashboard_url
       / = link_to "Cart", cart_path
     - else
-      = link_to "Login", new_user_session_path(:type => "login")
+      = link_to t("view.header.login"), new_user_session_path(:type => "login")
       &nbsp; | &nbsp;
-      = link_to "Register", new_user_session_path(:type => "register")
+      = link_to t("view.header.register"), new_user_session_path(:type => "register")

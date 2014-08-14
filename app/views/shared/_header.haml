@@ -11,16 +11,16 @@
             %button.o-button.o-button--square.o-button--green
               = render "partials/objects/o_icon", icon: "magnifier", modifier: "o-icon--white o-icon--small"
             .l-header__search__input-container
-              %input.o-input{ type: "text", placeholder: "Search" }
+              %input.o-input{ type: "text", placeholder: t("views.header.search") }
       .l-header__links.l-grid__item.desk--one-third.text-center>
         .m-links
-          = link_to "Users",  all_users_path
+          = link_to t("views.header.users"),  all_users_path
           %span.m-links__separator= "\\"
-          = link_to "Register",  new_user_session_path(:type => "register")
+          = link_to t("views.header.register"),  new_user_session_path(:type => "register")
           %span.m-links__separator= "\\"
-          = link_to "Products",  products_path
+          = link_to t("views.header.products"),  products_path
           %span.m-links__separator= "\\"
-          = link_to "New Product",  "/products/new"
+          = link_to t("views.header.new_product"),  "/products/new"
           - if Rails.env.development?
             %span.m-links__separator= "\\"
             = link_to "Orders (debug)",  orders_path
