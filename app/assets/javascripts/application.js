@@ -6,6 +6,8 @@
 //= require underscore
 //= require backbone
 //= require datetimepicker
+//= require angular
+//= require jquery-file-upload
 
 //= require config/head
 //= require config/app
@@ -55,7 +57,6 @@
   // Initidate datetimepicker plugin
   $(".js-datetimepicker").each(function () {
     var options = $(this).data("datetimepickerOptions");
-    console.log(options);
     $(this).datetimepicker(options);
   });
 

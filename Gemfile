@@ -107,6 +107,8 @@ gem 'rails-assets-fancybox'
 gem 'rails-assets-modernizr'
 gem 'rails-assets-raphael'
 gem 'rails-assets-datetimepicker'
+gem 'rails-assets-jquery-file-upload'
+gem 'rails-assets-angular'
 
 
 

@@ -249,16 +249,25 @@ GEM
       railties (= 4.0.4)
       sprockets-rails (~> 2.0.0)
     rails-assets-OwlCarousel (1.3.2)
+    rails-assets-angular (1.2.22)
     rails-assets-backbone (1.1.2)
       rails-assets-underscore (>= 1.5.0)
     rails-assets-backbone.wreqr (1.3.1)
       rails-assets-backbone (>= 0.9.9, <= 1.1.2)
       rails-assets-underscore (>= 1.3.3, <= 1.6.0)
+    rails-assets-blueimp-canvas-to-blob (2.1.0)
+    rails-assets-blueimp-load-image (1.12.0)
+    rails-assets-blueimp-tmpl (2.5.4)
     rails-assets-datetimepicker (2.3.3)
       rails-assets-jquery (>= 1.7.2)
     rails-assets-fancybox (2.1.5)
     rails-assets-jasmine.async (0.1.0)
     rails-assets-jquery (1.11.1)
+    rails-assets-jquery-file-upload (9.7.0)
+      rails-assets-blueimp-canvas-to-blob (>= 2.1.0)
+      rails-assets-blueimp-load-image (>= 1.11.0)
+      rails-assets-blueimp-tmpl (>= 2.5.3)
+      rails-assets-jquery (>= 1.6)
     rails-assets-modernizr (2.8.3)
     rails-assets-raphael (2.1.2)
     rails-assets-underscore (1.6.0)
@@ -402,12 +411,14 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.0.4)
   rails-assets-OwlCarousel
+  rails-assets-angular
   rails-assets-backbone (~> 1.1.2)
   rails-assets-backbone.wreqr
   rails-assets-datetimepicker
   rails-assets-fancybox
   rails-assets-jasmine.async
   rails-assets-jquery (~> 1.10)
+  rails-assets-jquery-file-upload
   rails-assets-modernizr
   rails-assets-raphael
   rails-assets-underscore
