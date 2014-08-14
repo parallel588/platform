@@ -1,14 +1,17 @@
 .m-user-area
   .l-block.l-block--skinny.text-right
     - if current_user 
-      = "Good morning #{current_user.name}".html_safe
-      .m-user-area__image
+      = "Hello #{current_user.name}".html_safe
+      (
+      = link_to "Logout", destroy_user_session_path, :method => :delete if current_user
+      |
+      = link_to "Settings", user_prefernces_path
+      -#  = render "partials/objects/o_icon", icon: "cog", modifier: "o-icon--white"
+      )
+      = link_to user_prefernces_path, class: "m-user-area__image" do
         = image_tag current_user.logo.url if current_user && !current_user.logo.blank?
         - if current_user.notifications.count and current_user.notifications.count > 0
           .m-user-area__notification=current_user.notifications.count
-      = link_to "Logout", destroy_user_session_path, :method => :delete if current_user
-      = link_to user_prefernces_path, class: "m-user-area__settings" do
-        = render "partials/objects/o_icon", icon: "cog", modifier: "o-icon--white"
       / = link_to "Seller Dashboard", seller_dashboard_url
       / = link_to "Buyer Dashboard", buyer_dashboard_url
       / = link_to "Cart", cart_path

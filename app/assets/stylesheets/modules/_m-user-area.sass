@@ -20,25 +20,29 @@
 
 .m-user-area__image
   display: inline-block
-  margin: 0 em(10, $font-size__small)
+  margin-left: em(5, $font-size__small)
+  padding: 0 em(10, $font-size__small)
   position: relative
+  +transition(background-color $animation--duration)
   vertical-align: middle
   > img
-    height: em(15, $font-size__small)
+    height: em(20, $font-size__small)
     max-width: em(40, $font-size__small)
     vertical-align: middle
+  &:hover
+    background: lighten($color__green, 10%)
 
 .m-user-area__notification
   background-color: red
-  bottom: em(-5, $font-size__tiniest)
+  bottom: em(-2, $font-size__tiniest)
   border-radius: 100%
   font-size: em($font-size__tiniest, $font-size__small)
-  height: em(12, $font-size__tiniest)
-  right: em(-5, $font-size__tiniest)
-  line-height: em(14, $font-size__tiniest)
+  height: em(13, $font-size__tiniest)
+  right: em(4, $font-size__tiniest)
+  line-height: em(15, $font-size__tiniest)
   position: absolute
   text-align: center
-  width: em(12, $font-size__tiniest)
+  width: em(14, $font-size__tiniest)
 
 .m-user-area__settings
   display: inline-block

@@ -25,5 +25,5 @@
         %h2.o-headline= "Our latest products"
       .l-grid
         - @last_minute_products.each do |product|
-          .l-grid__item.palm--one-whole.one-third>
+          .l-grid__item.palm--one-whole.lap--one-half.one-third>
             = render "partials/modules/m_product", p: product, modifier: "m-product--compact"

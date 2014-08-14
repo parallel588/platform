@@ -122,9 +122,9 @@ $use-markup-fix:        true!default;
  */
 $breakpoints: (
     'palm' '(max-width: 480px)',
-    'lap' '(min-width: 481px) and (max-width: 767px)',
-    'portable' '(max-width: 767px)',
-    'desk' '(min-width: 768px)'
+    'lap' '(min-width: 481px) and (max-width: 768px)',
+    'portable' '(max-width: 768px)',
+    'desk' '(min-width: 769px)'
 )!default;
 
 

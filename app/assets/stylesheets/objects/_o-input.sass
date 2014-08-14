@@ -6,7 +6,7 @@
 // Styleguide Input.
 .o-input
   box-shadow: none
-  border: 1px solid $color__grey--lite
+  border: 1px solid $color__grey
   color: $color__black
   font-family: $fonts__regular
   font-size: em($font-size__big)
@@ -25,8 +25,7 @@ textarea.o-input
   padding-top: em(5)
 
 .o-input--tall
-  +respond-min($bp__lap)
-    height: em($input__height--big, $font-size__big)
+  height: em($input__height--big, $font-size__big)
 
 .o-input--green-border
   border-color: $color__green

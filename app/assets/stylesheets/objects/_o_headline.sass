@@ -12,8 +12,11 @@
   color: $color__green
   font-family: $fonts__header--bold
   font-size: em($font-size__mega)
-  padding: em(7, $font-size__mega) em(5, $font-size__mega) em(10, $font-size__mega)
+  line-height: 1.3em
+  padding: em(10, $font-size__mega) em(5, $font-size__mega)
   position: relative
+  a
+    color: $color__green //override link's orange color
 
 .o-headline--with-title
   &:before
@@ -23,10 +26,11 @@
     display: block
     font-family: $fonts__bold
     font-size: em($font-size__tiniest, $font-size__mega)
+    line-height: 1em
     left: em(20, $font-size__tiniest)
     padding: em(0) em(4, $font-size__tiniest)
     position: absolute
-    top: -1em
+    top: em(-5, $font-size__tiniest)
 
 .o-headline--no-top-border
   border-top: 0

@@ -5,8 +5,9 @@
 // Styleguide Highlighted Text.
 $highlighted_padding: 5
 .o-highlighted
-  padding-left: em($highlighted_padding)
-  padding-right: em($highlighted_padding)
+  font-size: em($font-size__bigger)
+  padding-left: em($highlighted_padding, $font-size__bigger)
+  padding-right: em($highlighted_padding, $font-size__bigger)
   margin-bottom: 10px
   +respond-min($bp__desk)
     font-size: em($font-size__giga)

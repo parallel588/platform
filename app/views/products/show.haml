@@ -51,7 +51,8 @@
 
     .l-list-block
       .l-list-block__headline
-        %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }= @product.user.try(:name)
+        %h2.o-headline.o-headline--with-title{ title: "SUPPLIER" }
+          = link_to @product.user.try(:name), user_path(@product.user)
       .m-icon-list.l-grid
         .m-icon-list__item.l-grid__item.one-half{ title: "Location" }>
           .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
