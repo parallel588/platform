@@ -6,8 +6,6 @@
 //= require underscore
 //= require backbone
 //= require datetimepicker
-//= require angular
-//= require jquery-file-upload
 
 //= require config/head
 //= require config/app
