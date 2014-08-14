@@ -1,6 +1,9 @@
 .m-social-links
   .m-social-links__label= "we are social"
   .m-social-links__links
-    - ["twitter", "linkedin", "facebook", "google-plus"].each do |social|
-      = link_to "https://twitter.com/basketo_", class: "m-social-links__link m-social-links__link--#{social}" do
-        = render "partials/objects/o_icon", icon: social, modifier: "o-icon--white"
+    = link_to "https://twitter.com/basketo_", class: "m-social-links__link m-social-links__link--twitter" do
+      = render "partials/objects/o_icon", icon: "twitter", modifier: "o-icon--white"
+    = link_to "https://www.facebook.com/basketo.market", class: "m-social-links__link m-social-links__link--facebook" do
+      = render "partials/objects/o_icon", icon: "facebook", modifier: "o-icon--white"
+    = link_to "https://www.linkedin.com/company/basketo", class: "m-social-links__link m-social-links__link--linkedin" do
+      = render "partials/objects/o_icon", icon: "linkedin", modifier: "o-icon--white"
