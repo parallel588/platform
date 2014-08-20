@@ -59,6 +59,31 @@ en:
         search_price: "Price €"
         search_button: "Search"
         latest_products: "Our latest products"
+    products:
+      show:
+        product: "PRODUCT"
+        country_of_origin: "Country of Origin"
+        volume: "Volume"
+        type_of_product: "Type of Product"
+        size: "Size"
+        quality: "Quality"
+        data_provided_by_the_producer: "Data provided by the producer"
+        description: Description
+        shipping_information: Shipping Information
+        packaging_information: Packaging Information
+        supplier: "SUPPLIER"
+        location: "Location"
+        rating: "Rating"
+        comments: "Comments"
+        comments_from_others: "Comments from others"
+        other_products_from_this_producer: "Other products from this producer"
+        customers_also_viewed: "Customers also viewed"
+        bid_ends_in: "Bid ends in"
+        last_bid: "Last Bid"
+        last_of_x_bids: "Last of %{x}"
+        bid: "Bid"
+        bid_now: "Bid Now"
+        buy_now: "Buy Now"
 
 
   biddings:
