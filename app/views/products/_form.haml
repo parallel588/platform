@@ -3,7 +3,7 @@
     - if @product.errors.any?
       .l-form.l-form__row--errors
         %b
-          = "#{pluralize(@product.errors.count, "error")}  prohibited this product from being saved:"
+          = t("views.products.new.x_errors_prohibited_this_product_from_being_saved", x: pluralize(@product.errors.count, "error"))
         %ul
           - @product.errors.full_messages.each do |msg|
             %li= msg
@@ -12,22 +12,22 @@
       = f.text_field :name, autofocus: true, class: "o-input o-input--tall"
     .l-grid
       .l-grid__item.palm--one-whole.two-thirds>
-        %h2.o-headline.o-headline--small.o-headline--no-top-border= "General Information"
+        %h2.o-headline.o-headline--small.o-headline--no-top-border= t("views.products.new.general_information")
         .l-form
           .l-form__row
-            .l-form__label= f.label :country
+            .l-form__label= f.label :country, t("views.products.show.country")
             = f.input :country, label: false, input_html: { class: "o-input" }
           .l-form__row
             = f.input :product_category_id, collection: ProductCategory.roots, as: :grouped_select, group_method: :children, input_html: { class: "o-input" }
           .l-form__row
-            .l-form__label= f.label :quality
-            = f.text_field :quality, placeholder: "Type of quality of the items", class: "o-input"
+            .l-form__label= f.label :quality, t("views.products.show.quality")
+            = f.text_field :quality, placeholder: t("views.products.new.type_of_quality_of_the_items"), class: "o-input"
           .l-form__row
-            .l-form__label= f.label :volume
-            = f.text_field :volume, placeholder: "Boxes or Kilos", class: "o-input"
+            .l-form__label= f.label :volume, t("views.products.show.volume")
+            = f.text_field :volume, placeholder: t("views.products.new.boxes_or_kilos"), class: "o-input"
           .l-form__row
-            .l-form__label= f.label :size
-            = f.text_field :size, placeholder: "Size of 1 unit", class: "o-input"
+            .l-form__label= f.label :size, t("views.products.show.size")
+            = f.text_field :size, placeholder: t("views.products.new.size_of_1_unit"), class: "o-input"
           / .l-form__row
           /   .l-form__label= f.label :bidding, label: "Bidding Price per Kg."
           /   = f.text_field :bidding, class: "o-input"
@@ -38,50 +38,49 @@
           / .l-form__row
           /   = f.input :delivery_at, start_year: Date.today.year, end_year: Date.today.year + 10, order: [:day, :month, :year]
           .l-form__row
-            .l-form__label= f.label :pallets
-            = f.text_field :pallets, placeholder: "If yes, how many?", :as => :text, class: "o-input"
+            .l-form__label= f.label :pallets, t("views.products.show.pallets")
+            = f.text_field :pallets, placeholder: t("views.products.new.if_yes_how_many"), :as => :text, class: "o-input"
           .l-form__row
-            .l-form__label= f.label :packaging_information
-            = f.text_area :packaging_information, placeholder: "Extra information about packaging", :as => :text, class: "o-input"
+            .l-form__label= f.label :packaging_information, t("views.products.show.packaging_information")
+            = f.text_area :packaging_information, placeholder: t("views.products.new.extra_information_about_packaging"), :as => :text, class: "o-input"
           .l-form__row
-            .l-form__label= f.label :description
-            = f.text_area :description, placeholder: "Anything that doesn't fit in the other fields", class: "o-input"
+            .l-form__label= f.label :description, t("views.products.show.description")
+            = f.text_area :description, placeholder: t("views.products.new.anything_that_doesnt_fit_in_the_other_fields"), class: "o-input"
           .l-form__row
-            .l-form__label= f.label :shipping_information
-            = f.text_area :shipping_information, placeholder: "Anything related to shipping of this product, such as delivery date", :as => :text, class: "o-input"
+            .l-form__label= f.label :shipping_information, t("views.products.show.shipping_information")
+            = f.text_area :shipping_information, placeholder: t("views.products.new.anything_related_to_shipping_of_this_product"), :as => :text, class: "o-input"
           .l-form__row.l-form__row--top-margin
-            = f.submit "Publish Product", class: "o-button o-button--orange"
+            = f.submit t("views.products.new.publish_product"), class: "o-button o-button--orange"
       .l-grid__item.palm--one-whole.one-third>
-        %h2.o-headline.o-headline--small.o-headline--no-top-border= "Auction Information"
+        %h2.o-headline.o-headline--small.o-headline--no-top-border= t("views.products.new.auction_information")
         .l-form
           = f.fields_for :auctions, @product.auctions.first_or_initialize(product: @product) do |auctions_form|          
             .l-form__row
-              .l-form__label= f.label :starting_at
+              .l-form__label= f.label :starting_at, t("views.products.new.starting_at")
               = auctions_form.text_field :starting_at, class: "o-input js-datetimepicker"
             .l-form__row
-              .l-form__label= f.label :ending_at
+              .l-form__label= f.label :ending_at, t("views.products.new.ending_at")
               = auctions_form.text_field :ending_at, class: "o-input js-datetimepicker"
             .l-form__row.l-form__row.l-form__row--bottom-margin
               .l-grid
                 .l-grid__item.one-third>
-                  = auctions_form.input :starting_bid, input_html: { class: "o-input", min: 0, step: 0.1, placeholder: "In €" }
+                  = auctions_form.input :starting_bid, input_html: { class: "o-input", min: 0, step: 0.1, placeholder: t("views.products.new.in_currency") }
                 .l-grid__item.one-third>
-                  = auctions_form.input :bid_increment, input_html: { class: "o-input", min: 0, step: 0.1, placeholder: "In €" }
+                  = auctions_form.input :bid_increment, input_html: { class: "o-input", min: 0, step: 0.1, placeholder: t("views.products.new.in_currency") }
                 .l-grid__item.one-third>
-                  = auctions_form.input :buy_out_bid, input_html: { class: "o-input", min: 0, step: 0.1, placeholder: "In €" }
+                  = auctions_form.input :buy_out_bid, input_html: { class: "o-input", min: 0, step: 0.1, placeholder: t("views.products.new.in_currency") }
 
-
-        %h2.o-headline.o-headline--small.o-headline--no-top-border= "Product Images"
+        %h2.o-headline.o-headline--small.o-headline--no-top-border= t("views.products.new.product_images")
         .l-form
           = f.fields_for :product_images do |image_form|
             - if image_form.object.persisted?
               .l-form__row
                 = image_tag image_form.object.url(:square)
               .l-form__row
-                = image_form.link_to_remove "Remove image", class: "o-button o-button--grey"
-                = link_to "Crop image", edit_product_photo_path(@product, image_form.object)
+                = image_form.link_to_remove t("views.products.new.remove_image"), class: "o-button o-button--grey"
+                = link_to t("views.products.new.crop_image"), edit_product_photo_path(@product, image_form.object)
             - else
               .l-form__row
                 = image_form.input :file
           .l-form__row
-            = f.link_to_add "Add an Image", :product_images, class: "o-button o-button--grey o-button--block"
+            = f.link_to_add t("views.products.new.add_an_image"), :product_images, class: "o-button o-button--grey o-button--block"

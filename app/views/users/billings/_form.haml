@@ -31,7 +31,7 @@
             = billings_form.text_field :city, class: "o-input"
         .l-grid__item.two-fifths>
           .l-form__row
-            .l-form__label= billings_form.label :country, , t("views.users.country")
+            .l-form__label= billings_form.label :country, t("views.users.country")
             = billings_form.text_field :country, class: "o-input"
         .l-grid__item.one-fifth>
           .l-form__row
@@ -43,4 +43,4 @@
     - if !@order.blank?
       %input{:name => "order_id", :value => @order.id, :type => "hidden"}
     .l-form__row.l-form__row--top-margin
-      = billings_form.submit :value => , t("views.users.save_your_billing_information"), class: "o-button o-button--orange"
+      = billings_form.submit :value => t("views.users.save_your_billing_information"), class: "o-button o-button--orange"

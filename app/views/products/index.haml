@@ -1,6 +1,6 @@
 .l-list-block
   .l-list-block__headline--big-margin
-    %h1.o-headline= "Products"                
+    %h1.o-headline= t("views.products.index")
   .l-grid
     - @products.each do |product|
       .l-grid__item.palm--one-whole.one-third>
@@ -20,4 +20,4 @@
 
 %br
 
-= link_to 'New Product', new_product_path 
+= link_to t("views.products.new_product"), new_product_path 

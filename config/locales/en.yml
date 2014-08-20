@@ -69,6 +69,7 @@ en:
         price: "Price"
         quality: "Quality"
         producer: "Producer"
+        pallets: "Pallets"
         data_provided_by_the_producer: "Data provided by the producer"
         description: Description
         shipping_information: Shipping Information
@@ -87,6 +88,29 @@ en:
         bid_now: "Bid Now"
         buy_now: "Buy Now"
         read_more: "Read More"
+      index: 
+        products: "Products"
+        new_product: "New Product"
+      new:
+        x_errors_prohibited_this_product_from_being_saved: "%{x} prohibited this product from being saved:"
+        general_information: "General Information"
+        publish_product: "Publish Product"
+        auction_information: "Auction Information"
+        starting_at: "Starting at"
+        ending_at: "Ending at"
+        product_images: "Product Images"
+        remove_image: "Remove Image"
+        crop_image: "Crop Image"
+        add_an_image: "Add an Image"
+        type_of_quality_of_the_items: "Type of quality of the items"
+        boxes_or_kilos: "Boxes or Kilos"
+        size_of_1_unit: "Size of 1 unit"
+        if_yes_how_many: "If yes, how many?"
+        extra_information_about_packaging: "Extra information about packaging"
+        anything_that_doesnt_fit_in_the_other_fields: "Anything that doesn't fit in the other fields"
+        anything_related_to_shipping_of_this_product: "Anything related to shipping of this product, such as delivery date"
+        in_currency: "In €"
+
     users:
       personal_information: "Personal Information"
       name: "Name"
