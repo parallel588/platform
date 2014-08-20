@@ -1,6 +1,6 @@
 .l-list-block
   .l-list-block__headline
-    %h1.o-headline= "Users"
+    %h1.o-headline= t("views.users.users")
   .l-grid
     - @users.each do |u|
       .l-grid__item.palm--one-whole.one-third>
@@ -17,9 +17,6 @@
                 %li.m-icon-list__item
                   .m-icon-list__icon.o-icon.o-icon--map-marker
                   .m-icon-list__data= u.occupation
-                %li.m-icon-list__item
-                  .m-icon-list__icon.o-icon.o-icon--map-marker
-                  .m-icon-list__data= u.user_type
                 %li.m-icon-list__item
                   .m-icon-list__icon.o-icon.o-icon--map-marker
                   .m-icon-list__data= u.address_country

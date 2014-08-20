@@ -2,7 +2,7 @@
   .l-grid__item.desk--one-quarter>
     = render :partial => "users/shared/user_preferences_menu"
   .l-grid__item.desk--three-quarters>
-    %h1.o-headline= "Personal Information"
+    %h1.o-headline= t("views.users.personal_information")
     .l-form
       = simple_nested_form_for(@user, as: :user, :method => :put, url: update_user_preferences_path, :html => {:multipart => true}) do |f| 
         .l-grid
@@ -11,45 +11,43 @@
               .l-form__label= f.label :email
               = f.email_field :email, autofocus: true, class: "o-input"
             .l-form__row
-              .l-form__label= f.label :name
+              .l-form__label= f.label :name, t("views.users.name")
               = f.text_field :name, class: "o-input"
             .l-form__row
-              .l-form__label= f.label :occupation
+              .l-form__label= f.label :occupation, t("views.users.occupation")
               = f.text_field :occupation, class: "o-input"
             .l-form__row
-              .l-form__label= f.label "Street"
+              .l-form__label= f.label :address_street, t("views.users.street")
               = f.text_field :address_street, class: "o-input"
             .l-grid
               .l-grid__item.two-fifths>
                 .l-form__row
-                  .l-form__label= f.label "City"
+                  .l-form__label= f.label :address_city, t("views.users.city")
                   = f.text_field :address_city, class: "o-input"
               .l-grid__item.two-fifths>
                 .l-form__row
-                  .l-form__label= f.label "Country"
+                  .l-form__label= f.label :address_country, t("views.users.country")
                   = f.text_field :address_country, class: "o-input"
               .l-grid__item.one-fifth>
                 .l-form__row
-                  .l-form__label= f.label "Zip"
+                  .l-form__label= f.label :address_zip, t("views.users.zip")
                   = f.text_field :address_zip, class: "o-input"
             .l-form__row
-              .l-form__label= f.label :user_type
+              .l-form__label= f.label :user_type, t("views.users.user_type")
               = f.select :user_type, [:buyer, :seller] 
               = f.select :buyer_type, [:free, :premium], include_blank: false if current_user.is_buyer?  
             .l-form__row
-              .l-form__label= f.label :password          
+              .l-form__label= f.label :password, t("views.users.password")
               = f.password_field :password, class: "o-input"
             .l-form__row
-              .l-form__label= f.label :password_confirmation
+              .l-form__label= f.label :password_confirmation, t("views.users.password_confirmation")
               = f.password_field :password_confirmation, class: "o-input"
-
-            / %div=link_to "Update the Seller's Profile", edit_seller_url(Seller.find_or_create_by_user_id(current_user.id).id.to_i)
           .l-grid__item.desk--one-third>
             .l-form__row
-              .l-form__label= f.label "Profile Image"
+              .l-form__label= f.label t("views.users.profile_image")
               = image_tag(@user.logo_url, class: "l-form__profile-image") if @user.logo? 
               = f.file_field :logo
               = f.input :logo_cache, :as => :hidden 
         
         .l-form__row.l-form__row--top-margin
-          = f.submit "Update preferences", class: "o-button o-button--orange"
+          = f.submit t("views.users.update_preferences"), class: "o-button o-button--orange"
