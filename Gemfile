@@ -25,9 +25,9 @@ gem 'fog'
 gem 'mini_magick'
 gem 'kaminari'
 gem 'ancestry'
-gem 'inherited_resources', '~> 1.5.0'
-gem "zendesk_api"
-
+gem 'inherited_resources', '~> 1.4.1' # mandatory version for active admin 1.0.0 to work!
+gem 'zendesk_api'
+gem 'activeadmin', github: 'activeadmin'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
