@@ -78,13 +78,12 @@
     .l-list-block
       .l-list-block__headline--big-margin
         %h2.o-headline.o-headline--no-top-border= t("views.products.show.customers_also_viewed")
-      -if @product.relevant_products(4) && @product.relevant_products(4).count > 0                  
+      -if @product.relevant_products(2).count > 0
         .l-grid
-          .l-grid__item.one-half>
-            = render "partials/modules/m_product", p: @product.relevant_products(2).try(:first) || nil
-          .l-grid__item.one-half>
-            = render "partials/modules/m_product", p: @product.relevant_products(2).try(:first) || nil
-
+          - @product.relevant_products(2).each do |rel_product|
+            - if !rel_product.nil?        
+              .l-grid__item.one-half>
+                = render "partials/modules/m_product", p: rel_product 
   .l-grid__item.desk--one-third
     .l-grid
       .l-list-block.l-grid__item.lap--one-half>

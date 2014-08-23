@@ -27,7 +27,11 @@ class Product < ActiveRecord::Base
 
 
   def relevant_products(limit)
-    self.product_category.products.where("id <> ?", self.id).limit(limit) unless self.product_category.blank?
+    if self.product_category.blank?
+      return nil
+    else
+      return self.product_category.products.where("id <> ?", self.id).limit(limit)
+    end    
   end
 
 
