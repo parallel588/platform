@@ -98,7 +98,7 @@ class User < ActiveRecord::Base
 
 
   def ratings_received
-    return Rating.where(to_user_id: self.id).all
+    return Rating.where(to_user_id: self.id)
   end
   
 

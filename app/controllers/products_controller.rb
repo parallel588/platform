@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @seller_ratings = @product.user.ratings_received.order("created_at DESC")
   end
 
   # GET /products/new

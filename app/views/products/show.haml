@@ -62,6 +62,8 @@
           .m-icon-list__icon= render "partials/objects/o_icon", icon: "star-outline"
           .m-icon-list__data
             = render "partials/modules/m_ratings", stars: @product.user.try(:rating_average)
+            - @seller_ratings.each do |rating|
+              =# render "partials/modules/m_review", rating: rating
         .m-icon-list__item.l-grid__item.one-whole{ title: t("views.products.show.comments") }>
           .m-icon-list__icon= render "partials/objects/o_icon", icon: "bubble"
           .m-icon-list__data= t("views.products.show.comments_from_others")

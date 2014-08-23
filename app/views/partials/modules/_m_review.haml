@@ -1,37 +1,27 @@
-- rating ||= 4
+- rating_stars ||= rating.stars
 
 .m-review
-  .m-review__name= "Papadopoulos Ioannis"
+  .m-review__name= rating.reviewer.name
   .l-grid
     .l-grid__item.palm--one-whole.one-third>
       .l-grid.m-review__reviewer
         .l-grid__item.one-third>
           .m-review__reviewer__image
-            = image_tag "/assets/defaults/buyer-profile-image.png"
+            = image_tag rating.reviewer.logo.try(:url)
         .l-grid__item.two-thirds>
           %ul.m-icon-list
             %li.m-icon-list__item
               .m-icon-list__icon.o-icon.o-icon--map-marker
-              .m-icon-list__data= "Athens, Greece"
+              .m-icon-list__data= "#{rating.reviewer.address_city}, #{rating.reviewer.address_country}"
             %li.m-icon-list__item
               .m-icon-list__icon.o-icon.o-icon--map-marker
               .m-icon-list__data
-                = render "partials/modules/m_ratings", stars: rating, modifier: "m-ratings--green"
+                = render "partials/modules/m_ratings", stars: rating_stars, modifier: "m-ratings--green"
             %li.m-icon-list__item
               .m-icon-list__icon.o-icon.o-icon--map-marker
-              .m-icon-list__data= "15/5/2014"
+              .m-icon-list__data= rating.created_at.strftime("%d/%m/%Y")  
             %li.m-icon-list__item
               .m-icon-list__icon.o-icon.o-icon--map-marker
-              .m-icon-list__data= "Fresh Fruit - Apples - Golden Delicious (NL) - Ungraded"
+              .m-icon-list__data= rating.auction.product.name
     .l-grid__item.palm--one-whole.two-thirds>
-      .m-review__text
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-/ %p=rating.auction.product.name
-/ %p=rating.stars
-/ %p=rating.review
+      .m-review__text= rating.review

@@ -31,7 +31,7 @@
 .l-list-block
   .l-list-block__headline
     %h2.o-headline= t("views.users.producers_comments")
-  - (1..5).each do |rating|
+  - @user.ratings_received.each do |rating|
     = render "partials/modules/m_review", rating: rating
   / - @user.ratings_received.each do |rating|
   /   = render "partials/modules/m_review", rating: rating
