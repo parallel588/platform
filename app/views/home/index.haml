@@ -19,11 +19,21 @@
         %button.o-button.o-button--block.o-button--tall.o-button--green.o-button--lined{ tabindex: 5 }= t("views.home.index.search_button")
     
 .l-block
-  - if @last_minute_products
+  - if @produts_auctions_ending_today
+    .l-list-block
+      .l-list-block__headline
+        %h2.o-headline= t("views.home.index.produts_auctions_ending_today")
+      .l-grid
+        - @produts_auctions_ending_today.each do |product|
+          .l-grid__item.palm--one-whole.lap--one-half.one-third>
+            = render "partials/modules/m_product", p: product, modifier: "m-product--compact"
+
+.l-block
+  - if @latest_added_products
     .l-list-block
       .l-list-block__headline
         %h2.o-headline= t("views.home.index.latest_products")
       .l-grid
-        - @last_minute_products.each do |product|
+        - @latest_added_products.each do |product|
           .l-grid__item.palm--one-whole.lap--one-half.one-third>
-            = render "partials/modules/m_product", p: product, modifier: "m-product--compact"
+            = render "partials/modules/m_product", p: product, modifier: "m-product--compact"            

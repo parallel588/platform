@@ -10,6 +10,9 @@ class Auction < ActiveRecord::Base
   
   validates :starting_at, presence: true 
   scope :active, -> { where("ending_at > ? AND (status <> ? OR status IS NULL)", Time.now, "finished") }
+  scope :ending_today, -> { where("ending_at < ?", Time.now + 24.hours) }
+  scope :ending_later_than_today, -> { where("ending_at > ?", Time.now + 24.hours) }
+
   
   aasm :skip_validation_on_save => true, :column => 'status' do
     state :active, :initial => true

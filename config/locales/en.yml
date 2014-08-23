@@ -59,6 +59,7 @@ en:
         search_price: "Price €"
         search_button: "Search"
         latest_products: "Our latest products"
+        produts_auctions_ending_today: "Auctions ending soon"
     products:
       show:
         product: "PRODUCT"
@@ -147,3 +148,4 @@ en:
 
   biddings:
     amount_of_bidding_cannot_be_less_than_the_current_winning_bidding: "The amount of bidding cannot be less than the current winning bidding."
+    something_went_wrong_and_we_havenot_received_your_order: "Something went wrong. Unfortunately we haven't received your order."
