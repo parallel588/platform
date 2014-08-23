@@ -1,5 +1,35 @@
-%h1=@user.name 
+- content_for :body_class, "l-user-buyer"
+
+.l-list-block
+  .m-user-cover
+    .m-user-cover__cover-img
+      = image_tag "/assets/defaults/buyer-profile-cover.png"
+    .m-user-cover__info
+      .l-grid.l-grid--bottom
+        .l-grid__item.desk--two-thirds>
+          .m-user-cover__image
+            - if @user.logo
+              = image_tag @user.logo
+            - else
+              = image_tag "/assets/defaults/buyer-profile-image.png"
+          .m-user-cover__name= @user.name
+        .m-user-cover__ratings.l-grid__item.desk--one-third
+          = render "partials/modules/m_ratings", stars: @user.try(:rating_average), modifier: "m-ratings--big m-ratings--green"
+
+.l-list-block
+  .l-list-block__headline
+    %h2.o-headline= t("views.users.products_bought")
+  .l-grid
+    - @user.products_bought.limit(3).each do |product|  
+      .l-grid__item.palm--one-half.desk--one-third>
+        = render "partials/modules/m_product", p: product, modifier: "m-product--compact"
+
+.l-list-block
+  .l-list-block__headline
+    %h2.o-headline= t("views.users.producers_comments")
+  - @user.ratings_received.each do |rating|
+    = render "partials/modules/m_review", rating: rating
+  / - @user.ratings_received.each do |rating|
+  /   = render "partials/modules/m_review", rating: rating
   
-%h2=@user.email
-  
-=@user.user_type  
+

@@ -130,6 +130,11 @@ class User < ActiveRecord::Base
     return user_type == "buyer" && seller_type == "premium"
   end
 
+  def products_bought
+    won_auction_ids = self.orders.collect(&:auction_id)
+    won_product_ids = Auction.where(id: won_auction_ids).collect(&:product_id)
+    Product.where(id: won_product_ids)
+  end
 
 
   # OVERRRIDING DEVISE FOR PASSWORD CONFIRMATION MISSING AND REQUIRED
