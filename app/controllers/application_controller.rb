@@ -34,14 +34,25 @@ class ApplicationController < ActionController::Base
     # end      
     
     # If the policy is that we want the user to be redirected back to the url that he requested before being asked to login/signup
+    cached_stored_location_for_user = stored_location_for(user) 
+
+    # puts ">>>>>>>>>>>> this is called"
+    # puts ">>>>>> user.current_sign_in_at = #{user.current_sign_in_at}"
+    # puts ">>>>>> user.last_sign_in_at = #{user.last_sign_in_at}"
+    # puts ">>>>>> request.referer  =  #{request.referer}"
+    # puts ">>>>>> stored_location_for(user) = #{cached_stored_location_for_user}"
+
     sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
-    if request.referer == sign_in_url || request.referer.to_s.include?("login_register")
-      super
-    else
-      stored_location_for(user) || request.referer || home_without_locale_path
+    if user.current_sign_in_at == user.last_sign_in_at # denotes a new user as we have auto sign in in signups 
+      return user_prefernces_path 
+    elsif !cached_stored_location_for_user.blank?
+      return cached_stored_location_for_user
+    elsif request.referer == sign_in_url || request.referer.to_s.include?("login_register")
+      return home_without_locale_path
+    else   
+      return request.referer || home_without_locale_path
     end
   end
-  
   
   def after_sign_out_path_for(user)
     super
