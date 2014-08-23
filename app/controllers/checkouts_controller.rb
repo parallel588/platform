@@ -1,7 +1,7 @@
 class CheckoutsController < ApplicationController
   before_action :authenticate_user!
   before_action :define_order, :except => [:cart]
-
+  layout "checkout"
 
   def cart
       
@@ -9,18 +9,24 @@ class CheckoutsController < ApplicationController
 
   
   def billing
+    @current_step = 1
     @billing = Billing.find_or_create_by(user_id: current_user.id)
 
   end
 
   
   def shipping
-    
+    @current_step = 2
   end
 
 
   def confirm
-        
+    @current_step = 3
+  end
+
+
+  def thankyou
+    @current_step = 4
   end
 
 

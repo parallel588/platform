@@ -1,0 +1,44 @@
+// The checkout steps when you buy a product
+//
+// .m-checkout-steps - Default Variation
+//
+// Styleguide Checkout Steps.
+.m-checkout-steps
+
+.m-checkout-steps__step
+  display: inline-block
+  color: $color__grey--lite
+  font-size: em($font-size__big)
+  line-height: 1.5em
+  &.is-current
+    font-family: $fonts__bold
+  &:before,
+  &:after
+    background-color: $color__grey--lite
+    display: inline-block
+    height: em(1, $font-size__big)
+    vertical-align: middle
+    &.is-active
+      background-color: $color__orange
+  & + &:before
+    content: ""
+    margin: 0 em(5, $font-size__big)
+    width: em(30, $font-size__big)
+  &:first-child
+    border-left: em(1, $font-size__big) solid $color__grey--lite
+    &:before
+      content: ""
+      margin-right: em(5, $font-size__big)
+      width: em(15, $font-size__big)
+  &:last-child
+    border-right: em(1, $font-size__big) solid $color__grey--lite
+    &:after
+      content: ""
+      margin-left: em(5, $font-size__big)
+      width: em(15, $font-size__big)
+  &.is-active
+    border-color: $color__orange
+    color: $color__orange
+    &:before,
+    &:after
+      background-color: $color__orange

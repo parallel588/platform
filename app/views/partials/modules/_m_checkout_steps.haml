@@ -1,0 +1,7 @@
+- modifier ||= ""
+- steps = [t("views.checkout.invoicing"), t("views.checkout.shipping"), t("views.checkout.confirm"), t("views.checkout.success")]
+
+.m-checkout-steps{ class: "#{modifier}" }
+  - steps.each_with_index do |step, index|
+    .m-checkout-steps__step{ class: "#{"is-current" if @current_step == index+1} #{"is-active" if @current_step >= index+1}" }
+      = "#{index+1}. #{step}"

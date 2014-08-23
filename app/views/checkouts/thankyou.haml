@@ -1,1 +1,10 @@
-Thank you!
+%h1.o-headline.o-headline--with-title{ title: "#{t("step").upcase} #{@current_step}" }= t("views.checkout.thank_you_for_your_order")
+
+%h2= "Your order information:"
+%p= @order.auction.product.inspect
+
+%h2= "What's happenning now?"
+%p= "The producer has been informed of your order and will start the delivery process of the products. We will keep you informed throughout the process via email."
+%p= "Do more shopping"
+%p= "Visit your dashboard"
+%p= "Go to homepage"

@@ -21,6 +21,7 @@
 
 en:
   hello: "Hello world"
+  step: "Step"
   
 
   user:
@@ -146,6 +147,16 @@ en:
       postal_code: "Postal Code"
       vat_number: "VAT Number"
       save_your_billing_information: "Save your Billing Information"
+
+    checkout:
+      invoicing: "Invoicing"
+      shipping: "Shipping"
+      confirm: "Confirm"
+      success: "Success"
+      fill_in_your_payment_info: "Fill in your payment/invoicing information"
+      where_will_the_products_be_delivered: "Where will the products be delivered?"
+      confirm_that_everything_is_correct: "Confirm that everything is correct with the order"
+      thank_you_for_your_order: "Thank you for your order"
 
   biddings:
     amount_of_bidding_cannot_be_less_than_the_current_winning_bidding: "The amount of bidding cannot be less than the current winning bidding."

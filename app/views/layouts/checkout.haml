@@ -1,0 +1,42 @@
+!!! 5
+/[if lt IE 8] <html class="no-js lt-ie10 lt-ie9 lt-ie8 ie" lang="en">
+/[if IE 8] <html class="no-js lt-ie10 lt-ie9 ie8 ie" lang="en">
+/[if IE 9] <html class="no-js lt-ie10 ie" lang="en">
+:plain
+  <!--[if gt IE 9]><!-->
+%html{class: "no-js modern-browser", :'xmlns:og' => "http://opengraphprotocol.org/schema/", :'xmlns:fb' => "http://www.facebook.com/2008/fbml"}
+  :plain
+    <!--<![endif]-->
+  %head
+    = render "/partials/meta"
+    %link{:href => "/assets/images/favicon.ico", :rel => "shortcut icon"}
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "/assets/libs/modernizr"
+    = csrf_meta_tags
+  %body{ class: "l-checkout" }
+
+    -# Include the svg icons code at the top, because of a chrome bug: https://code.google.com/p/chromium/issues/detail?id=349175
+    = inline_svg "icons.svg"
+
+    .l-header
+      .l-block
+        .l-grid.l-grid--middle
+          .l-grid__item.desk--one-third>
+            = render "partials/objects/o_logo"
+          .l-grid__item.desk--two-thirds>
+            = render "partials/modules/m_checkout_steps"
+
+    .l-block
+      = yield
+
+    .l-footer.text-center
+      .l-footer__row
+        .m-links.m-links--small
+          = link_to "Terms & Conditions", "/terms"
+          %span.m-links__separator= "\\"
+          = link_to "Contact us", "/contact"
+
+      .l-footer__row
+        .o-footnotes= t("views.footer.copyright_notice")
+
+    = javascript_include_tag "application"
