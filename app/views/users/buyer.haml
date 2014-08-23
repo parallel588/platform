@@ -29,7 +29,5 @@
     %h2.o-headline= t("views.users.producers_comments")
   - @user.ratings_received.each do |rating|
     = render "partials/modules/m_review", rating: rating
-  / - @user.ratings_received.each do |rating|
-  /   = render "partials/modules/m_review", rating: rating
-  
+
 

@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       @seller_ratings = Rating.where("to_user_id = ?", @user.id).order("created_at DESC").limit(10)
       render "seller"
     else
-      render "show"
+      render "buyer"
     end
     
   end
