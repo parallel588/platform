@@ -13,7 +13,12 @@ class AuctionsController < ApplicationController
         :bidding => bidding,
         :user    => current_user
       )
-		  redirect_to billing_order_path(@order)
+      if @order.blank?
+        flash[:warning]  = t('biddings.something_went_wrong_and_we_havenot_received_your_order')
+        redirect_to product_url(@auction.product)            
+      else
+        redirect_to billing_order_path(@order)
+      end
 	  else  	 
       flash[:warning]  = t('biddings.amount_of_bidding_cannot_be_less_than_the_current_winning_bidding')
 		  redirect_to product_url(@auction.product)            
