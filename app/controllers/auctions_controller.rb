@@ -8,12 +8,12 @@ class AuctionsController < ApplicationController
 	  bidding =  Bidding.new( {amount: @auction.buy_out_bid, user: current_user,  auction: @auction,  product: @auction.product} )
 	  if bidding.save
 		  flash[:notice] = t('biddings.the_product_is_yours')
-      Order.create(
+      @order = Order.create(
         :auction => @auction,
         :bidding => bidding,
         :user    => current_user
       )
-		  redirect_to buyer_dashboard_url
+		  redirect_to billing_order_path(@order)
 	  else  	 
       flash[:warning]  = t('biddings.amount_of_bidding_cannot_be_less_than_the_current_winning_bidding')
 		  redirect_to product_url(@auction.product)            
