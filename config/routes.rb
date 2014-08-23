@@ -122,6 +122,7 @@ Basekto::Application.routes.draw do
     put 'preferences' => "users#update", as: "update_user_preferences"
 
 
+    get "/:content_page_name" => "pages#show"
 
 
   end # End of :locale scoping
