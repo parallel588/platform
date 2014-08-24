@@ -1,3 +1,5 @@
+- content_for :body_class, "js-checkout"
+
 .l-form
   = simple_form_for current_user, :url => preferences_shipping_user_path(current_user), :method => :put do |shippings_form| 
     - if controller.controller_name == "checkouts"

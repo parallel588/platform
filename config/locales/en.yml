@@ -155,7 +155,7 @@ en:
       success: "Success"
       fill_in_your_billing_info: "Fill in your billing information"
       where_will_the_products_be_delivered: "Where will the products be delivered?"
-      confirm_that_everything_is_correct: "Confirm that everything is correct with the order"
+      confirm_that_everything_is_correct: "Confirm that everything is correct with the order before you submit it"
       thank_you_for_your_order: "Thank you for your order"
       edit_previous_step: "Edit previous step"
       billing_intro_text: "Please fill in your invoicing information. <br> Payment of the products will happen via bank transfer. You will receive the bank account number via email after the transaction is over."

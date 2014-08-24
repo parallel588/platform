@@ -1,28 +1,82 @@
 %h1.o-headline.o-headline--with-title{ title: "#{t("step").upcase} #{@current_step}" }= t("views.checkout.confirm_that_everything_is_correct")
 
-%h1= "Confirmation for the ORDER ##{@order.id}"
+.l-form
+  .typography
+    %p= "Please review your order's information and make sure that there is no mistake.".html_safe
+  .l-grid
+    .l-grid__item.palm--one-whole.one-third>
+      .l-list-block
+        .l-list-block__headline
+          %h2.o-headline.o-headline--small= "Your product"
+          
+        - product = @order.auction.product
+        .m-product
+          .m-product__image
+            - if product.product_image
+              = image_tag product.product_image.url(:square)
+            - else
+              = image_tag "/assets/defaults/product-image.png"
+          %h3.o-headline.o-headline--no-top-border.o-headline--small= "#{product.name}"
+          %ul.m-icon-list
+            %li.m-icon-list__item{ title: t("views.products.show.producer") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "farmer"
+              .m-icon-list__data= product.user.try(:name)
+            %li.m-icon-list__item{ title: t("views.products.show.country_of_origin") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
+              .m-icon-list__data=product.country
+            %li.m-icon-list__item{ title: t("views.products.show.quality") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "quality"
+              .m-icon-list__data= product.quality
+            %li.m-icon-list__item{ title: t("views.products.show.volume") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "volume"
+              .m-icon-list__data= product.volume
+            %li.m-icon-list__item{ title: t("views.products.show.price") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "price"
+              .m-icon-list__data= "Total Price: #{@order.auction.buy_out_bid} €"
 
-%p= "Auction"
-%p= @order.auction.inspect
+    .l-grid__item.palm--one-whole.one-third>
+      .l-list-block
+        .l-list-block__headline
+          %h2.o-headline.o-headline--small= "Your billing information"
+        %ul.m-icon-list
+          %li.m-icon-list__item
+            .m-icon-list__icon= render "partials/objects/o_icon", icon: "buyer"
+            .m-icon-list__data= "#{current_user.billing_info.first_name} #{current_user.billing_info.last_name}"
+          - if current_user.billing_info.address_line_1 && current_user.billing_info.address_line_1.length > 0
+            %li.m-icon-list__item
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
+              .m-icon-list__data= "#{current_user.billing_info.address_line_1}"
+          - if current_user.billing_info.address_line_2 && current_user.billing_info.address_line_2.length > 0
+            %li.m-icon-list__item
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
+              .m-icon-list__data= "#{current_user.billing_info.address_line_2}"
+          - if current_user.billing_info.city && current_user.billing_info.city.length > 0
+            %li.m-icon-list__item
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
+              .m-icon-list__data= "#{current_user.billing_info.city}"
+          - if current_user.billing_info.state && current_user.billing_info.state.length > 0
+            %li.m-icon-list__item
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
+              .m-icon-list__data= "#{current_user.billing_info.state}"
+          - if current_user.billing_info.country && current_user.billing_info.country.length > 0
+            %li.m-icon-list__item
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
+              .m-icon-list__data= "#{current_user.billing_info.country}"
+          - if current_user.billing_info.vat_number && current_user.billing_info.vat_number.length > 0
+            %li.m-icon-list__item
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "price"
+              .m-icon-list__data= "#{current_user.billing_info.vat_number}"
+    .l-grid__item.palm--one-whole.one-third>
+      .l-list-block
+        .l-list-block__headline
+          %h2.o-headline.o-headline--small= "Your shipping information"
+        %ul.m-icon-list
+          %li.m-icon-list__item
+            .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
+            .m-icon-list__data= current_user.shipping_info
 
-%hr
 
-%p= "Product"
-%p= @order.auction.product.inspect
-
-%hr
-
-%p= "Billing"
-%p= current_user.billing_info.inspect
-
-%hr
-
-%p= "Shipping"
-%p= current_user.shipping_info
-
-%hr
-
-= simple_form_for @order, :url => place_order_path(@order), :method => :put do |order_form| 
-    %p
-    = order_form.submit :value => "Confirm this Order" 
-    = link_to t("views.checkout.edit_previous_step"), "javascript:history.go(-1);", class: "after-button-action" if controller.controller_name == "checkouts"
+  = simple_form_for @order, :url => place_order_path(@order), :method => :put do |order_form| 
+    .l-form__row.l-form__row--top-margin
+      = order_form.submit :value => "Confirm this Order", class: "o-button o-button--orange"
+      = link_to t("views.checkout.edit_previous_step"), "javascript:history.go(-1);", class: "after-button-action"
