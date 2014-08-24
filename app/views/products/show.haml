@@ -64,23 +64,22 @@
             = render "partials/modules/m_ratings", stars: @product.user.try(:rating_average)
             - @seller_ratings.each do |rating|
               =# render "partials/modules/m_review", rating: rating
-        .m-icon-list__item.l-grid__item.one-whole{ title: t("views.products.show.comments") }>
-          .m-icon-list__icon= render "partials/objects/o_icon", icon: "bubble"
-          .m-icon-list__data= t("views.products.show.comments_from_others")
-        .m-icon-list__item.l-grid__item.one-whole{ title: t("views.products.show.other_products_from_this_producer") }>
-          .m-icon-list__icon= render "partials/objects/o_icon", icon: "carrot"
-          .m-icon-list__data= t("views.products.show.other_products_from_this_producer")
+        / .m-icon-list__item.l-grid__item.one-whole{ title: t("views.products.show.comments") }>
+        /   .m-icon-list__icon= render "partials/objects/o_icon", icon: "bubble"
+        /   .m-icon-list__data= t("views.products.show.comments_from_others")
         - if @product.user && @product.user.relevant_products(@product.id, 4).count > 0
+          .m-icon-list__item.l-grid__item.one-whole{ title: t("views.products.show.other_products_from_this_producer") }>
+            .m-icon-list__icon= render "partials/objects/o_icon", icon: "carrot"
+            .m-icon-list__data= t("views.products.show.other_products_from_this_producer")
           .l-grid__item.one-whole>
             .l-grid.l-expandable
               - @product.user.relevant_products(@product.id, 4).each do |product|
                 .l-grid__item.one-half>
                   = render "partials/modules/m_product", p: product, hide_producer: true
-
-    .l-list-block
-      .l-list-block__headline--big-margin
-        %h2.o-headline.o-headline--no-top-border= t("views.products.show.customers_also_viewed")
-      -if @product.relevant_products(2).count > 0
+    -if @product.relevant_products(2).count > 0
+      .l-list-block
+        .l-list-block__headline--big-margin
+          %h2.o-headline.o-headline--no-top-border= t("views.products.show.customers_also_viewed")
         .l-grid
           - @product.relevant_products(2).each do |rel_product|
             - if !rel_product.nil?        

@@ -17,9 +17,9 @@
               %input.o-input.o-input--tall.o-input--green-border{ placeholder: t("views.home.index.search_price"), type: "number", min: 0, step: "0.1", tabindex: 4 }
       .l-grid__item.palm--one-whole.one-quarter>
         %button.o-button.o-button--block.o-button--tall.o-button--green.o-button--lined{ tabindex: 5 }= t("views.home.index.search_button")
-    
+
 .l-block
-  - if @produts_auctions_ending_today
+  - if @produts_auctions_ending_today && @produts_auctions_ending_today.length > 0
     .l-list-block
       .l-list-block__headline
         %h2.o-headline= t("views.home.index.produts_auctions_ending_today")
@@ -28,8 +28,7 @@
           .l-grid__item.palm--one-whole.lap--one-half.one-third>
             = render "partials/modules/m_product", p: product, modifier: "m-product--compact"
 
-.l-block
-  - if @latest_added_products
+  - if @latest_added_products && @latest_added_products.length> 0
     .l-list-block
       .l-list-block__headline
         %h2.o-headline= t("views.home.index.latest_products")
