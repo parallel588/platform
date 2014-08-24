@@ -1,2 +1,2 @@
-%h1.o-headline.o-headline--with-title{ title: "#{t("step").upcase} #{@current_step}" }= t("views.checkout.fill_in_your_payment_info")
+%h1.o-headline.o-headline--with-title{ title: "#{t("step").upcase} #{@current_step}" }= t("views.checkout.fill_in_your_billing_info")
 = render :partial => "users/billings/form", locals: {:order_id => @order.id}

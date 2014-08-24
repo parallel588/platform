@@ -25,3 +25,4 @@
 = simple_form_for @order, :url => place_order_path(@order), :method => :put do |order_form| 
     %p
     = order_form.submit :value => "Confirm this Order" 
+    = link_to t("views.checkout.edit_previous_step"), "javascript:history.go(-1);", class: "after-button-action" if controller.controller_name == "checkouts"

@@ -13,7 +13,7 @@
     = stylesheet_link_tag "application"
     = javascript_include_tag "/assets/libs/modernizr"
     = csrf_meta_tags
-  %body{ class: "l-checkout" }
+  %body{ class: "l-checkout js-checkout" }
 
     -# Include the svg icons code at the top, because of a chrome bug: https://code.google.com/p/chromium/issues/detail?id=349175
     = inline_svg "icons.svg"

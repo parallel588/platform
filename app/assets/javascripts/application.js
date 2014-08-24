@@ -58,6 +58,9 @@
     $(this).datetimepicker(options);
   });
 
+  // Init Checkout View
+  new basketo.Modules.Checkout({ el: $(".js-checkout") });
+
 
   $(function(){
     if ($('#product-image-crop').length > 0) {

@@ -153,10 +153,16 @@ en:
       shipping: "Shipping"
       confirm: "Confirm"
       success: "Success"
-      fill_in_your_payment_info: "Fill in your payment/invoicing information"
+      fill_in_your_billing_info: "Fill in your billing information"
       where_will_the_products_be_delivered: "Where will the products be delivered?"
       confirm_that_everything_is_correct: "Confirm that everything is correct with the order"
       thank_you_for_your_order: "Thank you for your order"
+      edit_previous_step: "Edit previous step"
+      billing_intro_text: "Please fill in your invoicing information. <br> Payment of the products will happen via bank transfer. You will receive the bank account number via email after the transaction is over."
+      different_shipping_address: "Different Shipping Address"
+      custom_shipping_instructions: "Custom Shipping Instructions"
+      invoice_address: "Invoice Address"
+      shipping_intro_text: "Select whether you want the items to be shipped to the address you entered in the previous step, a different one, or provide a custom set of instructions."
 
   biddings:
     amount_of_bidding_cannot_be_less_than_the_current_winning_bidding: "The amount of bidding cannot be less than the current winning bidding."
