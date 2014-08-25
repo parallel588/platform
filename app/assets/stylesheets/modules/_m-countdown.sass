@@ -1,0 +1,35 @@
+// Countdown bar, appears in product page.
+//
+// .m-countdown - Default Variation
+//
+// Styleguide Countdown Bar.
+.m-countdown
+  background-color: $color__white
+  height: em(30)
+  overflow: hidden
+  width: 100%
+
+.m-countdown__bar
+  background-color: $color__brown--dark
+  height: em(30)
+  line-height: em(30)
+  text-align: left
+  padding: 0 em(10)
+  position: relative
+  +transition(all $animation--duration)
+  width: 100%
+  &:after
+    bottom: 0
+    content: ""
+    display: inline-block
+    position: absolute
+    border-top: 30px solid transparent
+    border-bottom: 0px solid transparent
+    border-left: 15px solid transparent
+    border-left-color: $color__brown--dark
+    right: -15px
+
+.m-countdown__bar--ending
+  background-color: $color__red
+  &:after
+    border-left-color: $color__red

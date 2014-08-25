@@ -90,12 +90,11 @@
       .l-list-block.l-grid__item.lap--one-half>
         -unless @product.active_auction.blank?
           .m-action-area
-            .m-action-area__section.l-grid.l-grid--middle
-              .l-grid__item.palm--one-whole.one-third>
-                .js-countdown-timer{ style: "width: 100px; height: 100px; overflow: hidden;", "data-ending-at" => @product.active_auction.ending_at, "data-starting-at" => @product.active_auction.starting_at }
-              .l-grid__item.palm--one-whole.two-thirds
-                .m-action-area__label= t("views.products.show.bid_ends_in")
-                .m-action-area__text.js-countdown-timer-text{ "data-ending-at" => @product.active_auction.ending_at } 
+            .m-action-area__section
+              = render "partials/modules/m_countdown", auction: @product.active_auction
+              .m-action-area__countdown-text
+                = t("views.products.show.bid_ends_in")
+                %b.js-countdown-timer-text{ "data-ending-at" => @product.active_auction.ending_at } 
             .m-action-area__section
               .l-grid.l-grid--middle
                 .l-grid__item.palm--one-whole.one-third>

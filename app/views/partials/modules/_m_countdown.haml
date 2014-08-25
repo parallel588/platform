@@ -1,0 +1,5 @@
+- modifier ||= ""
+
+.m-countdown.js-countdown{ class: "#{modifier}", data: { "ending-at" => auction.ending_at, "starting-at" => auction.starting_at }}
+  .m-countdown__bar.js-countdown__bar
+    = render "partials/objects/o_icon", icon: "timeclock", modifier: "o-icon--white"

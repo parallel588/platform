@@ -20,9 +20,9 @@
   var $window = $(win), $body = $('body');
   var basketo = win.basketo, app = basketo.app;
 
-  // Initialize SVG counter in product page
-  $(".js-countdown-timer").each(function () {
-    new basketo.Modules.CountdownTimer({ el: $(this) });
+  // Product page countdown bar
+  $(".js-countdown").each(function () {
+    new basketo.Modules.CountdownBar({ el: $(this) });
   });
 
   // Initialize Text counter next to the circle
