@@ -1,21 +1,16 @@
 %h1.o-headline.o-headline--with-title{ title: "#{t("step").upcase} #{@current_step}" }= t("views.checkout.thank_you_for_your_order")
 
-%h2= "Your order information:"
-%p= @order.auction.product.inspect
+.l-form
+  .typography
 
-%h2= "What's happenning now?"
-%p= "The producer has been informed of your order and will start the delivery process of the products. We will keep you informed throughout the process via email."
+    %h2.h2= "What's happenning now?"
+    %p= "The producer has been informed of your order and will start the delivery process of the products. We will keep you informed throughout the process via email."
 
-%h2= "How do I pay?"
-%p= "If you chose payment by credit card, the payment will happen automatically. By bank transfer, submit your payment here: XXXXXXXXX."
+    %h2.h2= "How do I pay?"
+    %p= "If you chose payment by credit card, the payment will happen automatically. By bank transfer, submit your payment here: XXXXXXXXX."
 
-%h2= "How are they being delivered?"
-%p= "The dispatcher will take care of that, otherwise (if you chose custom) we'll contact you for further clarifications."
+    %h2.h2= "How are the products being delivered?"
+    %p= "The dispatcher will take care of that, otherwise (if you chose custom) we'll contact you for further clarifications."
 
-
-
-
-%h2= "Where to go from here?"
-%p= "Do more shopping"
-%p= "Visit your dashboard"
-%p= "Go to homepage"
+    .l-form__row--top-margin
+      = link_to "Go back to Homepage", "/", class: "o-button o-button--orange"
