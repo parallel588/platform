@@ -1,0 +1,24 @@
+.o-flash
+  box-shadow: 0 0 5px $color__black
+  cursor: pointer
+  display: none
+  font-family: $fonts__header--light
+  left: 0
+  padding: em(20) em(10)
+  position: fixed
+  text-align: center
+  +transition(background-color $animation--duration)
+  top: 0
+  width: 100%
+
+.o-flash--notice
+  background-color: $color__orange
+  color: $color__white
+  &:hover
+    background-color: lighten($color__orange, 10%)
+
+.o-flash--error
+  background-color: $color__red
+  color: $color__white
+  &:hover
+    background-color: lighten($color__red, 10%)

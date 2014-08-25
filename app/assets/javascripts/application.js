@@ -20,6 +20,11 @@
   var $window = $(win), $body = $('body');
   var basketo = win.basketo, app = basketo.app;
 
+  // Global Flash messages
+  $(".js-flash").each(function () {
+    new basketo.Modules.Flash({ el: $(this) });
+  });
+
   // Product page countdown bar
   $(".js-countdown").each(function () {
     new basketo.Modules.CountdownBar({ el: $(this) });

@@ -18,10 +18,9 @@
     = inline_svg "icons.svg"
 
     - if flash.present?
-      %div{ style: "background: #C00; color: white; padding: 5px; text-align: center" }
-        #flash_messages
-          - flash.each do |key, value|
-            = content_tag(:div, value, :class => "flash #{key}")
+      .o-flash.o-flash--notice.js-flash
+        - flash.each do |key, value|
+          = content_tag(:div, value, :class => "flash #{key}")
 
     = render "shared/header"
     
