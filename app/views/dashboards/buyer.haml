@@ -1,5 +1,81 @@
-%h1=t('dashboard.buyer.auctions_table')
-  
+%h1.o-headline.o-headline--no-top-border= "My Open Bids"
+- @auctions.each do |auction|
+  .l-list-block
+    .l-list-block__headline
+      %h2.o-headline.o-headline--no-top-border.o-headline--small= auction.product.name
+    .m-product
+      .l-grid
+        .l-grid__item.palm--one-whole.one-quarter>
+          .m-product__image
+            - if auction.product.product_image
+              = image_tag auction.product.product_image.url(:square)
+            - else
+              = image_tag "/assets/defaults/product-image.png"
+        .l-grid__item.palm--one-whole.one-quarter>
+          %ul.m-icon-list
+            %li.m-icon-list__item{ title: t("views.products.show.producer") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "farmer"
+              .m-icon-list__data= auction.product.user.try(:name)
+            %li.m-icon-list__item{ title: t("views.products.show.country_of_origin") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
+              .m-icon-list__data=auction.product.country
+            %li.m-icon-list__item{ title: t("views.products.show.quality") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "quality"
+              .m-icon-list__data= auction.product.quality
+            %li.m-icon-list__item{ title: t("views.products.show.volume") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "volume"
+              .m-icon-list__data= auction.product.volume
+            %li.m-icon-list__item{ title: t("views.products.show.price") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "price"
+              .m-icon-list__data= "Total Price: #{auction.buy_out_bid} €"
+        .l-grid__item.palm--one-whole.two-quarters>
+          .m-action-area
+            .m-action-area__section
+              .l-grid.l-grid--middle
+                .l-grid__item.palm--one-whole.one-third>
+                  %input.o-input{ type: "number" }
+                .l-grid__item.palm--one-whole.two-thirds>
+                  = link_to "Update Bid", auction_path(auction), class: "o-button o-button--orange o-button--block"
+            .m-action-area__section
+              .l-grid.l-grid--middle
+                .l-grid__item.palm--one-whole.one-half>
+                  = link_to "Withdraw this bidding", auction_bidding_path(:auction_id => auction.id, :id =>   auction.get_active_bidding_of_user(current_user).id), method: :delete, class: "o-button o-button--red o-button--block"
+                .l-grid__item.palm--one-whole.one-half>
+                  = link_to "Buy Now", auction_path(auction), class: "o-button o-button--orange o-button--block"
+
+%h1.o-headline.o-headline--no-top-border= "My Closed Bids"
+- @winning_auctions.each do |auction|
+  .l-list-block
+    .l-list-block__headline
+      %h2.o-headline.o-headline--no-top-border.o-headline--small= auction.product.name
+    .m-product
+      .l-grid
+        .l-grid__item.palm--one-whole.one-quarter>
+          .m-product__image
+            - if auction.product.product_image
+              = image_tag auction.product.product_image.url(:square)
+            - else
+              = image_tag "/assets/defaults/product-image.png"
+        .l-grid__item.palm--one-whole.one-quarter>
+          %ul.m-icon-list
+            %li.m-icon-list__item{ title: t("views.products.show.producer") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "farmer"
+              .m-icon-list__data= auction.product.user.try(:name)
+            %li.m-icon-list__item{ title: t("views.products.show.country_of_origin") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "pin"
+              .m-icon-list__data=auction.product.country
+            %li.m-icon-list__item{ title: t("views.products.show.quality") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "quality"
+              .m-icon-list__data= auction.product.quality
+            %li.m-icon-list__item{ title: t("views.products.show.volume") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "volume"
+              .m-icon-list__data= auction.product.volume
+            %li.m-icon-list__item{ title: t("views.products.show.price") }
+              .m-icon-list__icon= render "partials/objects/o_icon", icon: "price"
+              .m-icon-list__data= "Total Price: #{auction.buy_out_bid} €"
+        
+
+
 %table
   %thead
     %tr

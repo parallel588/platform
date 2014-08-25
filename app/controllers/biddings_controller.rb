@@ -25,7 +25,7 @@ class BiddingsController < ApplicationController
     bidding = Bidding.where("id = ?", params[:id]).first
     bidding.make_withdrawn!
     bidding.auction.refresh_top_bidding!
-    flash[:notice] = t('biddings.your_bidding_is_succesffully_removed')
+    flash[:notice] = t('biddings.your_bidding_has_been_withdrawn')
 		redirect_to buyer_dashboard_url
   end
 

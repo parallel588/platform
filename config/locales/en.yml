@@ -23,6 +23,9 @@ en:
   hello: "Hello world"
   step: "Step"
   
+  biddings:
+    your_bidding_is_successfully_submitted: "Your bidding is successfully submitted"
+    your_bidding_has_been_withdrawn: "Your bidding has been withdrawn"
 
   user:
     preferences_successfully_saved: "Your preferences are successfully saved."
