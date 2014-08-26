@@ -76,7 +76,7 @@
               - @product.user.relevant_products(@product.id, 4).each do |product|
                 .l-grid__item.one-half>
                   = render "partials/modules/m_product", p: product, hide_producer: true
-    -if @product.relevant_products(2).count > 0
+    -if @product.relevant_products(2) && @product.relevant_products(2).count > 0
       .l-list-block
         .l-list-block__headline--big-margin
           %h2.o-headline.o-headline--no-top-border= t("views.products.show.customers_also_viewed")

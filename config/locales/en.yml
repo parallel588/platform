@@ -113,7 +113,7 @@ en:
         if_yes_how_many: "If yes, how many?"
         extra_information_about_packaging: "Extra information about packaging"
         anything_that_doesnt_fit_in_the_other_fields: "Anything that doesn't fit in the other fields"
-        anything_related_to_shipping_of_this_product: "Anything related to shipping of this product, such as delivery date"
+        anything_related_to_shipping_of_this_product: "Anything related to shipping of this product, such as delivery date, shipping company etc"
         in_currency: "In €"
 
     users:
